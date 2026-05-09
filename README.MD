@@ -4,6 +4,15 @@ A full-stack web app to help teams manage tasks and projects — create tasks, a
 
 ---
 
+## INFO
+**login as admin**
+   email : surajk@gmail.com
+   password : 123456
+
+---
+
+---
+
 ## ✨ Features
 
 - 🔐 **Auth** — Register, login, and JWT-protected routes
