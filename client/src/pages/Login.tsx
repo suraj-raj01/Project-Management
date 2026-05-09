@@ -3,6 +3,8 @@ import { z } from "zod";
 import API from "../services/api";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { AxiosError } from "axios";
+
 
 // Zod Schema
 const loginSchema = z.object({
@@ -18,40 +20,47 @@ const loginSchema = z.object({
 
 export default function Login() {
     const navigate = useNavigate();
-
     const [loading, setLoading] = useState(false);
+    const [errors, setErrors] = useState<{
+        email?: string;
+        password?: string;
+    }>({});
 
-    const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+    const [apiError, setApiError] = useState("");
 
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (
+        e: React.FormEvent<HTMLFormElement>
+    ) => {
         e.preventDefault();
 
-        // Validate using Zod
         const result = loginSchema.safeParse(formData);
 
         if (!result.success) {
-            const fieldErrors = {};
+            const fieldErrors: Record<string, string> = {};
 
             result.error.issues.forEach((err) => {
-                fieldErrors[err.path[0]] = err.message;
+                fieldErrors[String(err.path[0])] = err.message;
             });
 
             setErrors(fieldErrors);
             return;
         }
 
-        // Clear errors if valid
         setErrors({});
+        setApiError("");
 
         try {
             setLoading(true);
 
-            const { data } = await API.post("/auth/login", formData);
+            const { data } = await API.post(
+                "/auth/login",
+                formData
+            );
 
             localStorage.setItem("token", data.token);
 
@@ -59,14 +68,22 @@ export default function Login() {
                 "user",
                 JSON.stringify(data.user)
             );
-            toast.success('Login Successfully')
+
+            toast.success("Login Successfully");
+
             navigate("/dashboard");
         } catch (error) {
-            console.log(error);
-            setErrors(error.response?.data?.message || "Login failed");
-            toast.error(error.response?.data?.message ||
-                "Login failed"
-            );
+            const err = error as AxiosError<{
+                message: string;
+            }>;
+
+            const message =
+                err.response?.data?.message ||
+                "Login failed";
+
+            setApiError(message);
+
+            toast.error(message);
         } finally {
             setLoading(false);
         }
@@ -125,7 +142,11 @@ export default function Login() {
                         {errors?.password}
                     </p>
                 )}
-
+                {apiError && (
+                    <p className="text-red-500 text-sm mb-4">
+                        {apiError}
+                    </p>
+                )}
                 <button
                     disabled={loading}
                     className="w-full bg-blue-500 cursor-pointer font-bold text-white py-3 rounded-sm disabled:opacity-50"

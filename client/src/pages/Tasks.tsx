@@ -69,7 +69,7 @@ export default function Tasks() {
     }, [tasks, currentPage]);
 
     // page change
-    const handlePageChange = (page) => {
+    const handlePageChange = (page:any) => {
         setCurrentPage(page);
 
         window.scrollTo({

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import API from "../services/api.js";
+import API from "../services/api";
 import toast from "react-hot-toast";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Loader2, ArrowLeft } from "lucide-react";

@@ -55,7 +55,7 @@ export default function Projects() {
     }, [projects, currentPage]);
 
     // page change
-    const handlePageChange = (page) => {
+    const handlePageChange = (page:any) => {
         setCurrentPage(page);
 
         window.scrollTo({

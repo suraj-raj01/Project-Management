@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { Menu, Bell } from "lucide-react";
+import { Menu } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 
 function getUserFromStorage() {
