@@ -6,7 +6,7 @@ export default function Navbar() {
             <h1 className="text-xl">
                 <Link to="/">Team Task Manager</Link>
             </h1>
-            <button className="ml-auto bg-blue-500 text-white p-2 border rounded">
+            <button className="ml-auto bg-blue-500 text-white px-4 py-2 border rounded">
                 <Link to="/login">Sign In</Link>
             </button>
         </div>
