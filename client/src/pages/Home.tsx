@@ -4,7 +4,6 @@ import {
     CheckCircle2,
     FolderKanban,
     ListChecks,
-    LogIn,
     Users,
 } from "lucide-react";
 
@@ -14,7 +13,7 @@ const Home = () => {
 
             {/* Background Blur Effects */}
 
-            <div className="absolute top-0 left-0 w-72 h-72 bg-green-300/30 blur-3xl rounded-full" />
+            <div className="absolute top-0 left-0 w-72 md:h-72 h-50 bg-green-300/30 blur-3xl rounded-full" />
 
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-300/30 blur-3xl rounded-full" />
 
@@ -39,7 +38,7 @@ const Home = () => {
                         </span>
                     </h1>
 
-                    <p className="mt-6 text-lg md:text-start text-center text-gray-600 leading-8 max-w-2xl">
+                    <p className="mt-6 md:text-lg md:text-start text-center text-gray-600 md:leading-8 max-w-full">
                         Streamline project management, assign tasks,
                         track progress, and improve collaboration with
                         a powerful MERN Stack task management system.
@@ -47,11 +46,11 @@ const Home = () => {
 
                     {/* Buttons */}
 
-                    <div className="flex items-center gap-2 md:gap-4 mt-8">
+                    <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mt-8">
 
                         <Link
                             to="/docs"
-                            className="group flex w-fit md:w-auto items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                            className="group flex w-full md:w-auto justify-center items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >
                             Documentation
 
@@ -63,10 +62,12 @@ const Home = () => {
 
                         <Link
                             to="/login"
-                            className="group md:px-10 px-5 py-3 w-fit md:w-auto flex items-center gap-3 rounded-full border border-gray-300 bg-white text-gray-700 font-semibold hover:bg-gray-100 transition-all duration-300"
-                        >
-                            <LogIn size={18} className="group-hover:translate-x-1 transition" />
+                            className="group md:px-10 px-2 py-3 w-full md:w-auto flex justify-center items-center gap-3 rounded-full border border-gray-300 bg-white text-gray-700 font-semibold hover:bg-gray-100 transition-all duration-300">
                             Get Started
+                            <ArrowRight
+                                size={18}
+                                className="group-hover:translate-x-1 transition"
+                            />
                         </Link>
                     </div>
 
@@ -110,7 +111,7 @@ const Home = () => {
 
                 <div className="relative">
 
-                    <div className="bg-white/20 mt-3 z-100 md:mt-0 backdrop-blur-xl border border-white/30 rounded-lg shadow-2xl p-6">
+                    <div className="bg-white/20 mt-3 z-100 md:mt-0 backdrop-blur-xl border border-white/30 rounded-lg shadow-2xl p-3 md:p-6">
 
                         {/* Mock Navbar */}
 
@@ -130,7 +131,7 @@ const Home = () => {
 
                         {/* Cards */}
 
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-2 md:gap-4">
 
                             <div className="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-md p-5">
                                 <div className="flex items-center justify-between">

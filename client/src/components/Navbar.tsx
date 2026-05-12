@@ -16,11 +16,11 @@ export default function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false);
 
     return (
-        <header className="sticky top-2 z-50 px-3 md:px-10 -mt-4">
+        <header className="sticky top-2 z-50 md:px-10 -mt-4">
 
             <nav className="mx-auto max-w-7xl rounded-sm md:rounded-full border border-gray-100 bg-white/80 backdrop-blur-sm shadow-md">
 
-                <div className="flex items-center justify-between px-8 py-3">
+                <div className="flex items-center justify-between px-3 py-3">
 
                     {/* Logo */}
 
