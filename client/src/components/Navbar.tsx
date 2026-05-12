@@ -20,7 +20,7 @@ export default function Navbar() {
 
             <nav className="mx-auto max-w-7xl rounded-sm md:rounded-full border border-gray-100 bg-white/80 backdrop-blur-sm shadow-md">
 
-                <div className="flex items-center justify-between px-3 py-3">
+                <div className="flex items-center justify-between px-3 md:px-8 py-3">
 
                     {/* Logo */}
 
@@ -36,11 +36,14 @@ export default function Navbar() {
                         </div>
 
                         <div>
-                            <h1 className="text-lg md:text-2xl font-black tracking-tight bg-gradient-to-r from-green-700 to-emerald-500 text-transparent bg-clip-text">
+                            <h1 className="text-lg hidden md:block md:text-2xl font-black tracking-tight bg-gradient-to-r from-green-700 to-emerald-500 text-transparent bg-clip-text">
                                 Team Task Manager
                             </h1>
+                            <h1 className="text-lg md:hidden md:text-2xl font-black tracking-tight bg-gradient-to-r from-green-700 to-emerald-500 text-transparent bg-clip-text">
+                                TTM
+                            </h1>
 
-                            <p className="text-xs text-gray-500 hidden md:block">
+                            <p className="text-xs text-gray-500">
                                 Manage projects & tasks efficiently
                             </p>
                         </div>
@@ -105,7 +108,7 @@ export default function Navbar() {
                         onClick={() =>
                             setMobileMenu(!mobileMenu)
                         }
-                        className="md:hidden p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition"
+                        className="md:hidden p-2 rounded-sm bg-gray-100 hover:bg-gray-200 transition"
                     >
                         {mobileMenu ? (
                             <X size={22} />
@@ -118,11 +121,11 @@ export default function Navbar() {
                 {/* Mobile Menu */}
 
                 {mobileMenu && (
-                    <div className="md:hidden border-t border-gray-100 px-5 pb-5 pt-4 space-y-3">
+                    <div className="md:hidden fixed z-50 bg-green-50 backdrop-blur-md transition-all duration-500 ease-in-out w-full border-t border-gray-100 px-5 pb-10 pt-4 space-y-1">
 
                         <NavLink
                             to="/"
-                            className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition"
+                            className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-green-100 transition"
                             onClick={() =>
                                 setMobileMenu(false)
                             }
@@ -132,7 +135,7 @@ export default function Navbar() {
 
                         <NavLink
                             to="/docs"
-                            className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-100 transition"
+                            className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-green-100 transition"
                             onClick={() =>
                                 setMobileMenu(false)
                             }
@@ -146,7 +149,7 @@ export default function Navbar() {
                                 onClick={() =>
                                     setMobileMenu(false)
                                 }
-                                className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold"
+                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold"
                             >
                                 <LayoutDashboard size={18} />
 
@@ -158,7 +161,7 @@ export default function Navbar() {
                                 onClick={() =>
                                     setMobileMenu(false)
                                 }
-                                className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold"
+                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold"
                             >
                                 <LogIn size={18} />
 

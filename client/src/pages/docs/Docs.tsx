@@ -62,9 +62,9 @@ export default function Docs() {
 
                 {/* Hero Section */}
 
-                <div className="bg-green-50 rounded-lg mt-20 p-5 md:p-8">
+                <div className="bg-green-50 rounded-lg mt-20 p-3 md:p-8">
 
-                    <div className="flex items-center gap-3 mb-5">
+                    <div className="flex items-center md:gap-3 gap-2 mb-5">
                         <div className="bg-indigo-100 p-3 rounded-lg">
                             <ListCheckIcon
                                 className="text-indigo-600"
@@ -73,11 +73,11 @@ export default function Docs() {
                         </div>
 
                         <div>
-                            <h1 className="md:text-4xl text-xl font-bold text-gray-900">
-                                Team Task Manager Docs
+                            <h1 className="md:text-4xl text-md font-bold text-gray-900">
+                                Team Task Manager
                             </h1>
 
-                            <p className="text-gray-500">
+                            <p className="text-gray-500 text-sm">
                                 Complete guide and features overview
                             </p>
                         </div>
@@ -217,13 +217,13 @@ export default function Docs() {
                         </h2>
 
                         <ul className="space-y-4 text-gray-700">
-                            <li className="flex items-center gap-2"><CheckSquare size={16}/> Create Projects</li>
-                            <li className="flex items-center gap-2"> <CheckSquare size={16}/> Add Team Members</li>
-                            <li className="flex items-center gap-2"> <CheckSquare size={16}/> Create Tasks</li>
-                            <li className="flex items-center gap-2"> <CheckSquare size={16}/> Assign Tasks</li>
-                            <li className="flex items-center gap-2"> <CheckSquare size={16}/> Delete Tasks</li>
-                            <li className="flex items-center gap-2"> <CheckSquare size={16}/> View Analytics</li>
-                            <li className="flex items-center gap-2"> <CheckSquare size={16}/> Manage Entire Workflow</li>
+                            <li className="flex items-center gap-2"><CheckSquare className="text-green-600" size={16}/> Create Projects</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16}/> Add Team Members</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16}/> Create Tasks</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16}/> Assign Tasks</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16}/> Delete Tasks</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16}/> View Analytics</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16}/> Manage Entire Workflow</li>
                         </ul>
                     </div>
 
@@ -236,12 +236,12 @@ export default function Docs() {
                         </h2>
 
                         <ul className="space-y-4 text-gray-700">
-                            <li className="flex items-center gap-2"><CheckSquare size={16}/> View Assigned Tasks</li>
-                            <li className="flex items-center gap-2"><CheckSquare size={16}/> Update Task Status</li>
-                            <li className="flex items-center gap-2"><CheckSquare size={16}/> Track Progress</li>
-                            <li className="flex items-center gap-2"><SquareX size={16}/> Access Assigned Projects</li>
-                            <li className="flex items-center gap-2"><SquareX size={16}/> Cannot Create Projects</li>
-                            <li className="flex items-center gap-2"><SquareX size={16}/> Cannot Delete Tasks</li>
+                            <li className="flex items-center gap-2"><CheckSquare className="text-green-600" size={16}/> View Assigned Tasks</li>
+                            <li className="flex items-center gap-2"><CheckSquare className="text-green-600" size={16}/> Update Task Status</li>
+                            <li className="flex items-center gap-2"><CheckSquare className="text-green-600" size={16}/> Track Progress</li>
+                            <li className="flex items-center gap-2"><SquareX className="text-red-600" size={16}/> Access Assigned Projects</li>
+                            <li className="flex items-center gap-2"><SquareX className="text-red-600" size={16}/> Cannot Create Projects</li>
+                            <li className="flex items-center gap-2"><SquareX className="text-red-600" size={16}/> Cannot Delete Tasks</li>
                         </ul>
                     </div>
                 </div>

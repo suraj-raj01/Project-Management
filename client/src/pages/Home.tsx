@@ -91,7 +91,7 @@ const Home = () => {
                             </h3>
 
                             <p className="text-gray-500 text-sm">
-                                Authentication
+                               Secure Authentication
                             </p>
                         </div>
 
@@ -101,7 +101,7 @@ const Home = () => {
                             </h3>
 
                             <p className="text-gray-500 text-sm">
-                                Role Based Access
+                                Role Based Access Control
                             </p>
                         </div>
                     </div>
