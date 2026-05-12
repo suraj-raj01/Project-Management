@@ -2,14 +2,8 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { Menu } from "lucide-react";
 import Sidebar from "../components/Sidebar";
+import { getUserFromStorage } from "../pages/helpers/GetUserInfo";
 
-function getUserFromStorage() {
-    try {
-        return JSON.parse(localStorage.getItem("user") || "{}");
-    } catch {
-        return {};
-    }
-}
 
 export default function DashboardLayout() {
     // On large screens sidebar starts open; on mobile it starts closed
@@ -32,13 +26,13 @@ export default function DashboardLayout() {
 
     return (
         <div className="flex h-screen overflow-hidden font-sans">
-            {/* ── Sidebar ─────────────────────────────────────────────── */}
+            {/* ── Sidebar  */}
             <Sidebar
                 isOpen={sidebarOpen}
                 onClose={() => setSidebarOpen(false)}
             />
 
-            {/* ── Main area ───────────────────────────────────────────── */}
+            {/* ── Main area  */}
             <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
 
                 {/* Top Navbar */}
@@ -47,7 +41,7 @@ export default function DashboardLayout() {
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setSidebarOpen((prev) => !prev)}
-                            className="p-2 md:hidden rounded-lg hover:bg-gray-100 transition-colors text-gray-600"
+                            className="p-2 md:hidden rounded-lg hover:bg-gray-100 transition-colors text-green-800"
                             title="Toggle sidebar"
                         >
                             <Menu size={20} />
@@ -56,17 +50,17 @@ export default function DashboardLayout() {
 
                     {/* Right: bell + avatar */}
                     <div className="flex items-center gap-3">
-                        
                         <div className="flex items-center gap-2.5 pl-2 border-l border-gray-200">
                             <button
-                                className="w-8 h-8 rounded-full bg-indigo-600 text-white text-xs font-bold uppercase flex items-center justify-center ring-2 ring-indigo-100 hover:ring-indigo-200 transition-all"
+                                className="w-8 h-8 rounded-full bg-green-600 text-white text-xs font-bold uppercase flex items-center justify-center ring-2 ring-green-100 hover:ring-green-200 transition-all"
                                 title={userName}
                             >
                                 {userInitial}
                             </button>
-                            <span className="hidden md:block text-sm font-semibold text-gray-700 uppercase tracking-wide max-w-30 truncate">
-                                {userName}
-                            </span>
+                            <div className=" flex flex-col font-semibold text-gray-700 uppercase tracking-wide max-w-50 truncate">
+                                <p className="text-sm font-bold">{userName}</p>
+                                <p className="text-xs lowercase -mt-1">{user?.email}</p>
+                            </div>
                         </div>
                     </div>
                 </header>

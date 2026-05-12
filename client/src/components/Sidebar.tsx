@@ -20,10 +20,11 @@ const navItems1 = [
     { to: "/dashboard/tasks", icon: CheckSquare, label: "Tasks", end: false },
     { to: "/dashboard/projects", icon: FolderKanban, label: "Projects", end: false },
     { to: "/dashboard/create-task", icon: PlusSquare, label: "Create Task", end: false },
-    { to: "/dashboard/users", icon: Users, label: "Users", end: false },
+    { to: "/dashboard/users", icon: Users, label: "Members", end: false },
 ];
 const navItems2 = [
-    { to: "/dashboard/task-by-user", icon: CheckSquare, label: "All Tasks", end: false },
+    { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard", end: true },
+    { to: "/dashboard/usertasks", icon: CheckSquare, label: "All Tasks", end: false },
 ];
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
@@ -37,12 +38,54 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         }
     })();
 
-
+    // logout handler with confirmation
     const logoutHandler = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        toast.success("Logged out successfully");
-        navigate("/");
+        toast((t) => (
+            <div className="flex rounded-sm flex-col gap-4 p-1">
+                <div>
+                    <h3 className="font-semibold text-gray-800 text-sm">
+                        Confirm Logout
+                    </h3>
+
+                    <p className="text-sm text-gray-500 mt-1">
+                        Are you sure you want to logout?
+                    </p>
+                </div>
+
+                <div className="flex items-center justify-end gap-2">
+                    <button
+                        onClick={() => toast.dismiss(t.id)}
+                        className="px-4 py-2 text-sm rounded-sm border border-gray-300 hover:bg-gray-100 transition"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        onClick={() => {
+                            localStorage.removeItem("token");
+                            localStorage.removeItem("user");
+
+                            toast.dismiss(t.id);
+
+                            toast.success("Logged out successfully");
+
+                            navigate("/");
+                        }}
+                        className="px-4 py-2 text-sm rounded-sm bg-red-500 text-white hover:bg-red-600 transition"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </div>
+        ), {
+            duration: 10000,
+            style: {
+                borderRadius: "16px",
+                background: "#fff",
+                color: "#111827",
+                padding: "12px",
+            },
+        });
     };
 
     const handleNavClick = () => {
@@ -54,7 +97,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             {/* Mobile backdrop */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 z-20 bg-blue-500/50 backdrop-blur-sm lg:hidden"
+                    className="fixed inset-0 z-20 bg-green-500/50 backdrop-blur-xs lg:hidden"
                     onClick={onClose}
                 />
             )}
@@ -62,22 +105,24 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             {/* Sidebar panel */}
             <aside
                 className={`
-                    fixed top-0 left-0 z-30 h-full w-64 bg-gray-900 text-white
-                    flex flex-col p-6 shadow-2xl
+                    fixed top-0 left-0 z-30 h-full w-70 bg-gray-900 text-white
+                    flex flex-col py-6 px-2 shadow-2xl
                     transition-transform duration-300 ease-in-out
                     ${isOpen ? "translate-x-0" : "-translate-x-full"}
-                    lg:static lg:translate-x-0 lg:z-auto lg:shadow-none lg:w-64
+                    lg:static lg:translate-x-0 lg:z-auto lg:shadow-none lg:w-68
                 `}
             >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-5">
-                    <h1 className="text-2xl font-bold">Task Manager</h1>
+                    <h1 className="md:text-xl md:pb-0 pb-2 font-bold uppercase w-full">
+                        {user.role === "Admin" ? "Admin Dashboard" : "Dashboard"}
+                    </h1>
                     <button
                         onClick={onClose}
                         className="lg:hidden p-1 rounded-sm hover:bg-white/10 transition-colors"
                         title="Close sidebar"
                     >
-                        <X size={18} />
+                        <X size={25} />
                     </button>
                 </div>
 
@@ -91,8 +136,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 end={end}
                                 onClick={handleNavClick}
                                 className={({ isActive }) =>
-                                    `flex items-center gap-3 px-2 py-2.5 rounded-sm text-sm font-medium transition-all duration-150 ${isActive
-                                        ? "bg-indigo-600 text-white"
+                                    `flex items-center  gap-3 px-2 py-2.5 rounded-sm text-sm font-medium transition-all duration-150 ${isActive
+                                        ? "bg-green-600 text-white"
                                         : "text-gray-400 hover:bg-white/10 hover:text-white"
                                     }`
                                 }
@@ -111,7 +156,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 onClick={handleNavClick}
                                 className={({ isActive }) =>
                                     `flex items-center gap-3 px-2 py-2.5 rounded-sm text-sm font-medium transition-all duration-150 ${isActive
-                                        ? "bg-indigo-600 text-white"
+                                        ? "bg-green-600 text-white"
                                         : "text-gray-400 hover:bg-white/10 hover:text-white"
                                     }`
                                 }
@@ -128,11 +173,11 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <div className="border-t border-white/10 pt-4 mt-4 flex flex-col gap-3">
                     {user?.name && (
                         <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold uppercase shrink-0">
+                            <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-xs font-bold uppercase shrink-0">
                                 {user.name[0]}
                             </div>
                             <div className="min-w-0">
-                                <p className="text-sm font-semibold truncate">{user.name}</p>
+                                <p className="text-sm font-semibold uppercase truncate">{user.name}</p>
                                 <p className="text-xs text-gray-400 truncate">{user.email || ""}</p>
                             </div>
                         </div>

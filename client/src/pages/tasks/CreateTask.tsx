@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import API from "../services/api";
+import API from "../../services/api";
 import toast from "react-hot-toast";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { Loader2, ArrowLeft } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// ─── Types 
 
 interface User {
     _id: string;
@@ -26,7 +26,7 @@ interface FormData {
     project: string;
 }
 
-// ─── Component ───────────────────────────────────────────────────────────────
+// ─── Component 
 
 export default function CreateTask() {
     const [projects, setProjects] = useState<Project[]>([]);
@@ -105,6 +105,7 @@ export default function CreateTask() {
     };
 
     const navigate = useNavigate();
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -117,8 +118,8 @@ export default function CreateTask() {
                 toast.success("Task created successfully");
             }
             navigate("/dashboard/tasks");
-        } catch (error) {
-            toast.error(isEditMode ? "Error updating task" : "Error creating task");
+        } catch (error: any) {
+            toast.error(error.response.data.message);
             console.error(error);
         } finally {
             setLoading(false);
@@ -130,7 +131,7 @@ export default function CreateTask() {
     if (fetching) {
         return (
             <div className="flex items-center justify-center py-24 text-gray-400">
-                <Loader2 size={28} className="animate-spin mr-2 text-indigo-500" />
+                <Loader2 size={28} className="animate-spin mr-2 text-green-500" />
                 <span className="text-sm">Loading task…</span>
             </div>
         );
@@ -142,8 +143,8 @@ export default function CreateTask() {
         <div className="w-full">
 
             {/* Header */}
-            <div className="flex justify-between items-center mb-6">
-                <div>
+            <div className="flex flex-col md:flex-row md:justify-between justify-start gap-3 md:gap-0 items-center mb-10">
+                <div className="w-full md:w-fit">
                     <h1 className="text-2xl font-bold text-gray-900">
                         {isEditMode ? "Edit Task" : "Create Task"}
                     </h1>
@@ -155,17 +156,16 @@ export default function CreateTask() {
                 </div>
                 <Link
                     to="/dashboard/tasks"
-                    className="flex items-center gap-1.5 text-md rounded-sm bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 transition-colors"
+                    className="flex w-full md:w-fit justify-center items-center gap-1.5 text-md rounded-sm bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition-colors"
                 >
-                    <ArrowLeft size={15} />
-                    All Tasks
+                    See All Tasks
                 </Link>
             </div>
 
             {/* Form */}
             <form
                 onSubmit={handleSubmit}
-                className="bg-white border border-gray-200 p-6 md:max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 rounded-sm shadow-sm"
+                className="mx-auto border border-gray-200 bg-green-50/30 p-3 md:p-6 md:max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 rounded-sm shadow-sm"
             >
 
                 {/* Task Title */}
@@ -176,9 +176,9 @@ export default function CreateTask() {
                         name="title"
                         placeholder="e.g. Design landing page"
                         required
-                        value={formData.title}         
+                        value={formData.title}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400"
+                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
                     />
                 </div>
 
@@ -189,9 +189,9 @@ export default function CreateTask() {
                         name="description"
                         placeholder="Brief description of the task…"
                         rows={4}
-                        value={formData.description}           
+                        value={formData.description}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 p-3 rounded-sm text-sm resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400"
+                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
                     />
                 </div>
 
@@ -203,9 +203,9 @@ export default function CreateTask() {
                         type="date"
                         name="dueDate"
                         required
-                        value={formData.dueDate}               
+                        value={formData.dueDate}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400"
+                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
                     />
                 </div>
 
@@ -215,9 +215,9 @@ export default function CreateTask() {
                     <select
                         title="Select priority level"
                         name="priority"
-                        value={formData.priority}          
+                        value={formData.priority}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400"
+                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
                     >
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
@@ -231,9 +231,9 @@ export default function CreateTask() {
                     <select
                         title="Select user to assign"
                         name="assignedTo"
-                        value={formData.assignedTo}          
+                        value={formData.assignedTo}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400"
+                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
                     >
                         <option value="">Select User</option>
                         {users.map((user) => (
@@ -250,9 +250,9 @@ export default function CreateTask() {
                     <select
                         title="Select associated project"
                         name="project"
-                        value={formData.project}             
+                        value={formData.project}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400"
+                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
                     >
                         <option value="">Select Project</option>
                         {projects.map((project) => (
@@ -267,7 +267,7 @@ export default function CreateTask() {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="col-span-2 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 transition-colors text-white px-6 py-3 mt-3 rounded-sm font-medium text-sm cursor-pointer"
+                    className="col-span-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 disabled:opacity-60 transition-colors text-white px-6 py-3 mt-3 rounded-sm font-medium text-sm cursor-pointer"
                 >
                     {loading && <Loader2 size={16} className="animate-spin" />}
                     {loading

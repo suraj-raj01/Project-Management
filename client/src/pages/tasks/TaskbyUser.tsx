@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import API from "../services/api";
+import API from "../../services/api";
 import { Loader2, ListChecks, Eye } from "lucide-react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import TableSkeleton from "../skeleton/TableSkeleton";
 const ITEMS_PER_PAGE = 5;
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// ─── Types 
 
 interface Task {
     _id: string;
@@ -19,18 +20,18 @@ interface Task {
     createdBy?: string;
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// ─── Helpers 
 
 const PRIORITY_STYLES: Record<string, string> = {
     High: "bg-red-100 text-red-600",
     Medium: "bg-amber-100 text-amber-700",
-    Low: "bg-emerald-100 text-emerald-700",
+    Low: "bg-green-100 text-green-700",
 };
 
 const STATUS_STYLES: Record<string, string> = {
     Pending: "bg-yellow-100 text-yellow-700",
-    "In Progress": "bg-blue-600 text-white",
-    Completed: "bg-emerald-600 text-white",
+    "In Progress": "bg-blue-500 text-white",
+    Completed: "bg-green-600 text-white",
 };
 
 function getUserFromStorage() {
@@ -41,7 +42,7 @@ function getUserFromStorage() {
     }
 }
 
-// ─── Component ───────────────────────────────────────────────────────────────
+// ─── Component 
 
 export default function TaskbyUser() {
     const [tasks, setTasks] = useState<Task[]>([]);
@@ -49,6 +50,7 @@ export default function TaskbyUser() {
     const [updatingId, setUpdatingId] = useState<string | null>(null);
     const user = getUserFromStorage();
     const [currentPage, setCurrentPage] = useState(1);
+    const [statusFilter, setStatusFilter] = useState("All");
 
     const navigate = useNavigate();
 
@@ -73,9 +75,18 @@ export default function TaskbyUser() {
         if (user?._id) fetchTasks();
     }, [user?._id]);
 
+    // filter tasks
+    const filteredTasks = useMemo(() => {
+        if (statusFilter === "All") return tasks;
+
+        return tasks.filter(
+            (task) => task.status === statusFilter
+        );
+    }, [tasks, statusFilter]);
+
 
     const totalPages = Math.ceil(
-        tasks.length / ITEMS_PER_PAGE
+        filteredTasks.length / ITEMS_PER_PAGE
     );
 
     // paginated tasks
@@ -86,11 +97,11 @@ export default function TaskbyUser() {
         const endIndex =
             startIndex + ITEMS_PER_PAGE;
 
-        return tasks.slice(startIndex, endIndex);
-    }, [tasks, currentPage]);
+        return filteredTasks.slice(startIndex, endIndex);
+    }, [filteredTasks, currentPage]);
 
     // page change
-    const handlePageChange = (page:any) => {
+    const handlePageChange = (page: any) => {
         setCurrentPage(page);
 
         window.scrollTo({
@@ -119,33 +130,45 @@ export default function TaskbyUser() {
         }
     };
 
-    // ─── Render ───────────────────────────────────────────────────────────
+    if(loading) return(
+        <TableSkeleton/>
+    )
 
+    // ─── Render 
     return (
         <section>
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
                 <div className="flex flex-col">
                     <h3 className="text-3xl font-bold flex items-center gap-2">
-                        {/* <ListChecks size={26} className="text-indigo-500" /> */}
+                        {/* <ListChecks size={26} className="text-green-500" /> */}
                         All Tasks
                     </h3>
                     <span className="text-sm text-gray-500 mt-0.5">
                         Track and manage all your team's tasks in one place
                     </span>
                 </div>
-                {/* <Link
-                    to="/dashboard/create-task"
-                    className="text-sm rounded-sm bg-indigo-600 hover:bg-indigo-700 transition-colors px-4 py-2 text-white font-medium"
-                >
-                    + Create Task
-                </Link> */}
+                <div>
+                    <select
+                        value={statusFilter}
+                        onChange={(e) => {
+                            setStatusFilter(e.target.value);
+                            setCurrentPage(1);
+                        }}
+                        className={`border border-gray-200 px-3 py-2 rounded-sm text-sm outline-none ${STATUS_STYLES[statusFilter]}`}
+                    >
+                        <option value="All">All Tasks</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
             </div>
 
             {/* Table */}
-            <div className="overflow-x-auto bg-white rounded-sm border border-gray-200 shadow-sm">
-                <table className="min-w-full text-sm text-left">
-                    <thead className="bg-indigo-600 text-white text-xs uppercase tracking-wide">
+            <div className="overflow-x-auto bg-white rounded-sm shadow-sm">
+                <table className="min-w-full border border-gray-100 text-sm text-left">
+                    <thead className="bg-green-600 text-white text-xs uppercase tracking-wide">
                         <tr>
                             <th className="px-5 py-4 font-semibold">Title</th>
                             <th className="px-5 py-4 font-semibold">Project</th>
@@ -157,12 +180,12 @@ export default function TaskbyUser() {
                         </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-gray-100">
+                    <tbody className="divide-y divide-gray-200">
                         {loading ? (
                             <tr>
                                 <td colSpan={7} className="py-16 text-center text-gray-400">
                                     <div className="flex flex-col items-center gap-2">
-                                        <Loader2 size={28} className="animate-spin text-indigo-400" />
+                                        <Loader2 size={28} className="animate-spin text-green-400" />
                                         <span className="text-sm">Loading tasks…</span>
                                     </div>
                                 </td>
@@ -179,25 +202,22 @@ export default function TaskbyUser() {
                             </tr>
                         ) : (
                             paginatedTasks.map((task) => (
-                                <tr
-                                    key={task._id}
-                                    className="hover:bg-gray-50 transition-colors"
-                                >
+                                <tr key={task._id} className="hover:bg-green-50 transition-colors" >
                                     {/* Title */}
-                                    <td className="px-5 py-4">
+                                    <td className="px-5 py-4 min-w-55 bg-green-100">
                                         <p className="font-semibold text-gray-900">{task.title}</p>
                                         <p className="text-gray-400 text-xs mt-0.5 line-clamp-1">{task.description}</p>
                                     </td>
 
                                     {/* Project */}
-                                    <td className="px-5 py-4 text-gray-600">
+                                    <td className="px-5 py-4 min-w-40 text-gray-600">
                                         {task.project?.name || <span className="text-gray-400">—</span>}
                                     </td>
 
                                     {/* Assigned To */}
                                     <td className="px-5 py-4">
                                         <div className="flex items-center gap-3">
-                                            <div className="h-8 w-8 rounded-full bg-indigo-600 text-white flex items-center justify-center uppercase font-bold text-xs shrink-0">
+                                            <div className="h-8 w-8 rounded-full bg-green-600 text-white flex items-center justify-center uppercase font-bold text-xs shrink-0">
                                                 {task.assignedTo?.name?.[0] || "U"}
                                             </div>
                                             <div>
@@ -208,7 +228,7 @@ export default function TaskbyUser() {
                                     </td>
 
                                     {/* Due Date */}
-                                    <td className="px-5 py-4 text-gray-600 whitespace-nowrap">
+                                    <td className="px-5 py-4 text-gray-600 bg-green-100 whitespace-nowrap">
                                         {new Date(task.dueDate).toLocaleDateString("en-IN", {
                                             day: "2-digit",
                                             month: "short",
@@ -227,7 +247,7 @@ export default function TaskbyUser() {
                                     <td className="px-5 py-4">
                                         <div className="relative">
                                             {updatingId === task._id ? (
-                                                <Loader2 size={16} className="animate-spin text-indigo-400" />
+                                                <Loader2 size={16} className="animate-spin text-green-400" />
                                             ) : (
                                                 <select
                                                     title="Update status"
@@ -242,9 +262,9 @@ export default function TaskbyUser() {
                                             )}
                                         </div>
                                     </td>
-                                    <td className="px-5 py-4">
-                                        <button className="rounded-sm text-sm font-medium transition bg-white hover:bg-gray-50" onClick={()=>navigate(`/dashboard/task-view/${task._id}`)}>
-                                            <span className="flex gap-2 items-center"><Eye className="text-green-500"/> View</span>
+                                    <td className="px-5 py-4 bg-green-100">
+                                        <button title="view" className="border border-gray-200 px-3 py-1 cursor-pointer rounded-sm text-sm font-medium transition bg-white hover:bg-gray-50" onClick={() => navigate(`/dashboard/task-view/${task._id}`)}>
+                                            <Eye size={18} className="text-green-600" />
                                         </button>
                                     </td>
                                 </tr>
@@ -253,6 +273,18 @@ export default function TaskbyUser() {
                     </tbody>
                 </table>
             </div>
+
+            {!loading && paginatedTasks.length > 0 && (
+                <div className="px-2 py-3 border border-gray-200 bg-green-100 text-xs text-gray-800 flex items-center justify-between">
+                    <span>
+                        Showing{" "}
+                        {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, paginatedTasks.length)}
+                        {" "}–{" "}
+                        {Math.min(currentPage * ITEMS_PER_PAGE, paginatedTasks.length)}
+                        {" "}of {paginatedTasks.length} task{paginatedTasks.length !== 1 ? "s" : ""}
+                    </span>
+                </div>
+            )}
 
             {/* pagination */}
             {totalPages >= 1 && (
@@ -293,7 +325,7 @@ export default function TaskbyUser() {
                                     className={`w-10 h-10 rounded-sm text-sm font-semibold transition
                                                 
                                                 ${currentPage === page
-                                            ? "bg-indigo-600 text-white"
+                                            ? "bg-green-600 text-white"
                                             : "bg-white border hover:bg-gray-50"
                                         }
                                             `}
@@ -316,8 +348,8 @@ export default function TaskbyUser() {
                             )
                         }
                         className={`px-4 py-2 rounded-sm border text-sm font-medium transition ${currentPage === totalPages
-                                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                : "bg-white hover:bg-gray-50" } `} >
+                            ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                            : "bg-white hover:bg-gray-50"} `} >
                         Next
                     </button>
 

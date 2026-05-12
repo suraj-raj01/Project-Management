@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import {
     CalendarDays,
@@ -11,7 +11,8 @@ import {
     Mail,
 } from "lucide-react";
 
-import API from "../services/api";
+import API from "../../services/api";
+import TaskViewSkeleton from "../skeleton/TaskViewSkeleton";
 
 export default function TaskView() {
     const [task, setTask] = useState<any>(null);
@@ -45,6 +46,8 @@ export default function TaskView() {
         if (id) fetchTaskById();
     }, [id]);
 
+    const navigate = useNavigate();
+
     // Priority Colors
     const priorityColor = (
         priority: string
@@ -73,7 +76,7 @@ export default function TaskView() {
                 return "bg-green-100 text-green-700";
 
             case "In Progress":
-                return "bg-blue-100 text-blue-700";
+                return "bg-green-100 text-green-700";
 
             case "Pending":
                 return "bg-yellow-100 text-yellow-700";
@@ -86,11 +89,7 @@ export default function TaskView() {
     // Loading State
     if (fetching) {
         return (
-            <div className="flex items-center justify-center py-20">
-                <h2 className="text-gray-500 text-lg">
-                    Loading Task...
-                </h2>
-            </div>
+            <TaskViewSkeleton/>
         );
     }
 
@@ -108,9 +107,9 @@ export default function TaskView() {
     return (
         <section className="max-w-full mx-auto">
             {/* Card */}
-            <div className="bg-white rounded-sm shadow border border-gray-200 overflow-hidden">
+            <div className="bg-green-50 rounded-sm shadow border-gray-200 overflow-hidden">
                 {/* Header */}
-                <div className="border-b border-gray-200 p-6">
+                <div className="border-b border-gray-200 p-5">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <div>
                             <h1 className="text-3xl font-bold">
@@ -152,7 +151,7 @@ export default function TaskView() {
                     <div className="lg:col-span-2">
                         {/* Description */}
                         <div className="mb-8">
-                            <h2 className="text-xl font-bold mb-3">
+                            <h2 className="text-xl font-bold">
                                 Description
                             </h2>
 
@@ -164,10 +163,10 @@ export default function TaskView() {
                         </div>
 
                         {/* Project */}
-                        <div className="bg-gray-50 border border-gray-200 rounded-sm p-5">
+                        <div className="bg-gray-50 rounded-sm p-5">
                             <div className="flex items-center gap-3 mb-3">
                                 <FolderKanban
-                                    className="text-blue-500"
+                                    className="text-green-500"
                                     size={22}
                                 />
 
@@ -193,15 +192,15 @@ export default function TaskView() {
                     </div>
 
                     {/* Right Sidebar */}
-                    <div className="space-y-5">
+                    <div className="">
                         {/* Assigned User */}
-                        <div className="bg-gray-50 border border-gray-200 rounded-sm p-5">
+                        <div className="bg-gray-50  rounded-sm p-4">
                             <h2 className="text-lg font-bold mb-4">
                                 Assigned To
                             </h2>
 
                             <div className="flex items-center gap-4">
-                                <div className="h-14 w-14 rounded-sm bg-indigo-500 text-white flex items-center justify-center text-xl font-bold uppercase">
+                                <div className="h-14 w-14 rounded-full bg-green-400 text-white flex items-center justify-center text-3xl font-bold uppercase">
                                     {task
                                         ?.assignedTo
                                         ?.name?.[0] ||
@@ -209,7 +208,7 @@ export default function TaskView() {
                                 </div>
 
                                 <div>
-                                    <h3 className="font-semibold uppercase">
+                                    <h3 className="font-semibold -mb-1 hover:text-green-500 cursor-pointer text-lg uppercase" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
                                         {
                                             task
                                                 ?.assignedTo
@@ -229,17 +228,17 @@ export default function TaskView() {
                         </div>
 
                         {/* Task Info */}
-                        <div className="bg-gray-50 border border-gray-200 rounded-sm p-5">
-                            <h2 className="text-lg font-bold mb-4">
+                        <div className="bg-gray-50 rounded-sm px-5">
+                            <h2 className="text-lg font-bold mb-2">
                                 Task Details
                             </h2>
 
-                            <div className="space-y-4">
+                            <div className="space-y-2">
                                 {/* Due Date */}
                                 <div className="flex items-center gap-3">
                                     <CalendarDays
                                         size={18}
-                                        className="text-gray-500"
+                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -259,7 +258,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <Flag
                                         size={18}
-                                        className="text-gray-500"
+                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -279,7 +278,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <CircleCheckBig
                                         size={18}
-                                        className="text-gray-500"
+                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -299,7 +298,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <User
                                         size={18}
-                                        className="text-gray-500"
+                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -307,7 +306,7 @@ export default function TaskView() {
                                             Assigned User
                                         </p>
 
-                                        <p className="font-medium">
+                                        <p className="font-medium capitalize cursor-pointer hover:text-green-500" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
                                             {
                                                 task
                                                     ?.assignedTo
@@ -321,7 +320,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <Mail
                                         size={18}
-                                        className="text-gray-500"
+                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -339,15 +338,15 @@ export default function TaskView() {
                                     </div>
                                 </div>
                             </div>
+                            {/* Footer */}
+                            <div className="text-xs rounded-sm text-gray-600 text-center p-3 mt-5 bg-green-100">
+                                Last updated{" "}
+                                {new Date(
+                                    task.updatedAt
+                                ).toLocaleString()}
+                            </div>
                         </div>
 
-                        {/* Footer */}
-                        <div className="text-xs text-gray-400 text-center">
-                            Last updated{" "}
-                            {new Date(
-                                task.updatedAt
-                            ).toLocaleString()}
-                        </div>
                     </div>
                 </div>
             </div>
