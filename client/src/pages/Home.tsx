@@ -9,22 +9,17 @@ import {
 
 const Home = () => {
     return (
-        <section className="relative overflow-hidden min-h-screen pt-35 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-gradient-to-br from-green-50 -mt-15 via-white to-emerald-100 px-4">
+        <section className="relative overflow-hidden min-h-screen pt-45 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-gradient-to-br from-green-50 -mt-15 via-white to-emerald-100 px-4">
 
             {/* Background Blur Effects */}
-
             <div className="absolute top-0 left-0 w-72 md:h-72 h-50 bg-green-300/30 blur-3xl rounded-full" />
-
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-300/30 blur-3xl rounded-full" />
-
             {/* Main Content */}
 
             <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-15 items-center">
 
                 {/* Left Content */}
-
                 <div>
-
                     <div className="inline-flex w-full md:w-auto items-center gap-2 justify-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
                         <CheckCircle2 size={16} />
                         Team Task Management Platform
@@ -47,15 +42,12 @@ const Home = () => {
                     {/* Buttons */}
 
                     <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mt-8">
-
                         <Link
                             to="/docs"
                             className="group flex w-full md:w-auto justify-center items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >
                             Documentation
-
-                            <ArrowRight
-                                size={18}
+                            <ArrowRight size={18}
                                 className="group-hover:translate-x-1 transition"
                             />
                         </Link>
@@ -73,9 +65,9 @@ const Home = () => {
 
                     {/* Stats */}
 
-                    <div className="flex flex-wrap gap-8 mt-10">
+                    <div className="flex flex-wrap gap-10 md:mt-8 mt-20">
 
-                        <div>
+                        <div className="md:w-auto flex flex-col text-center w-full">
                             <h3 className="text-4xl font-black text-gray-900">
                                 100%
                             </h3>
@@ -85,7 +77,7 @@ const Home = () => {
                             </p>
                         </div>
 
-                        <div>
+                        <div className="md:w-auto flex flex-col text-center w-full">
                             <h3 className="text-4xl font-black text-gray-900">
                                 JWT
                             </h3>
@@ -95,7 +87,7 @@ const Home = () => {
                             </p>
                         </div>
 
-                        <div>
+                        <div className="md:w-auto flex flex-col text-center w-full">
                             <h3 className="text-4xl font-black text-gray-900">
                                 RBAC
                             </h3>
@@ -111,11 +103,11 @@ const Home = () => {
 
                 <div className="relative">
 
-                    <div className="bg-white/20 mt-3 z-100 md:mt-0 backdrop-blur-xl border border-white/30 rounded-lg shadow-2xl p-3 md:p-6">
+                    <div className="bg-white/20 mt-10 z-100 md:mt-0 backdrop-blur-xl border border-white/30 rounded-lg shadow-2xl p-4 md:p-6">
 
                         {/* Mock Navbar */}
 
-                        <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center justify-between mb-10">
                             <div>
                                 <h2 className="font-bold text-xl">
                                     Dashboard

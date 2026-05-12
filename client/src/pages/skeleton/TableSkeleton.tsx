@@ -94,17 +94,12 @@ export default function TableSkeleton({
 
             {/* Footer Pagination */}
 
-            <div className="flex items-center justify-between border-t border-gray-100 px-6 py-4">
-
+            <div className="flex items-center justify-between border-t gap-3 border-gray-100 px-6 py-4">
                 <div className="h-4 w-40 rounded-md bg-gray-200" />
-
                 <div className="flex items-center gap-2">
-
-                    <div className="h-8 w-10 rounded-xl bg-gray-200" />
-
-                    <div className="h-8 w-10 rounded-xl bg-gray-100" />
-
-                    <div className="h-8 w-10 rounded-xl bg-gray-200" />
+                    <div className="h-8 w-10 rounded-sm bg-gray-200" />
+                    <div className="h-8 w-10 rounded-sm bg-gray-100" />
+                    <div className="h-8 w-10 rounded-sm bg-gray-200" />
                 </div>
             </div>
         </div>

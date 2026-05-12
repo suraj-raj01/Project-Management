@@ -27,13 +27,22 @@ function StatCardSkeleton() {
 /** Matches the shape of <CompletionRate /> */
 function CompletionRateSkeleton() {
     return (
-        <div className="bg-white border border-green-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
-            <div className="flex items-center justify-between">
-                <Skeleton className="h-4 w-40" />
-                <Skeleton className="h-4 w-10" />
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+            <div className="bg-white border border-green-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
+                <div className="flex items-center justify-between">
+                    <Skeleton className="h-4 w-40" />
+                    <Skeleton className="h-4 w-10" />
+                </div>
+                <Skeleton className="h-3 w-full rounded-full" />
             </div>
-            <Skeleton className="h-3 w-full rounded-full" />
-        </div>
+            <div className="bg-white border border-green-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
+                <div className="flex items-center justify-between">
+                    <Skeleton className="h-4 w-40" />
+                    <Skeleton className="h-4 w-10" />
+                </div>
+                <Skeleton className="h-3 w-full rounded-full" />
+            </div>
+        </section>
     );
 }
 
@@ -57,8 +66,12 @@ function TaskCardSkeleton() {
 
 export default function AdminDashboardSkeleton() {
     return (
-        <>
+        <section className="space-y-5">
             {/* 5 stat cards */}
+            <div>
+                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
+                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                 {Array.from({ length: 5 }).map((_, i) => (
                     <StatCardSkeleton key={i} />
@@ -66,22 +79,34 @@ export default function AdminDashboardSkeleton() {
             </div>
 
             {/* Completion bar */}
+            <div>
+                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
+                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+            </div>
             <CompletionRateSkeleton />
 
             {/* 2 extra stat cards */}
+            <div>
+                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
+                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Array.from({ length: 2 }).map((_, i) => (
                     <StatCardSkeleton key={i} />
                 ))}
             </div>
-        </>
+        </section>
     );
 }
 
 export function UserDashboardSkeleton() {
     return (
-        <>
+        <section className="space-y-5">
             {/* 5 stat cards */}
+            <div>
+                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
+                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                 {Array.from({ length: 5 }).map((_, i) => (
                     <StatCardSkeleton key={i} />
@@ -89,9 +114,17 @@ export function UserDashboardSkeleton() {
             </div>
 
             {/* Completion bar */}
+            <div>
+                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
+                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+            </div>
             <CompletionRateSkeleton />
 
             {/* Recent tasks panel */}
+            <div>
+                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
+                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+            </div>
             <div className="bg-gray-50 border border-green-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
                 <Skeleton className="h-5 w-36 mb-2" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -100,6 +133,6 @@ export function UserDashboardSkeleton() {
                     ))}
                 </div>
             </div>
-        </>
+        </section>
     );
 }

@@ -1,4 +1,5 @@
 import { TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface StatCardProps {
     label: string;
@@ -6,6 +7,7 @@ interface StatCardProps {
     icon: React.ReactNode;
     iconBg: string;
     trend?: string;
+    navigation?:string;
 }
 
 export function StatCard({
@@ -14,10 +16,12 @@ export function StatCard({
     icon,
     iconBg,
     trend,
+    navigation
 }: StatCardProps) {
+    const navigate = useNavigate();
     return (
-        <div className="bg-green-50  border-2 border-green-200 rounded-sm px-2 md:px-6 py-2  hover:shadow-md hover:bg-green-200 transition-all">
-            <div className="">
+        <div className={`rounded-md px-2 bg-white shadow-md border-2 border-gray-100 md:px-6 py-3 hover:shadow-lg transition-all`}>
+            <div className="cursor-pointer" onClick={() => { navigate(`/dashboard/${navigation}`) }}>
                 <div>
                     <p className="text-sm text-gray-500 font-medium">
                         {label}

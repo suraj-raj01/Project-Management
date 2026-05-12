@@ -2,7 +2,7 @@ import { CheckCircle2 } from "lucide-react";
 
 export function CompletionRate({ completionRate,title }: { completionRate: number, title: string }) {
     return (
-        <div className="bg-white border-2 border-green-200 rounded-sm px-4 md:px-6 py-2 hover:shadow-md hover:bg-green-200 transition-all">
+        <div className="bg-white border-2 border-gray-100 rounded-md px-3 md:px-4 py-3 shadow-md hover:shadow-lg transition-all">
             <div className="flex items-center justify-between mb-4">
                 <div>
                     <p className="text-sm text-gray-500 font-medium">

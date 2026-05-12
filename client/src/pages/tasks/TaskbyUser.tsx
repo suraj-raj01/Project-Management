@@ -130,8 +130,8 @@ export default function TaskbyUser() {
         }
     };
 
-    if(loading) return(
-        <TableSkeleton/>
+    if (loading) return (
+        <TableSkeleton />
     )
 
     // ─── Render 
@@ -287,74 +287,60 @@ export default function TaskbyUser() {
             )}
 
             {/* pagination */}
-            {totalPages >= 1 && (
-                <div className="flex items-center justify-center gap-2 mt-10 flex-wrap">
-                    {/* Previous */}
-                    <button
-                        disabled={currentPage === 1}
-                        onClick={() =>
-                            handlePageChange(
-                                currentPage - 1
-                            )
-                        }
-                        className={`px-4 py-2 rounded-sm border text-sm font-medium transition
-                                    
-                                    ${currentPage === 1
-                                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                : "bg-white hover:bg-gray-50"
-                            }
-                                `}
-                    >
-                        Previous
-                    </button>
+            <div className="mt-5 flex items-center justify-between gap-2">
+                <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
+                    <span className="text-sm font-medium text-gray-600">
+                        Page {currentPage} of {totalPages}
+                    </span>
+                </div>
+                {totalPages >= 1 && (
+                    <div className="flex items-center justify-center gap-2 flex-wrap">
+                        {/* Previous */}
+                        <button
+                            disabled={currentPage === 1}
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            className={`px-4 py-1 rounded-sm border text-sm font-medium transition
+                                ${currentPage === 1
+                                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                                    : "bg-white hover:bg-gray-50"
+                                }`}
+                        >
+                            Previous
+                        </button>
 
-                    {/* Page Numbers */}
+                        {/* Page Numbers */}
 
-                    {[...Array(totalPages)].map(
-                        (_, index) => {
+                        {[...Array(totalPages)].map((_, index) => {
                             const page = index + 1;
-
                             return (
                                 <button
                                     key={page}
-                                    onClick={() =>
-                                        handlePageChange(
-                                            page
-                                        )
-                                    }
-                                    className={`w-10 h-10 rounded-sm text-sm font-semibold transition
-                                                
-                                                ${currentPage === page
+                                    onClick={() => handlePageChange(page)}
+                                    className={`w-10 h-7 rounded-sm text-sm font-semibold transition
+                                        ${currentPage === page
                                             ? "bg-green-600 text-white"
                                             : "bg-white border hover:bg-gray-50"
                                         }
-                                            `}
-                                >
+                                    `} >
                                     {page}
                                 </button>
                             );
                         }
-                    )}
+                        )}
 
-                    {/* Next */}
+                        {/* Next */}
+                        <button
+                            disabled={currentPage === totalPages}
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            className={`px-4 py-1 rounded-sm border text-sm font-medium transition ${currentPage === totalPages
+                                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                                : "bg-white hover:bg-gray-50"} `} >
+                            Next
+                        </button>
 
-                    <button
-                        disabled={
-                            currentPage === totalPages
-                        }
-                        onClick={() =>
-                            handlePageChange(
-                                currentPage + 1
-                            )
-                        }
-                        className={`px-4 py-2 rounded-sm border text-sm font-medium transition ${currentPage === totalPages
-                            ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                            : "bg-white hover:bg-gray-50"} `} >
-                        Next
-                    </button>
-
-                </div>
-            )}
+                    </div>
+                )}
+            </div>
         </section>
     );
 }

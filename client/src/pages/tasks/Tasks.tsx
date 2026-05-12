@@ -371,50 +371,60 @@ export default function Tasks() {
                 </div>
             )}
             {/* // paination */}
-            {totalPages >= 1 && (
-                <div className="flex items-center justify-center gap-2 mt-5 flex-wrap">
-                    {/* Previous */}
-                    <button
-                        disabled={currentPage === 1}
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        className={`px-4 py-1 rounded-sm border border-gray-300  text-sm font-medium transition
-                            ${currentPage === 1 ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                : "bg-white hover:bg-gray-50"
-                            }`} >
-                        Previous
-                    </button>
+            <div className="mt-5 flex items-center justify-between gap-2">
+                <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
+                    <span className="text-sm font-medium text-gray-600">
+                        Page {currentPage} of {totalPages}
+                    </span>
+                </div>
+                {totalPages >= 1 && (
+                    <div className="flex items-center justify-center gap-2 flex-wrap">
+                        {/* Previous */}
+                        <button
+                            disabled={currentPage === 1}
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            className={`px-4 py-1 rounded-sm border text-sm font-medium transition
+                                ${currentPage === 1
+                                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                                    : "bg-white hover:bg-gray-50"
+                                }`}
+                        >
+                            Previous
+                        </button>
 
-                    {/* Page Numbers */}
-                    {[...Array(totalPages)].map(
-                        (_, index) => {
+                        {/* Page Numbers */}
+
+                        {[...Array(totalPages)].map((_, index) => {
                             const page = index + 1;
                             return (
                                 <button
                                     key={page}
                                     onClick={() => handlePageChange(page)}
-                                    className={`w-8 h-8 rounded-sm text-sm font-semibold transition
-                                            ${currentPage === page
+                                    className={`w-10 h-7 rounded-sm text-sm font-semibold transition
+                                        ${currentPage === page
                                             ? "bg-green-600 text-white"
-                                            : "bg-white border border-gray-300 hover:bg-gray-50"
-                                        }`}>
+                                            : "bg-white border hover:bg-gray-50"
+                                        }
+                                    `} >
                                     {page}
                                 </button>
                             );
                         }
-                    )}
-                    {/* Next */}
-                    <button
-                        disabled={currentPage === totalPages}
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        className={`px-4 py-1 rounded-sm border border-gray-300 text-sm font-medium transition
-                            ${currentPage === totalPages
+                        )}
+
+                        {/* Next */}
+                        <button
+                            disabled={currentPage === totalPages}
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            className={`px-4 py-1 rounded-sm border text-sm font-medium transition ${currentPage === totalPages
                                 ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                : "bg-white hover:bg-gray-50"
-                            }`} >
-                        Next
-                    </button>
-                </div>
-            )}
+                                : "bg-white hover:bg-gray-50"} `} >
+                            Next
+                        </button>
+
+                    </div>
+                )}
+            </div>
         </section>
     );
 }
