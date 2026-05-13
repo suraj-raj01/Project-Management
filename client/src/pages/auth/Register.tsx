@@ -113,7 +113,7 @@ export default function Register() {
     };
 
     return (
-        <section className="relative overflow-hidden -mt-17 pt-18 min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-emerald-100 px-4 py-5">
+        <section className="relative overflow-hidden -mt-15 pt-18 min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-emerald-100 px-4 py-5">
 
             {/* Background Effects */}
 

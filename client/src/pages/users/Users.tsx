@@ -157,7 +157,7 @@ export default function Users() {
         <section className="space-y-4">
 
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex gap-3 flex-col md:flex-row md:items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                         <UsersIcon size={22} className="text-green-600" />
@@ -343,11 +343,11 @@ export default function Users() {
 
             {/* Pagination */}
             <div className="mt-5 flex items-center justify-between gap-2">
-                <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
+                {/* <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
                     <span className="text-sm font-medium text-gray-600">
                         Page {currentPage} of {totalPages}
                     </span>
-                </div>
+                </div> */}
                 {totalPages >= 1 && (
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                         {/* Previous */}

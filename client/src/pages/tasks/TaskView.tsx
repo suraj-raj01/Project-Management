@@ -208,11 +208,9 @@ export default function TaskView() {
                                 </div>
 
                                 <div>
-                                    <h3 className="font-semibold -mb-1 hover:text-green-500 cursor-pointer text-lg uppercase" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
+                                    <h3 title="View profile" className="font-semibold -mb-1 hover:text-green-500 cursor-pointer text-lg uppercase" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
                                         {
-                                            task
-                                                ?.assignedTo
-                                                ?.name
+                                            task ?.assignedTo ?.name
                                         }
                                     </h3>
 
@@ -306,11 +304,9 @@ export default function TaskView() {
                                             Assigned User
                                         </p>
 
-                                        <p className="font-medium capitalize cursor-pointer hover:text-green-500" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
+                                        <p title="profile" className="font-medium capitalize cursor-pointer hover:text-green-500" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
                                             {
-                                                task
-                                                    ?.assignedTo
-                                                    ?.name
+                                                task ?.assignedTo ?.name
                                             }
                                         </p>
                                     </div>

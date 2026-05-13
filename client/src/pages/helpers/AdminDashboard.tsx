@@ -75,7 +75,7 @@ export default function AdminDashboard() {
 
     return (
         <>
-            <div className="space-y-5">
+            <div className="space-y-5 transition-all duration-1500 ease-in-out">
                 {!loading && user?.role === "Admin" && stats && (
                     <>
                         <div>
@@ -130,7 +130,7 @@ export default function AdminDashboard() {
                             <h3 className="text-lg font-bold text-gray-700">Projects Overview</h3>
                             <p className="text-sm text-gray-500">Manage and track your projects and members</p>
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-3 md:gap-4 gap-2">
+                        <div className="grid grid-cols-2 md:grid-cols-4 md:gap-4 gap-2">
                             <StatCard
                                 label="Total Projects"
                                 value={stats?.totalProjects || 0}

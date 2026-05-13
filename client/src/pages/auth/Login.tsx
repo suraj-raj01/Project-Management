@@ -135,7 +135,7 @@ export default function Login() {
     };
 
     return (
-        <section className="relative overflow-hidden -mt-17 pt-18 min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-emerald-100 px-4 py-5">
+        <section className="relative overflow-hidden -mt-15 pt-18 min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-emerald-100 px-4 py-5">
             {/* Background Effects */}
 
             <div className="absolute top-0 left-0 w-72 h-72 bg-green-300/30 blur-3xl rounded-full" />

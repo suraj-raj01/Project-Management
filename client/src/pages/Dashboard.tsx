@@ -17,7 +17,7 @@ export default function Dashboard() {
     }, []);
 
     return (
-        <div>
+        <div className="">
             {user?.role === "Admin" ? (
                 <AdminDashboard />
             ) : (

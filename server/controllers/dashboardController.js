@@ -5,24 +5,19 @@ import Project from '../models/projectModel.js';
 export const getDashboardStats = async (req, res) => {
     try {
         const totalTasks = await Task.countDocuments();
-
         const todoTasks = await Task.countDocuments({
             status: "Pending",
         });
-
         const inProgressTasks = await Task.countDocuments({
             status: "In Progress",
         });
-
         const doneTasks = await Task.countDocuments({
             status: "Completed",
         });
-
         const overdueTasks = await Task.countDocuments({
             dueDate: { $lt: new Date() },
             status: { $ne: "Completed" || "Pending"},
         });
-
         const tasksPerUser = await Task.aggregate([
             {
                 $group: {

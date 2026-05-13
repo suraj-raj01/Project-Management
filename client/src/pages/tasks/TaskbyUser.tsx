@@ -288,11 +288,11 @@ export default function TaskbyUser() {
 
             {/* pagination */}
             <div className="mt-5 flex items-center justify-between gap-2">
-                <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
+                {/* <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
                     <span className="text-sm font-medium text-gray-600">
                         Page {currentPage} of {totalPages}
                     </span>
-                </div>
+                </div> */}
                 {totalPages >= 1 && (
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                         {/* Previous */}

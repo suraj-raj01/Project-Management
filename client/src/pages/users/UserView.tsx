@@ -152,7 +152,7 @@ export default function UserView() {
 
                     {/* Task Stats */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div className="bg-green-50/40 hover:bg-green-100 border-2 border-green-100 rounded-sm p-5">
+                        <div className="bg-green-50/40 hover:bg-green-100 border-t-4 border-green-500 shadow-md rounded-md p-5">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-gray-500 text-sm">
@@ -169,7 +169,7 @@ export default function UserView() {
                             </div>
                         </div>
 
-                        <div className="bg-green-50/40 hover:bg-green-100 border-2 border-green-100 rounded-sm p-5">
+                        <div className="bg-green-50/40 hover:bg-green-100 border-t-4 border-green-500 shadow-md rounded-md p-5">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-gray-500 text-sm">
@@ -186,7 +186,7 @@ export default function UserView() {
                             </div>
                         </div>
 
-                        <div className="bg-green-50/40 hover:bg-green-100 border-2 border-green-100 rounded-sm p-5">
+                        <div className="bg-green-50/40 hover:bg-green-100 border-t-4 border-green-500 shadow-md rounded-md p-5">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-gray-500 text-sm">
@@ -225,7 +225,7 @@ export default function UserView() {
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                                 {tasks.map((task) => (
-                                    <div key={task._id} className="rounded-sm p-5 border-2 border-green-100 hover:shadow-md transition-all bg-green-50/40 hover:bg-green-100">
+                                    <div key={task._id} className="rounded-md p-5 border-t-4 border-b-4 border-green-500 shadow-md hover:shadow-md transition-all bg-green-50/40 hover:bg-green-100">
                                         <div className="flex items-start justify-between gap-3">
                                             <h3 className="text-lg font-semibold text-gray-800 line-clamp-1">
                                                 {task.title}

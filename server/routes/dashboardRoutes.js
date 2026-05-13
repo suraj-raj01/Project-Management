@@ -4,7 +4,7 @@ import { getDashboardStats, getUsers, getUserById, updateUser } from "../control
 
 const router = express.Router();
 
-router.get("/", protect, getDashboardStats);
+router.get("/", getDashboardStats);
 router.get("/users", protect, getUsers);
 router.get("/users/:id", protect, getUserById);
 router.put("/users/:id", protect, updateUser);

@@ -15,7 +15,7 @@ function StatCardSkeleton() {
     return (
         <div className="bg-white border border-green-50 rounded-sm p-4 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-                <Skeleton className="h-3 w-24" />
+                <Skeleton className="h-3 md:w-24 w-20" />
                 <Skeleton className="h-9 w-9 rounded-full" />
             </div>
             <Skeleton className="h-8 w-16" />
@@ -72,7 +72,7 @@ export default function AdminDashboardSkeleton() {
                 <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
                 <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                 {Array.from({ length: 5 }).map((_, i) => (
                     <StatCardSkeleton key={i} />
                 ))}
