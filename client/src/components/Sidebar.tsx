@@ -97,7 +97,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             {/* Mobile backdrop */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 z-20 bg-green-500/50 backdrop-blur-xs lg:hidden"
+                    className="fixed inset-0 z-20 bg-green-200/50 backdrop-blur-xs lg:hidden"
                     onClick={onClose}
                 />
             )}
