@@ -10,6 +10,7 @@ import PageNotFound from "./PageNotFound";
 import CreateDiscussion from "./components/discussions/CreateTopic";
 import Reply from "./components/discussions/Reply";
 import Comments from "./components/discussions/Comments";
+import Profile from "./components/Profile";
 
 // Layouts
 const Layout = lazy(() => import("./layouts/Layout"));
@@ -87,6 +88,7 @@ export default function App() {
             <Route path="create-discussion/:id" element={<CreateDiscussion />} />
             <Route path="discussion/reply/:id" element={<Reply />} />
             <Route path="discussion/comments/:id" element={<Comments />} />
+            <Route path="discussion/profile/:id" element={<Profile />} />
 
             {/* Dashboard 404 */}
             <Route path="*" element={<PageNotFound />} />

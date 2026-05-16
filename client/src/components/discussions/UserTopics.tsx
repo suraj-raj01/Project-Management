@@ -159,7 +159,7 @@ export default function UserTopics() {
                                         ?.toUpperCase()}
                                 </div>
                                 <div className="flex flex-col items-start gap-0">
-                                    <h3 className="font-semibold text-gray-800 uppercase tracking-wide text-sm">
+                                    <h3 title="View Profile" onClick={() => navigate(`/dashboard/discussion/profile/${discussion?.createdBy._id}`)} className="cursor-pointer hover:text-green-600 font-semibold text-gray-800 uppercase tracking-wide text-sm">
                                         {discussion?.createdBy?.name}
                                     </h3>
                                     <span className="text-xs text-gray-500">

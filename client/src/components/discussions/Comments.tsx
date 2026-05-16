@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../services/api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
     CalendarDays,
     MessageCircle,
@@ -28,6 +28,8 @@ export default function Comments() {
     useEffect(() => {
         fetchDiscussion();
     }, []);
+
+    const navigate = useNavigate();
 
     if (loading) return <div className="space-y-4 md:p-8">
         <div>
@@ -81,16 +83,16 @@ export default function Comments() {
 
                         {/* Meta */}
                         <div className="flex flex-col pt-2">
-                            <div className="flex flex-wrap items-center gap-4 text-gray-500 text-xs">
+                            <div className="flex flex-wrap items-center gap-1 text-gray-500 text-xs">
                                 <div className="flex items-center gap-2 font-semibold uppercase">
                                     <User2 size={20} className="border rounded-full bg-green-500 text-white p-1" />
-                                    <span className="text-xs font-medium">Author :</span>
-                                    <span className="hover:text-green-500 cursor-pointer">
+                                    <span className="text-xs -ml-1 font-medium">Author :</span>
+                                    <span onClick={() => navigate(`/dashboard/discussion/profile/${discussion?.createdBy._id}`)} className="hover:text-green-500 pr-2 cursor-pointer">
                                         {discussion?.createdBy?.name || "Unknown"}
                                     </span>
                                 </div>
 
-                                <div className="flex items-center font-semibold gap-2">
+                                <div className="flex items-center font-semibold gap-1">
                                     <CalendarDays size={16} className="text-green-500" />
                                     <span>
                                         {discussion?.createdAt
@@ -148,7 +150,7 @@ export default function Comments() {
                                                     ?.toUpperCase()}
                                             </div>
                                             <div className="flex flex-col items-start gap-0">
-                                                <h3 className="font-semibold text-gray-800 uppercase tracking-wide text-sm">
+                                                <h3 onClick={() => navigate(`/dashboard/discussion/profile/${reply?.user?._id}`)} className="font-semibold hover:text-green-600 cursor-pointer text-gray-800 uppercase tracking-wide text-sm">
                                                     {reply?.user?.name}
                                                 </h3>
                                                 <span className="text-xs font-semibold text-gray-500">

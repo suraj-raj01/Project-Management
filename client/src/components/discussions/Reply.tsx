@@ -15,9 +15,11 @@ export default function Reply() {
 
     const fetchDiscussion = async () => {
         try {
+            setLoading(true);
             const response = await API.get(`/discussion/${id}`);
             // console.log(response.data);
             setDiscussion(response.data.discussion);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -44,7 +46,7 @@ export default function Reply() {
     };
 
     if (loading) return (
-        <div className="flex items-center justify-center h-screen">
+        <div className="flex items-center justify-center h-130">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
         </div>
     )
@@ -60,7 +62,7 @@ export default function Reply() {
                             ?.toUpperCase()}
                     </div>
                     <div className="flex flex-col items-start gap-0">
-                        <h3 className="font-semibold text-gray-800 uppercase tracking-wide text-sm">
+                        <h3 onClick={() => navigate(`/dashboard/discussion/profile/${discussion?.createdBy._id}`)} className="font-semibold text-gray-800 hover:text-green-600 cursor-pointer uppercase tracking-wide text-sm">
                             {discussion?.createdBy?.name}
                         </h3>
                         <span className="text-xs text-gray-500">
@@ -84,7 +86,7 @@ export default function Reply() {
                     <button type="submit" disabled={loading} className="bg-green-600 hover:bg-green-700 cursor-pointer text-white px-6 py-2 rounded-sm transition-all disabled:opacity-50">
                         {loading ? ("Sending...") : (
                             <div className=" flex items-center justify-center gap-1">
-                                SEND <SendHorizonal className="h-5" />
+                                SEND REPLY <SendHorizonal className="h-5" />
                             </div>
                         )}
                     </button>

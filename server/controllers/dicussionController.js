@@ -119,7 +119,25 @@ export const getDiscussionByUserId = async (req, res) => {
     try {
         const { id } = req.params;
         // const discussion = await Discussion.findById(id);
-        const discussion = await Discussion.find({ createdBy: id }).populate("createdBy", "name").populate("replies.user", "name").sort({ createdAt: -1 });
+        const discussion = await Discussion.find({ createdBy: id }).populate("createdBy", "name email").populate("replies.user", "name email").sort({ createdAt: -1 });
+        res.status(200).json({
+            success: true,
+            discussion
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
+
+// find discussion topic using userId
+
+export const getUserDiscussions = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const discussion = await Discussion.find({ createdBy: id }).populate("replies.user", "name email").sort({ createdAt: -1 });
         res.status(200).json({
             success: true,
             discussion

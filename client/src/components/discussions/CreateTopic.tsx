@@ -123,7 +123,7 @@ export default function CreateDiscussion() {
 
     return (
         <section className="max-w-3xl mx-auto md:p-8">
-            <div className="bg-white shadow-lg rounded-md border border-gray-200 p-6">
+            <div className="bg-white shadow-lg rounded-md border border-gray-200 md:p-6 p-3">
                 <h1 className="text-2xl text-green-500 font-bold mb-6">
                   {id?"Update Discussion":"Create Discussion"}  
                 </h1>

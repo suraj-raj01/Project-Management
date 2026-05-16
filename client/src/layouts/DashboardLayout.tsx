@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Menu } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import { getUserFromStorage } from "../pages/helpers/GetUserInfo";
@@ -23,6 +23,8 @@ export default function DashboardLayout() {
     const user = getUserFromStorage();
     const userName: string = user?.name || "Guest";
     const userInitial: string = userName[0]?.toUpperCase() || "G";
+
+    const navigate = useNavigate();
 
     return (
         <div className="flex h-screen overflow-hidden font-sans">
@@ -49,8 +51,9 @@ export default function DashboardLayout() {
                     </div>
 
                     {/* Right: bell + avatar */}
-                    <div className="flex items-center gap-3">
-                        <div className="flex items-center gap-2.5 pl-2 border-l border-gray-200">
+                    <div title="Profile" className="flex items-center gap-3 cursor-pointer">
+                        <div onClick={() => { navigate(`/dashboard/users/${user?._id}/view`) }}
+                        className="flex items-center gap-2.5 pl-2 border-l border-gray-200">
                             <button
                                 className="w-8 h-8 rounded-full bg-green-600 text-white text-xs font-bold uppercase flex items-center justify-center ring-2 ring-green-100 hover:ring-green-200 transition-all"
                                 title={userName}

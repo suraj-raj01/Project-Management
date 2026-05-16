@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import API from "../../services/api";
 import {
     Mail,
@@ -8,8 +8,11 @@ import {
     FolderKanban,
     CheckCircle2,
     Clock3,
+    Eye,
 } from "lucide-react";
 import UserViewSkeleton from "../skeleton/UserViewSkeleton";
+
+const ITEMS_PER_PAGE = 5;
 
 type UserType = {
     name: string;
@@ -33,6 +36,12 @@ type TaskType = {
     };
 };
 
+const STATUS_STYLES: Record<string, string> = {
+    Pending: "bg-yellow-100 text-yellow-700",
+    "In Progress": "bg-blue-500 text-white",
+    Completed: "bg-green-600 text-white",
+};
+
 export default function UserView() {
     const [loading, setLoading] = useState(false);
 
@@ -40,6 +49,8 @@ export default function UserView() {
         name: "",
         email: "",
     });
+    const [currentPage, setCurrentPage] = useState(1);
+    const [statusFilter, setStatusFilter] = useState("All");
 
     const [tasks, setTasks] = useState<TaskType[]>([]);
 
@@ -77,6 +88,42 @@ export default function UserView() {
             fetchTasks();
         }
     }, [id]);
+
+    // filter tasks
+    const filteredTasks = useMemo(() => {
+        if (statusFilter === "All") return tasks;
+
+        return tasks.filter(
+            (task) => task.status === statusFilter
+        );
+    }, [tasks, statusFilter]);
+
+
+    const totalPages = Math.ceil(
+        filteredTasks.length / ITEMS_PER_PAGE
+    );
+
+    // paginated tasks
+    const paginatedTasks = useMemo(() => {
+        const startIndex =
+            (currentPage - 1) * ITEMS_PER_PAGE;
+
+        const endIndex =
+            startIndex + ITEMS_PER_PAGE;
+
+        return filteredTasks.slice(startIndex, endIndex);
+    }, [filteredTasks, currentPage]);
+
+    // page change
+    const handlePageChange = (page: any) => {
+        setCurrentPage(page);
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
 
     const getPriorityColor = (priority: string) => {
         switch (priority) {
@@ -151,7 +198,7 @@ export default function UserView() {
                     </div>
 
                     {/* Task Stats */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div className="bg-green-50/40 hover:bg-green-100 border-t-4 border-green-500 shadow-md rounded-md p-5">
                             <div className="flex items-center justify-between">
                                 <div>
@@ -205,12 +252,29 @@ export default function UserView() {
                     </div>
 
                     {/* Tasks Section */}
-                    <div className=" rounded-sm bg-gray-50 md:p-4 p-3">
+                    <div className=" rounded-sm bg-gray-50">
                         <div className="flex items-center justify-between mb-4">
                             <h2 className="text-xl font-bold text-green-800">
                                 Assigned Tasks
                             </h2>
+                            {/* filter by status */}
+                            <div>
+                                <select
+                                    value={statusFilter}
+                                    onChange={(e) => {
+                                        setStatusFilter(e.target.value);
+                                        setCurrentPage(1);
+                                    }}
+                                    className={`border border-gray-200 px-3 py-2 rounded-sm text-sm outline-none ${STATUS_STYLES[statusFilter]}`}
+                                >
+                                    <option value="All">All Tasks</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
                         </div>
+
 
                         {tasks.length === 0 ? (
                             <div className="text-center py-16">
@@ -223,73 +287,186 @@ export default function UserView() {
                                 </p>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                                {tasks.map((task) => (
-                                    <div key={task._id} className="rounded-md p-5 border-t-4 border-b-4 border-green-500 shadow-md hover:shadow-md transition-all bg-green-50/40 hover:bg-green-100">
-                                        <div className="flex items-start justify-between gap-3">
-                                            <h3 className="text-lg font-semibold text-gray-800 line-clamp-1">
-                                                {task.title}
-                                            </h3>
+                            <div className="overflow-x-auto rounded-sm bg-white">
+                                <table className="w-full min-w-[900px]">
+                                    {/* Table Header */}
+                                    <thead className="bg-green-600 text-white uppercase border-b border-green-100">
+                                        <tr>
+                                            <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                Task
+                                            </th>
 
-                                            <span
-                                                className={`text-xs px-3 py-1 rounded-sm font-medium whitespace-nowrap ${getPriorityColor(
-                                                    task.priority
-                                                )}`}
-                                            >
-                                                {task.priority}
-                                            </span>
-                                        </div>
-
-                                        <p className="text-sm text-gray-600 mt-3 line-clamp-3">
-                                            {task.description}
-                                        </p>
-
-                                        {/* Project */}
-                                        <div className="mt-4">
-                                            <p className="text-xs text-gray-400 mb-1">
+                                            <th className="text-start px-2 py-4 text-sm font-semibold">
                                                 Project
-                                            </p>
+                                            </th>
 
-                                            <div className="bg-green-50 rounded-sm p-3">
-                                                <p className="font-medium text-gray-700">
-                                                    {task.project?.name}
-                                                </p>
+                                            <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                Priority
+                                            </th>
 
-                                                <p className="text-sm text-gray-500 line-clamp-2 mt-1">
-                                                    {
-                                                        task.project
-                                                            ?.description
-                                                    }
-                                                </p>
-                                            </div>
-                                        </div>
+                                            <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                Due Date
+                                            </th>
 
-                                        {/* Footer */}
-                                        <div className="flex items-center justify-between mt-5">
-                                            <div className="flex items-center gap-2 text-sm text-gray-500">
-                                                <Calendar className="h-4 w-4" />
+                                            <th className="text-start px-2 min-w-35 py-4 text-sm font-semibold">
+                                                Status
+                                            </th>
+                                            <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                Actions
+                                            </th>
+                                        </tr>
+                                    </thead>
 
-                                                <span>
-                                                    {new Date(
-                                                        task.dueDate
-                                                    ).toLocaleDateString()}
-                                                </span>
-                                            </div>
-
-                                            <span
-                                                className={`text-xs px-3 py-1 rounded-sm font-medium ${getStatusColor(
-                                                    task.status
-                                                )}`}
+                                    {/* Table Body */}
+                                    <tbody>
+                                        {paginatedTasks.map((task, index) => (
+                                            <tr
+                                                key={task._id}
+                                                className={`border-b border-gray-100 hover:bg-green-50/50 transition-all duration-200 ${index % 2 === 0
+                                                    ? "bg-white"
+                                                    : "bg-gray-50/40"
+                                                    }`}
                                             >
-                                                {task.status}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))}
+                                                {/* Task */}
+                                                <td className="px-2">
+                                                    <div className="space-y-1">
+                                                        <h3 className="font-semibold text-gray-800 line-clamp-1">
+                                                            {task.title}
+                                                        </h3>
+
+                                                        <p className="text-sm text-gray-500 line-clamp-2 max-w-sm">
+                                                            {task.description}
+                                                        </p>
+                                                    </div>
+                                                </td>
+
+                                                {/* Project */}
+                                                <td className="">
+                                                    <div className="border-green-100 bg-green-100 p-3 max-w-xs">
+                                                        <p className="font-medium text-gray-700 line-clamp-1">
+                                                            {task.project?.name}
+                                                        </p>
+
+                                                        <p className="text-xs text-gray-500 mt-1 line-clamp-2">
+                                                            {task.project?.description}
+                                                        </p>
+                                                    </div>
+                                                </td>
+
+                                                {/* Priority */}
+                                                <td className="px-2">
+                                                    <span
+                                                        className={`text-xs px-3 py-1 rounded-sm font-medium ${getPriorityColor(
+                                                            task.priority
+                                                        )}`}
+                                                    >
+                                                        {task.priority}
+                                                    </span>
+                                                </td>
+
+                                                {/* Due Date */}
+                                                <td className="px-2 min-w-35">
+                                                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                                                        <Calendar className="h-4 w-4 text-green-600" />
+
+                                                        <span>
+                                                            {new Date(
+                                                                task.dueDate
+                                                            ).toLocaleDateString("en-GB", {
+                                                                day: "2-digit",
+                                                                month: "short",
+                                                                year: "numeric",
+                                                            })}
+                                                        </span>
+                                                    </div>
+                                                </td>
+
+                                                {/* Status */}
+                                                <td className="px-2 ">
+                                                    <span
+                                                        className={`text-xs px-2 py-1 rounded-sm font-medium ${getStatusColor(
+                                                            task.status
+                                                        )}`}
+                                                    >
+                                                        {task.status}
+                                                    </span>
+                                                </td>
+                                                <td className="px-2 bg-green-100 ">
+                                                    <Link title="view" to={`/dashboard/task-view/${task._id}`} className="text-green-600 flex items-center justify-center hover:text-green-800">
+                                                        <Eye size={25} className="bg-white w-10 rounded-sm p-1"/>
+                                                    </Link>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
                             </div>
                         )}
                     </div>
                 </>
+            </div>
+
+            {!loading && paginatedTasks.length > 0 && (
+                <div className="px-2 py-3 border border-gray-200 bg-green-100 text-xs text-gray-800 flex items-center justify-between">
+                    <span>
+                        Showing{" "}
+                        {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, paginatedTasks.length)}
+                        {" "}–{" "}
+                        {Math.min(currentPage * ITEMS_PER_PAGE, paginatedTasks.length)}
+                        {" "}of {paginatedTasks.length} task{paginatedTasks.length !== 1 ? "s" : ""}
+                    </span>
+                </div>
+            )}
+
+            {/* pagination */}
+            <div className="mt-5 flex items-center justify-between gap-2">
+                {totalPages >= 1 && (
+                    <div className="flex items-center justify-center gap-2 flex-wrap">
+                        {/* Previous */}
+                        <button
+                            disabled={currentPage === 1}
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            className={`px-4 py-1 rounded-sm border text-sm font-medium transition
+                                ${currentPage === 1
+                                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                                    : "bg-white hover:bg-gray-50"
+                                }`}
+                        >
+                            Previous
+                        </button>
+
+                        {/* Page Numbers */}
+
+                        {[...Array(totalPages)].map((_, index) => {
+                            const page = index + 1;
+                            return (
+                                <button
+                                    key={page}
+                                    onClick={() => handlePageChange(page)}
+                                    className={`w-10 h-7 rounded-sm text-sm font-semibold transition
+                                        ${currentPage === page
+                                            ? "bg-green-600 text-white"
+                                            : "bg-white border hover:bg-gray-50"
+                                        }
+                                    `} >
+                                    {page}
+                                </button>
+                            );
+                        }
+                        )}
+
+                        {/* Next */}
+                        <button
+                            disabled={currentPage === totalPages}
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            className={`px-4 py-1 rounded-sm border text-sm font-medium transition ${currentPage === totalPages
+                                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                                : "bg-white hover:bg-gray-50"} `} >
+                            Next
+                        </button>
+
+                    </div>
+                )}
             </div>
         </div>
     );

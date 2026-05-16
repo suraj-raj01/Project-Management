@@ -175,7 +175,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 {/* User info + Logout */}
                 <div className="border-t border-white/10 pt-4 mt-4 flex flex-col gap-3">
                     {user?.name && (
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3 cursor-pointer" onClick={() => { navigate(`/dashboard/users/${user?._id}/view`) }}>
                             <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-xs font-bold uppercase shrink-0">
                                 {user.name[0]}
                             </div>
