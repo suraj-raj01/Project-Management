@@ -12,7 +12,7 @@ export function CompletionRate({
 
             {/* Circular Progress */}
             <div
-                className="relative w-28 h-28 rounded-full flex items-center justify-center"
+                className="relative w-25 h-25 rounded-full flex items-center justify-center"
                 style={{
                     background: `conic-gradient(
                         #16a34a ${completionRate * 3.6}deg,

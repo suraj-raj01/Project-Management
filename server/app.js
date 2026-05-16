@@ -8,6 +8,7 @@ import projectRoutes from "./routes/projectRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import discussionRoutes from "./routes/discussionRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -31,6 +32,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/discussion", discussionRoutes);
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {

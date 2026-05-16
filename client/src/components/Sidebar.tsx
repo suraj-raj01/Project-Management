@@ -5,7 +5,8 @@ import {
     PlusSquare,
     LogOut,
     X,
-    Users
+    Users,
+    MessageCircle
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -21,10 +22,12 @@ const navItems1 = [
     { to: "/dashboard/projects", icon: FolderKanban, label: "Projects", end: false },
     { to: "/dashboard/create-task", icon: PlusSquare, label: "Create Task", end: false },
     { to: "/dashboard/users", icon: Users, label: "Members", end: false },
+    { to: "/dashboard/discussions", icon: MessageCircle, label: "Team Discussion", end: false },
 ];
 const navItems2 = [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard", end: true },
-    { to: "/dashboard/usertasks", icon: CheckSquare, label: "All Tasks", end: false },
+    { to: "/dashboard/usertasks", icon: CheckSquare, label: "My Tasks", end: false },
+    { to: "/dashboard/discussions", icon: MessageCircle, label: "Team Discussion", end: false },
 ];
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
@@ -80,7 +83,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         ), {
             duration: 10000,
             style: {
-                borderRadius: "16px",
+                borderRadius: "4px",
                 background: "#fff",
                 color: "#111827",
                 padding: "12px",
@@ -136,7 +139,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 end={end}
                                 onClick={handleNavClick}
                                 className={({ isActive }) =>
-                                    `flex items-center  gap-3 px-2 py-2.5 rounded-sm text-sm font-medium transition-all duration-150 ${isActive
+                                    `flex items-center gap-3 px-2 py-2.5 rounded-xs text-sm font-medium transition-all duration-150 ${isActive
                                         ? "bg-green-600 text-white"
                                         : "text-gray-400 hover:bg-white/10 hover:text-white"
                                     }`
@@ -155,7 +158,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 end={end}
                                 onClick={handleNavClick}
                                 className={({ isActive }) =>
-                                    `flex items-center gap-3 px-2 py-2.5 rounded-sm text-sm font-medium transition-all duration-150 ${isActive
+                                    `flex items-center gap-3 px-2 py-2.5 rounded-xs text-sm font-medium transition-all duration-150 ${isActive
                                         ? "bg-green-600 text-white"
                                         : "text-gray-400 hover:bg-white/10 hover:text-white"
                                     }`

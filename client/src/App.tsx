@@ -6,6 +6,10 @@ import {
 
 import { lazy, Suspense } from "react";
 import Docs from "./pages/docs/Docs";
+import PageNotFound from "./PageNotFound";
+import CreateDiscussion from "./components/discussions/CreateTopic";
+import Reply from "./components/discussions/Reply";
+import Comments from "./components/discussions/Comments";
 
 // Layouts
 const Layout = lazy(() => import("./layouts/Layout"));
@@ -31,11 +35,12 @@ const ProjectForm = lazy(() => import("./pages/projects/ProjectForm"));
 const Users = lazy(() => import("./pages/users/Users"));
 const UserView = lazy(() => import("./pages/users/UserView"));
 const CreateUser = lazy(() => import("./pages/users/CreateUser"));
+const Discussion = lazy(() => import("./components/discussions/Discussion"));
 
 function Loader() {
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="h-10 w-10 rounded-full border-4 border-indigo-500 border-t-transparent animate-spin" />
+       <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
     </div>
   );
 }
@@ -67,51 +72,28 @@ export default function App() {
 
             {/* Projects */}
             <Route path="projects" element={<Projects />} />
-            <Route
-              path="projects/create"
-              element={<ProjectForm />}
-            />
-            <Route
-              path="projects/edit/:id"
-              element={<ProjectForm />}
-            />
+            <Route path="projects/create" element={<ProjectForm />} />
+            <Route path="projects/edit/:id" element={<ProjectForm />} />
 
             {/* Users */}
             <Route path="users" element={<Users />} />
-            <Route
-              path="users/:id/view"
-              element={<UserView />}
-            />
-            <Route
-              path="create-user"
-              element={<CreateUser />}
-            />
-            <Route
-              path="create-user/:id"
-              element={<CreateUser />}
-            />
+            <Route path="users/:id/view" element={<UserView />} />
+            <Route path="create-user" element={<CreateUser />} />
+            <Route path="create-user/:id" element={<CreateUser />} />
+
+            {/* Discussion */}
+            <Route path="discussions" element={<Discussion />} />
+            <Route path="create-discussion" element={<CreateDiscussion />} />
+            <Route path="create-discussion/:id" element={<CreateDiscussion />} />
+            <Route path="discussion/reply/:id" element={<Reply />} />
+            <Route path="discussion/comments/:id" element={<Comments />} />
 
             {/* Dashboard 404 */}
-            <Route
-              path="*"
-              element={
-                <div className="flex items-center justify-center h-screen text-4xl font-bold">
-                  404 Not Found
-                </div>
-              }
-            />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
 
           {/* Global 404 */}
-          
-          <Route
-            path="*"
-            element={
-              <div className="flex items-center justify-center h-screen text-4xl font-bold">
-                404 Not Found
-              </div>
-            }
-          />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

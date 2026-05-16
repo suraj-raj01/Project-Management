@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import API from "../../services/api";
-import { Edit, Trash2 } from "lucide-react";
+import { AlertCircle, Edit, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import TableSkeleton from "../skeleton/TableSkeleton";
+import { getUserFromStorage } from "../helpers/GetUserInfo";
 const ITEMS_PER_PAGE = 8;
 
 export default function Projects() {
@@ -12,9 +13,7 @@ export default function Projects() {
     const [currentPage, setCurrentPage] = useState(1);
 
 
-    const user = JSON.parse(
-        localStorage.getItem("user") || "{}"
-    );
+    const user = getUserFromStorage();
 
     // Fetch Projects
     const fetchProjects = async () => {
@@ -116,13 +115,21 @@ export default function Projects() {
         ), {
             duration: 10000,
             style: {
-                borderRadius: "16px",
+                borderRadius: "4px",
                 background: "#fff",
                 color: "#111827",
                 padding: "12px",
             },
         });
     };
+
+    if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-2 text-red-500">
+            <AlertCircle size={24} />
+            <h1 className="text-3xl font-bold">Unauthorized</h1>
+            <p>You do not have permission to access this page</p>
+        </div>
+    </div>
 
     if (projectloading) return (
         <TableSkeleton />

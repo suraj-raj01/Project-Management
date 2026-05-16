@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import API from "../../services/api";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { getUserFromStorage } from "../helpers/GetUserInfo";
+import { AlertCircle } from "lucide-react";
 
 export default function ProjectForm() {
     const navigate = useNavigate();
@@ -63,6 +65,15 @@ export default function ProjectForm() {
             setLoading(false);
         }
     };
+
+    const user = getUserFromStorage();
+    if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-2 text-red-500">
+            <AlertCircle size={24} />
+            <h1 className="text-3xl font-bold">Unauthorized</h1>
+            <p>You do not have permission to access this page</p>
+        </div>
+    </div>
 
     return (
         <section>

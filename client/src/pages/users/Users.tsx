@@ -9,10 +9,12 @@ import {
     Trash2,
     EditIcon,
     Eye,
+    AlertCircle,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import TableSkeleton from "../skeleton/TableSkeleton";
+import { getUserFromStorage } from "../helpers/GetUserInfo";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -100,7 +102,7 @@ export default function Users() {
         ), {
             duration: 10000,
             style: {
-                borderRadius: "16px",
+                borderRadius: "4px",
                 background: "#fff",
                 color: "#111827",
                 padding: "12px",
@@ -147,6 +149,15 @@ export default function Users() {
     // ── Summary counts 
     const adminCount = users.filter((u) => u.role === "Admin").length;
     const memberCount = users.filter((u) => u.role === "Member").length;
+
+    const user = getUserFromStorage();
+    if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-2 text-red-500">
+            <AlertCircle size={24} />
+            <h1 className="text-3xl font-bold">Unauthorized</h1>
+            <p>You do not have permission to access this page</p>
+        </div>
+    </div>
 
     if (loading) return (
         <TableSkeleton />
@@ -259,7 +270,7 @@ export default function Users() {
                                     <tr key={user._id} className="hover:bg-gray-50 transition-colors">
                                         {/* Avatar + Name */}
                                         <td className="px-5 py-1">
-                                            <div className="flex items-center gap-3">
+                                            <div className="flex items-center gap-3 min-w-40">
                                                 <div className="w-9 h-9 rounded-full bg-green-600 text-white flex items-center justify-center text-sm font-bold uppercase shrink-0">
                                                     {user.name[0]}
                                                 </div>
@@ -307,7 +318,7 @@ export default function Users() {
                                                     : <EditIcon size={15} />}
                                             </button>
                                             <button
-                                                title="Delete user"
+                                                title="View user"
                                                 onClick={() => viewUser(user._id)}
                                                 disabled={deletingId === user._id}
                                                 className="inline-flex cursor-pointer items-center justify-center w-8 h-8 rounded-sm text-green-400 hover:bg-green-50 hover:text-green-500 transition-colors disabled:opacity-50"

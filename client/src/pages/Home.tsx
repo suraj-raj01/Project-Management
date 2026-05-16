@@ -63,7 +63,7 @@ const Home = () => {
 
                 {/* Left Content */}
                 <div>
-                    <div className="inline-flex w-full border-2 border-green-200 md:w-auto items-center gap-2 justify-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+                    <div className="inline-flex w-full border-2 border-green-200 md:w-auto items-center gap-2 justify-center text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
                         <CheckCircle2 size={16} />
                         Team Task Management Platform
                     </div>

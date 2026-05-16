@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import API from "../../services/api";
 import toast from "react-hot-toast";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { AlertCircle, Loader2 } from "lucide-react";
+import { getUserFromStorage } from "../helpers/GetUserInfo";
 
 // ─── Types 
 
@@ -126,7 +127,14 @@ export default function CreateTask() {
         }
     };
 
-    // ── Loading skeleton while fetching existing task ──────────────────────
+    const user = getUserFromStorage();
+    if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-2 text-red-500">
+            <AlertCircle size={24} />
+            <h1 className="text-3xl font-bold">Unauthorized</h1>
+            <p>You do not have permission to access this page</p>
+        </div>
+    </div>
 
     if (fetching) {
         return (
@@ -137,7 +145,6 @@ export default function CreateTask() {
         );
     }
 
-    // ── Render ─────────────────────────────────────────────────────────────
 
     return (
         <div className="w-full">

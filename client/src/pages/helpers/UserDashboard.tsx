@@ -111,7 +111,7 @@ export default function UserDashboard() {
                             icon={<ListChecks size={20} className="text-green-600" />}
                             iconBg="bg-green-200"
                             trend="Assigned to you"
-                            navigation=""
+                            navigation="/usertasks"
                         />
                         <StatCard
                             label="Pending"
@@ -216,7 +216,7 @@ export default function UserDashboard() {
 
                         {userTasks && userTasks.length > 3 ? (
                             <div className="w-full flex items-center py-5">
-                                <Link to='/dashboard/usertasks' className="w-full md:w-fit text-center py-2 shadow-md font-semibold rounded-md mx-auto px-5 border border-gray-200 transition-all hover:bg-green-500 hover:text-white text-green-500">
+                                <Link to='/dashboard/usertasks' className="w-full md:w-fit text-center py-2 shadow-md font-semibold rounded-md mx-auto px-5 border border-green-300 transition-all hover:bg-green-500 hover:text-white text-green-500">
                                     Show more ...
                                 </Link>
                             </div>
