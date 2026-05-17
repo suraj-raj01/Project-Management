@@ -27,7 +27,7 @@ export default function DashboardLayout() {
     const navigate = useNavigate();
 
     return (
-        <div className="flex h-screen overflow-hidden font-sans">
+        <div className="flex h-screen overflow-hidden">
             {/* ── Sidebar  */}
             <Sidebar
                 isOpen={sidebarOpen}
@@ -38,39 +38,60 @@ export default function DashboardLayout() {
             <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
 
                 {/* Top Navbar */}
-                <header className="flex items-center justify-between px-4 sm:px-6 py-3 bg-white border-b border-gray-200 shadow-sm z-10 shrink-0">
-                    {/* Left: hamburger + search */}
+                <header className="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-6 py-3 
+                    bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm shrink-0">
+
+                    {/* Left */}
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setSidebarOpen((prev) => !prev)}
-                            className="p-2 md:hidden rounded-lg hover:bg-gray-100 transition-colors text-green-800"
+                            className="p-2 md:hidden rounded-xl hover:bg-gray-100 transition-all text-teal-800"
                             title="Toggle sidebar"
                         >
                             <Menu size={20} />
                         </button>
+
+                        <div>
+                            <h2 className="text-lg font-bold text-gray-800">
+                                Welcome Back 👋
+                            </h2>
+                            <p className="text-xs text-gray-500">
+                                Manage your workspace efficiently
+                            </p>
+                        </div>
                     </div>
 
-                    {/* Right: bell + avatar */}
-                    <div title="Profile" className="flex items-center gap-3 cursor-pointer">
-                        <div onClick={() => { navigate(`/dashboard/users/${user?._id}/view`) }}
-                        className="flex items-center gap-2.5 pl-2 border-l border-gray-200">
-                            <button
-                                className="w-8 h-8 rounded-full bg-green-600 text-white text-xs font-bold uppercase flex items-center justify-center ring-2 ring-green-100 hover:ring-green-200 transition-all"
-                                title={userName}
-                            >
-                                {userInitial}
-                            </button>
-                            <div className=" flex flex-col font-semibold text-gray-700 uppercase tracking-wide max-w-50 truncate">
-                                <p className="text-sm font-bold">{userName}</p>
-                                <p className="text-xs lowercase -mt-1">{user?.email}</p>
-                            </div>
+                    {/* Right */}
+                    <div
+                        title="Profile"
+                        className="flex items-center gap-3 cursor-pointer"
+                        onClick={() => navigate(`/dashboard/users/${user?._id}/view`)}
+                    >
+                        <div className="hidden sm:flex flex-col text-right">
+                            <p className="text-sm font-semibold text-gray-800 uppercase">
+                                {userName}
+                            </p>
+                            <p className="text-xs text-gray-500 lowercase">
+                                {user?.email}
+                            </p>
                         </div>
+
+                        <button
+                            className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-300 
+                            text-white text-xl font-bold uppercase flex items-center justify-center 
+                            shadow-md shadow-teal-200 hover:scale-105 transition-all"
+                            title={userName}
+                        >
+                            {userInitial}
+                        </button>
                     </div>
                 </header>
 
                 {/* Page content */}
-                <main className="flex-1 overflow-y-auto p-4 sm:p-3">
-                    <Outlet />
+                <main className="flex-1 overflow-y-auto p-4 sm:p-6">
+                    <div className="max-w-7xl mx-auto">
+                        <Outlet />
+                    </div>
                 </main>
             </div>
         </div>

@@ -38,8 +38,8 @@ type TaskType = {
 
 const STATUS_STYLES: Record<string, string> = {
     Pending: "bg-yellow-100 text-yellow-700",
-    "In Progress": "bg-blue-500 text-white",
-    Completed: "bg-green-600 text-white",
+    "In Progress": "bg-teal-500 text-white",
+    Completed: "bg-teal-600 text-white",
 };
 
 export default function UserView() {
@@ -132,7 +132,7 @@ export default function UserView() {
             case "Medium":
                 return "bg-yellow-100 text-yellow-700";
             case "Low":
-                return "bg-green-100 text-green-600";
+                return "bg-teal-100 text-teal-600";
             default:
                 return "bg-gray-100 text-gray-600";
         }
@@ -141,11 +141,11 @@ export default function UserView() {
     const getStatusColor = (status: string) => {
         switch (status) {
             case "Completed":
-                return "bg-green-100 text-green-700";
+                return "bg-teal-100 text-teal-700";
             case "In Progress":
-                return "bg-green-100 text-green-700";
+                return "bg-teal-100 text-teal-700";
             case "Pending":
-                return "bg-green-100 text-green-700";
+                return "bg-teal-100 text-teal-700";
             default:
                 return "bg-gray-100 text-gray-700";
         }
@@ -169,16 +169,16 @@ export default function UserView() {
                 </div>
                 <>
                     {/* User Card */}
-                    <div className="to-gray-50 border-2 border-green-100 rounded-sm p-3">
+                    <div className="to-gray-50 border-2 border-teal-100 rounded-sm p-3">
                         <div className="flex sm:flex-row sm:items-center gap-3 md:gap-8">
                             {/* Avatar */}
-                            <div className="h-23 w-23 rounded-full border-3 bg-green-100 flex items-center justify-center text-5xl font-bold text-green-800">
+                            <div className="h-23 w-23 rounded-full border-3 bg-teal-100 flex items-center justify-center text-5xl font-bold text-teal-800">
                                 {user?.name?.charAt(0)?.toUpperCase()}
                             </div>
 
                             {/* User Info */}
                             <div className="">
-                                <h2 className="text-2xl uppercase font-bold text-green-800">
+                                <h2 className="text-2xl uppercase font-bold text-teal-800">
                                     {user.name}
                                 </h2>
 
@@ -199,7 +199,7 @@ export default function UserView() {
 
                     {/* Task Stats */}
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div className="bg-green-50/40 hover:bg-green-100 border-t-4 border-green-500 shadow-md rounded-md p-5">
+                        <div className="bg-teal-50/40 hover:bg-teal-100 border-t-4 border-teal-500 shadow-md rounded-md p-5">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-gray-500 text-sm">
@@ -210,13 +210,13 @@ export default function UserView() {
                                     </h2>
                                 </div>
 
-                                <div className="bg-green-100 p-3 rounded-sm">
-                                    <FolderKanban className="text-green-600" />
+                                <div className="bg-teal-100 p-3 rounded-sm">
+                                    <FolderKanban className="text-teal-600" />
                                 </div>
                             </div>
                         </div>
 
-                        <div className="bg-green-50/40 hover:bg-green-100 border-t-4 border-green-500 shadow-md rounded-md p-5">
+                        <div className="bg-teal-50/40 hover:bg-teal-100 border-t-4 border-teal-500 shadow-md rounded-md p-5">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-gray-500 text-sm">
@@ -227,13 +227,13 @@ export default function UserView() {
                                     </h2>
                                 </div>
 
-                                <div className="bg-green-100 p-3 rounded-sm">
-                                    <CheckCircle2 className="text-green-600" />
+                                <div className="bg-teal-100 p-3 rounded-sm">
+                                    <CheckCircle2 className="text-teal-600" />
                                 </div>
                             </div>
                         </div>
 
-                        <div className="bg-green-50/40 hover:bg-green-100 border-t-4 border-green-500 shadow-md rounded-md p-5">
+                        <div className="bg-teal-50/40 hover:bg-teal-100 border-t-4 border-teal-500 shadow-md rounded-md p-5">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-gray-500 text-sm">
@@ -244,8 +244,8 @@ export default function UserView() {
                                     </h2>
                                 </div>
 
-                                <div className="bg-green-100 p-3 rounded-sm">
-                                    <Clock3 className="text-green-600" />
+                                <div className="bg-teal-100 p-3 rounded-sm">
+                                    <Clock3 className="text-teal-600" />
                                 </div>
                             </div>
                         </div>
@@ -254,7 +254,7 @@ export default function UserView() {
                     {/* Tasks Section */}
                     <div className=" rounded-sm">
                         <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-xl font-bold text-green-800">
+                            <h2 className="text-xl font-bold text-teal-800">
                                 Assigned Tasks
                             </h2>
                             {/* filter by status */}
@@ -290,7 +290,7 @@ export default function UserView() {
                             <div className="overflow-x-auto rounded-sm bg-white">
                                 <table className="w-full min-w-[900px]">
                                     {/* Table Header */}
-                                    <thead className="bg-green-600 text-white uppercase border-b border-green-100">
+                                    <thead className="bg-teal-600 text-white uppercase border-b border-teal-100">
                                         <tr>
                                             <th className="text-start px-2 py-4 text-sm font-semibold">
                                                 Task
@@ -322,7 +322,7 @@ export default function UserView() {
                                         {paginatedTasks.map((task, index) => (
                                             <tr
                                                 key={task._id}
-                                                className={`border-b border-gray-100 hover:bg-green-50/50 transition-all duration-200 ${index % 2 === 0
+                                                className={`border-b border-gray-100 hover:bg-teal-50/50 transition-all duration-200 ${index % 2 === 0
                                                     ? "bg-white"
                                                     : "bg-gray-50/40"
                                                     }`}
@@ -342,7 +342,7 @@ export default function UserView() {
 
                                                 {/* Project */}
                                                 <td className="">
-                                                    <div className="border-green-100 bg-green-100 p-3 max-w-xs">
+                                                    <div className="border-teal-100 bg-teal-100 p-3 max-w-xs">
                                                         <p className="font-medium text-gray-700 line-clamp-1">
                                                             {task.project?.name}
                                                         </p>
@@ -367,7 +367,7 @@ export default function UserView() {
                                                 {/* Due Date */}
                                                 <td className="px-2 min-w-35">
                                                     <div className="flex items-center gap-2 text-sm text-gray-600">
-                                                        <Calendar className="h-4 w-4 text-green-600" />
+                                                        <Calendar className="h-4 w-4 text-teal-600" />
 
                                                         <span>
                                                             {new Date(
@@ -391,9 +391,9 @@ export default function UserView() {
                                                         {task.status}
                                                     </span>
                                                 </td>
-                                                <td className="px-2 bg-green-100 ">
-                                                    <Link title="view" to={`/dashboard/task-view/${task._id}`} className="text-green-600 flex items-center justify-center hover:text-green-800">
-                                                        <Eye size={25} className="bg-white w-10 rounded-sm p-1"/>
+                                                <td className="px-2 bg-teal-100 ">
+                                                    <Link title="view" to={`/dashboard/task-view/${task._id}`} className="text-teal-600 flex items-center justify-center hover:text-teal-800">
+                                                        <Eye size={25} className="bg-white w-10 rounded-sm p-1" />
                                                     </Link>
                                                 </td>
                                             </tr>
@@ -407,7 +407,7 @@ export default function UserView() {
             </div>
 
             {!loading && paginatedTasks.length > 0 && (
-                <div className="px-2 py-3 border border-gray-200 bg-green-100 text-xs text-gray-800 flex items-center justify-between">
+                <div className="px-2 py-3 border border-gray-200 bg-teal-100 text-xs text-gray-800 flex items-center justify-between">
                     <span>
                         Showing{" "}
                         {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, paginatedTasks.length)}
@@ -445,7 +445,7 @@ export default function UserView() {
                                     onClick={() => handlePageChange(page)}
                                     className={`w-10 h-7 rounded-sm text-sm font-semibold transition
                                         ${currentPage === page
-                                            ? "bg-green-600 text-white"
+                                            ? "bg-teal-600 text-white"
                                             : "bg-white border hover:bg-gray-50"
                                         }
                                     `} >

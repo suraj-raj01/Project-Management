@@ -25,13 +25,13 @@ interface Task {
 const PRIORITY_STYLES: Record<string, string> = {
     High: "bg-red-100 text-red-600",
     Medium: "bg-amber-100 text-amber-700",
-    Low: "bg-green-100 text-green-700",
+    Low: "bg-teal-100 text-teal-700",
 };
 
 const STATUS_STYLES: Record<string, string> = {
     Pending: "bg-yellow-100 text-yellow-700",
-    "In Progress": "bg-blue-500 text-white",
-    Completed: "bg-green-600 text-white",
+    "In Progress": "bg-teal-500 text-white",
+    Completed: "bg-teal-600 text-white",
 };
 
 function getUserFromStorage() {
@@ -65,7 +65,7 @@ export default function TaskbyUser() {
             setTasks(data.tasks || []); // ✅ uncommented
         } catch (error) {
             console.error(error);
-            toast.error("Failed to load tasks");
+            // toast.error("Failed to load tasks");
         } finally {
             setLoading(false);
         }
@@ -141,7 +141,7 @@ export default function TaskbyUser() {
             <div className="flex justify-between items-center mb-6">
                 <div className="flex flex-col">
                     <h3 className="text-3xl font-bold flex items-center gap-2">
-                        {/* <ListChecks size={26} className="text-green-500" /> */}
+                        {/* <ListChecks size={26} className="text-teal-500" /> */}
                         All Tasks
                     </h3>
                     <span className="text-sm text-gray-500 mt-0.5">
@@ -168,7 +168,7 @@ export default function TaskbyUser() {
             {/* Table */}
             <div className="overflow-x-auto bg-white rounded-sm shadow-sm">
                 <table className="min-w-full border border-gray-100 text-sm text-left">
-                    <thead className="bg-green-600 text-white text-xs uppercase tracking-wide">
+                    <thead className="bg-teal-600 text-white text-xs uppercase tracking-wide">
                         <tr>
                             <th className="px-5 py-4 font-semibold">Title</th>
                             <th className="px-5 py-4 font-semibold">Project</th>
@@ -185,7 +185,7 @@ export default function TaskbyUser() {
                             <tr>
                                 <td colSpan={7} className="py-16 text-center text-gray-400">
                                     <div className="flex flex-col items-center gap-2">
-                                        <Loader2 size={28} className="animate-spin text-green-400" />
+                                        <Loader2 size={28} className="animate-spin text-teal-400" />
                                         <span className="text-sm">Loading tasks…</span>
                                     </div>
                                 </td>
@@ -202,9 +202,9 @@ export default function TaskbyUser() {
                             </tr>
                         ) : (
                             paginatedTasks.map((task) => (
-                                <tr key={task._id} className="hover:bg-green-50 transition-colors" >
+                                <tr key={task._id} className="hover:bg-teal-50 transition-colors" >
                                     {/* Title */}
-                                    <td className="px-5 py-4 min-w-55 bg-green-100">
+                                    <td className="px-5 py-4 min-w-55 bg-teal-100">
                                         <p className="font-semibold text-gray-900">{task.title}</p>
                                         <p className="text-gray-400 text-xs mt-0.5 line-clamp-1">{task.description}</p>
                                     </td>
@@ -217,7 +217,7 @@ export default function TaskbyUser() {
                                     {/* Assigned To */}
                                     <td className="px-5 py-4">
                                         <div className="flex items-center gap-3">
-                                            <div className="h-8 w-8 rounded-full bg-green-600 text-white flex items-center justify-center uppercase font-bold text-xs shrink-0">
+                                            <div className="h-8 w-8 rounded-full bg-teal-600 text-white flex items-center justify-center uppercase font-bold text-xs shrink-0">
                                                 {task.assignedTo?.name?.[0] || "U"}
                                             </div>
                                             <div>
@@ -228,7 +228,7 @@ export default function TaskbyUser() {
                                     </td>
 
                                     {/* Due Date */}
-                                    <td className="px-5 py-4 text-gray-600 bg-green-100 whitespace-nowrap">
+                                    <td className="px-5 py-4 text-gray-600 bg-teal-100 whitespace-nowrap">
                                         {new Date(task.dueDate).toLocaleDateString("en-IN", {
                                             day: "2-digit",
                                             month: "short",
@@ -247,7 +247,7 @@ export default function TaskbyUser() {
                                     <td className="px-5 py-4">
                                         <div className="relative">
                                             {updatingId === task._id ? (
-                                                <Loader2 size={16} className="animate-spin text-green-400" />
+                                                <Loader2 size={16} className="animate-spin text-teal-400" />
                                             ) : (
                                                 <select
                                                     title="Update status"
@@ -262,9 +262,9 @@ export default function TaskbyUser() {
                                             )}
                                         </div>
                                     </td>
-                                    <td className="px-5 py-4 bg-green-100">
+                                    <td className="px-5 py-4 bg-teal-100">
                                         <button title="view" className="border border-gray-200 px-3 py-1 cursor-pointer rounded-sm text-sm font-medium transition bg-white hover:bg-gray-50" onClick={() => navigate(`/dashboard/task-view/${task._id}`)}>
-                                            <Eye size={18} className="text-green-600" />
+                                            <Eye size={18} className="text-teal-600" />
                                         </button>
                                     </td>
                                 </tr>
@@ -275,7 +275,7 @@ export default function TaskbyUser() {
             </div>
 
             {!loading && paginatedTasks.length > 0 && (
-                <div className="px-2 py-3 border border-gray-200 bg-green-100 text-xs text-gray-800 flex items-center justify-between">
+                <div className="px-2 py-3 border border-gray-200 bg-teal-100 text-xs text-gray-800 flex items-center justify-between">
                     <span>
                         Showing{" "}
                         {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, paginatedTasks.length)}
@@ -318,7 +318,7 @@ export default function TaskbyUser() {
                                     onClick={() => handlePageChange(page)}
                                     className={`w-10 h-7 rounded-sm text-sm font-semibold transition
                                         ${currentPage === page
-                                            ? "bg-green-600 text-white"
+                                            ? "bg-teal-600 text-white"
                                             : "bg-white border hover:bg-gray-50"
                                         }
                                     `} >

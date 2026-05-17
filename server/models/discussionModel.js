@@ -8,13 +8,6 @@ const discussionSchema = new mongoose.Schema({
         {
             user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
             comment: { type: String, required: true },
-            // reply: [
-            //     {
-            //         user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-            //         comment: { type: String, required: true },
-            //         createdAt: { type: Date, default: Date.now },
-            //     }
-            // ],
             createdAt: { type: Date, default: Date.now },
         }
     ],

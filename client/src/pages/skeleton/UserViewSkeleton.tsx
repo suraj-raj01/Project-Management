@@ -12,7 +12,7 @@ export default function UserViewSkeleton() {
                 </div>
 
                 {/* User Card */}
-                <div className="bg-green-50/40 border-2 border-green-100 rounded-sm p-4">
+                <div className="bg-teal-50/40 border-2 border-teal-100 rounded-sm p-4">
                     <div className="flex sm:flex-row sm:items-center gap-4 md:gap-8">
 
                         {/* Avatar */}
@@ -41,7 +41,7 @@ export default function UserViewSkeleton() {
                     {[1, 2, 3].map((item) => (
                         <div
                             key={item}
-                            className="bg-green-50/40 border-2 border-green-100 rounded-sm p-5"
+                            className="bg-teal-50/40 border-2 border-teal-100 rounded-sm p-5"
                         >
                             <div className="flex items-center justify-between">
                                 <div className="space-y-3">
@@ -67,7 +67,7 @@ export default function UserViewSkeleton() {
                         {Array.from({ length: 6 }).map((_, index) => (
                             <div
                                 key={index}
-                                className="rounded-sm p-5 border-2 border-green-100 bg-green-50/40"
+                                className="rounded-sm p-5 border-2 border-teal-100 bg-teal-50/40"
                             >
                                 {/* Top */}
                                 <div className="flex items-start justify-between gap-3">

@@ -67,17 +67,17 @@ export default function Comments() {
                 <div className="bg-white rounded-md overflow-hidden">
                     {/* Header */}
                     <div className="md:p-8">
-                        <div className="flex bg-green-200/50 text-green-700 w-fit px-3.5 py-1.5 text-xs md:text-sm rounded-sm items-center gap-2">
+                        <div className="flex bg-teal-200/50 text-teal-700 w-fit px-3.5 py-1.5 text-xs md:text-sm rounded-sm items-center gap-2">
                             <MessageCircle size={22} />
                             <span className="text-xs uppercase tracking-wider font-semibold">
                                 Discussion Topic
                             </span>
                         </div>
 
-                        <h1 className="text-2xl md:text-3xl pt-2 font-semibold leading-tight uppercase text-green-600">
+                        <h1 className="text-2xl md:text-3xl pt-2 font-semibold leading-tight uppercase text-teal-600">
                             {discussion?.title}
                         </h1>
-                        <p className="text-gray-600 text-md md:text-lg mt-2 leading-snug">
+                        <p className="text-gray-600 max-w-4xl text-md md:text-lg mt-2 leading-snug">
                             {discussion?.description}
                         </p>
 
@@ -85,15 +85,15 @@ export default function Comments() {
                         <div className="flex flex-col pt-2">
                             <div className="flex flex-wrap items-center gap-1 text-gray-500 text-xs">
                                 <div className="flex items-center gap-2 font-semibold uppercase">
-                                    <User2 size={20} className="border rounded-full bg-green-500 text-white p-1" />
+                                    <User2 size={20} className="border rounded-full bg-teal-500 text-white p-1" />
                                     <span className="text-xs -ml-1 font-medium">Author :</span>
-                                    <span onClick={() => navigate(`/dashboard/discussion/profile/${discussion?.createdBy._id}`)} className="hover:text-green-500 pr-2 cursor-pointer">
+                                    <span onClick={() => navigate(`/dashboard/discussion/profile/${discussion?.createdBy._id}`)} className="hover:text-teal-500 pr-2 cursor-pointer">
                                         {discussion?.createdBy?.name || "Unknown"}
                                     </span>
                                 </div>
 
                                 <div className="flex items-center font-semibold gap-1">
-                                    <CalendarDays size={16} className="text-green-500" />
+                                    <CalendarDays size={16} className="text-teal-500" />
                                     <span>
                                         {discussion?.createdAt
                                             ? new Date(
@@ -135,7 +135,7 @@ export default function Comments() {
                             )}
 
                         {/* Replies */}
-                        <div className="space-y-3 md:max-w-3xl w-full">
+                        <div className="space-y-3 md:max-w-4xl w-full">
                             {discussion?.replies?.map((reply: any) => (
                                 <div
                                     key={reply._id}
@@ -144,13 +144,13 @@ export default function Comments() {
                                     <div className="flex items-start gap-4">
                                         {/* Avatar */}
                                         <div className="flex items-center justify-between flex-wrap gap-2">
-                                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
                                                 {reply?.user?.name
                                                     ?.charAt(0)
                                                     ?.toUpperCase()}
                                             </div>
                                             <div className="flex flex-col items-start gap-0">
-                                                <h3 onClick={() => navigate(`/dashboard/discussion/profile/${reply?.user?._id}`)} className="font-semibold hover:text-green-600 cursor-pointer text-gray-800 uppercase tracking-wide text-sm">
+                                                <h3 onClick={() => navigate(`/dashboard/discussion/profile/${reply?.user?._id}`)} className="font-semibold hover:text-teal-600 cursor-pointer text-gray-800 uppercase tracking-wide text-sm">
                                                     {reply?.user?.name}
                                                 </h3>
                                                 <span className="text-xs font-semibold text-gray-500">

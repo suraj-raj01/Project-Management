@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import TableSkeleton from "../skeleton/TableSkeleton";
 import { getUserFromStorage } from "../helpers/GetUserInfo";
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 7;
 
 interface UserType {
     _id: string;
@@ -41,7 +41,6 @@ export default function Users() {
             setUsers(data.users || []);
         } catch (error) {
             console.error(error);
-            toast.error("Failed to load users");
         } finally {
             setLoading(false);
         }
@@ -171,7 +170,7 @@ export default function Users() {
             <div className="flex gap-3 flex-col md:flex-row md:items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-                        <UsersIcon size={22} className="text-green-600" />
+                        <UsersIcon size={22} className="text-teal-600" />
                         Users
                     </h1>
                     <p className="text-sm text-gray-500 mt-0.5">
@@ -181,27 +180,10 @@ export default function Users() {
                 </div>
                 <Link
                     to="/dashboard/create-user"
-                    className="bg-green-600 hover:bg-green-700 text-center transition-colors text-white px-4 py-2 rounded-sm text-sm font-semibold"
+                    className="bg-teal-600 hover:bg-teal-700 text-center transition-colors text-white px-4 py-2 rounded-sm text-sm font-semibold"
                 >
                     + Create Member
                 </Link>
-            </div>
-
-            {/* Summary cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {[
-                    { label: "Total Users", value: users.length, icon: <UsersIcon size={18} className="text-green-500" />, bg: "bg-green-50" },
-                    { label: "Admins", value: adminCount, icon: <Shield size={18} className="text-purple-500" />, bg: "bg-purple-50" },
-                    { label: "Members", value: memberCount, icon: <User size={18} className="text-green-500" />, bg: "bg-green-50" },
-                ].map(({ label, value, icon, bg }) => (
-                    <div key={label} className="bg-green-50/40 rounded-sm border border-gray-100 shadow-sm md:p-5 p-2 flex items-center gap-4">
-                        <div className={`w-11 h-11 rounded-sm flex items-center justify-center ${bg}`}>{icon}</div>
-                        <div>
-                            <p className="text-sm text-gray-500">{label}</p>
-                            <p className="text-2xl font-bold text-gray-900">{value}</p>
-                        </div>
-                    </div>
-                ))}
             </div>
 
             {/* Filters */}
@@ -213,7 +195,7 @@ export default function Users() {
                         placeholder="Search by name or email..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-sm bg-white focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
+                        className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-sm bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
                     />
                 </div>
                 <select
@@ -232,7 +214,7 @@ export default function Users() {
             <div className="bg-white rounded-sm border border-gray-200 shadow-sm overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm">
-                        <thead className="bg-green-600 text-white text-xs uppercase tracking-wide">
+                        <thead className="bg-teal-600 text-white text-xs uppercase tracking-wide">
                             <tr>
                                 <th className="px-5 py-4 text-left font-semibold">User</th>
                                 <th className="px-5 py-4 text-left font-semibold">Email</th>
@@ -246,7 +228,7 @@ export default function Users() {
                                 <tr>
                                     <td colSpan={5} className="py-16 text-center text-gray-400">
                                         <div className="flex flex-col items-center gap-2">
-                                            <Loader2 size={28} className="animate-spin text-green-400" />
+                                            <Loader2 size={28} className="animate-spin text-teal-400" />
                                             <span className="text-sm">Loading users...</span>
                                         </div>
                                     </td>
@@ -271,19 +253,19 @@ export default function Users() {
                                         {/* Avatar + Name */}
                                         <td className="px-5 py-1">
                                             <div className="flex items-center gap-3 min-w-40">
-                                                <div className="w-9 h-9 rounded-full bg-green-600 text-white flex items-center justify-center text-sm font-bold uppercase shrink-0">
+                                                <div className="w-9 h-9 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-bold uppercase shrink-0">
                                                     {user.name[0]}
                                                 </div>
                                                 <span className="font-medium uppercase text-gray-900">{user.name}</span>
                                             </div>
                                         </td>
                                         {/* Email */}
-                                        <td title="view user" className="px-5 py-2 bg-green-100 font-semibold text-gray-800 cursor-pointer hover:text-green-800" onClick={() => navigate(`/dashboard/users/${user?._id}/view`)}>{user.email}</td>
+                                        <td title="view user" className="px-5 py-2 bg-teal-100 font-semibold text-gray-800 cursor-pointer hover:text-teal-800" onClick={() => navigate(`/dashboard/users/${user?._id}/view`)}>{user.email}</td>
                                         {/* Role */}
                                         <td className="px-5 py-2">
                                             <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs font-semibold ${user.role === "Admin"
                                                 ? "bg-purple-100 text-purple-700"
-                                                : "bg-green-100 text-green-700"
+                                                : "bg-teal-100 text-teal-700"
                                                 }`}>
                                                 {user.role === "Admin" ? <Shield size={11} /> : <User size={11} />}
                                                 {user.role}
@@ -296,7 +278,7 @@ export default function Users() {
                                             })}
                                         </td>
                                         {/* Delete */}
-                                        <td className="px-2 bg-green-100 py-2 flex items-center justify-center gap-1 text-center">
+                                        <td className="px-2 bg-teal-100 py-2 flex items-center justify-center gap-1 text-center">
                                             <button
                                                 title="Delete user"
                                                 onClick={() => deleteUser(user._id)}
@@ -311,7 +293,7 @@ export default function Users() {
                                                 title="Update user"
                                                 onClick={() => updateUser(user._id)}
                                                 disabled={deletingId === user._id}
-                                                className="inline-flex cursor-pointer items-center justify-center w-8 h-8 rounded-sm text-green-400 hover:bg-green-50 hover:text-green-500 transition-colors disabled:opacity-50"
+                                                className="inline-flex cursor-pointer items-center justify-center w-8 h-8 rounded-sm text-teal-400 hover:bg-teal-50 hover:text-teal-500 transition-colors disabled:opacity-50"
                                             >
                                                 {deletingId === user._id
                                                     ? <Loader2 size={15} className="animate-spin" />
@@ -321,7 +303,7 @@ export default function Users() {
                                                 title="View user"
                                                 onClick={() => viewUser(user._id)}
                                                 disabled={deletingId === user._id}
-                                                className="inline-flex cursor-pointer items-center justify-center w-8 h-8 rounded-sm text-green-400 hover:bg-green-50 hover:text-green-500 transition-colors disabled:opacity-50"
+                                                className="inline-flex cursor-pointer items-center justify-center w-8 h-8 rounded-sm text-teal-400 hover:bg-teal-50 hover:text-teal-500 transition-colors disabled:opacity-50"
                                             >
                                                 {deletingId === user._id
                                                     ? <Loader2 size={15} className="animate-spin" />
@@ -337,7 +319,7 @@ export default function Users() {
 
                 {/* Table footer */}
                 {!loading && filtered.length > 0 && (
-                    <div className="px-5 py-3 border-t border-green-200 bg-green-100 text-xs text-gray-800 flex items-center justify-between">
+                    <div className="px-5 py-3 border-t border-teal-200 bg-teal-100 text-xs text-gray-800 flex items-center justify-between">
                         <span>
                             Showing{" "}
                             {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, filtered.length)}
@@ -346,7 +328,7 @@ export default function Users() {
                             {" "}of {filtered.length} user{filtered.length !== 1 ? "s" : ""}
                         </span>
                         {search || filterRole !== "All" ? (
-                            <span className="text-green-400">(filtered from {users.length} total)</span>
+                            <span className="text-teal-400">(filtered from {users.length} total)</span>
                         ) : null}
                     </div>
                 )}
@@ -384,7 +366,7 @@ export default function Users() {
                                     onClick={() => handlePageChange(page)}
                                     className={`w-10 h-7 rounded-sm text-sm font-semibold transition
                                         ${currentPage === page
-                                            ? "bg-green-600 text-white"
+                                            ? "bg-teal-600 text-white"
                                             : "bg-white border hover:bg-gray-50"
                                         }
                                     `} >

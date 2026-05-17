@@ -165,7 +165,7 @@ export default function Tasks() {
                 return "bg-yellow-400";
 
             case "Low":
-                return "bg-green-100 text-green-700";
+                return "bg-teal-100 text-teal-700";
 
             default:
                 return "bg-gray-100 text-gray-700";
@@ -181,10 +181,10 @@ export default function Tasks() {
                 return "bg-yellow-400";
 
             case "In Progress":
-                return "bg-blue-600 text-white";
+                return "bg-teal-600 text-white";
 
             case "Completed":
-                return "bg-green-600 text-white";
+                return "bg-teal-600 text-white";
 
             default:
                 return "bg-gray-100 text-gray-700";
@@ -215,7 +215,7 @@ export default function Tasks() {
                         track and manage all your team's tasks in one place
                     </span>
                 </div>
-                <button className='text-md w-full md:w-fit rounded-sm bg-green-500 px-4 py-2 text-white'>
+                <button className='text-md w-full md:w-fit rounded-sm bg-teal-500 px-4 py-2 text-white'>
                     <Link to="/dashboard/create-task">Create Task</Link>
                 </button>
             </div>
@@ -229,7 +229,7 @@ export default function Tasks() {
                         placeholder="Search by name or email..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-sm bg-white focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
+                        className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-sm bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
                     />
                 </div>
                 {/* filter by status */}
@@ -249,7 +249,7 @@ export default function Tasks() {
             {/* Table */}
             <div className="overflow-x-auto bg-white">
                 <table className="min-w-full text-sm text-left">
-                    <thead className="bg-green-500 text-white">
+                    <thead className="bg-teal-500 text-white">
                         <tr className='uppercase'>
                             <th className="px-5 py-4 min-w-50 font-semibold"> Title </th>
                             <th className="px-5 py-4 min-w-50 font-semibold">Projects </th>
@@ -267,7 +267,7 @@ export default function Tasks() {
                                 (task: any) => (
                                     <tr key={task._id} className="hover:bg-gray-50 border-b border-gray-100" >
                                         {/* Title */}
-                                        <td className="px-2 py-1 md:min-w-30 bg-green-100">
+                                        <td className="px-2 py-1 md:min-w-30 bg-teal-100">
                                             <div>
                                                 <h2 className="font-semibold line-clamp-1">  {task.title} </h2>
                                                 <p className="text-gray-500 text-xs mt-1 line-clamp-1">  {task.description}</p>
@@ -282,12 +282,12 @@ export default function Tasks() {
                                         {/* Assigned User */}
                                         <td className="px-3 min-w-50">
                                             <div className="flex items-center gap-3">
-                                                <div className="h-9 w-9 rounded-full bg-green-600 text-white flex items-center justify-center uppercase font-bold">
+                                                <div className="h-9 w-9 rounded-full bg-teal-600 text-white flex items-center justify-center uppercase font-bold">
                                                     {task?.assignedTo?.name?.[0] || "U"}
                                                 </div>
 
                                                 <div>
-                                                    <p className="font-medium uppercase hover:text-green-500 hover:underline cursor-pointer" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
+                                                    <p className="font-medium uppercase hover:text-teal-500 hover:underline cursor-pointer" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
                                                         {task?.assignedTo?.name}
                                                     </p>
 
@@ -330,7 +330,7 @@ export default function Tasks() {
                                         </td>
 
                                         {/* Actions */}
-                                        <td className="px-3 py-2 flex items-center bg-green-100">
+                                        <td className="px-3 py-2 flex items-center bg-teal-100">
                                             {(user?.role === "Admin" || user?._id === task?.createdBy) && (
                                                 <button
                                                     title="Delete Task"
@@ -343,7 +343,7 @@ export default function Tasks() {
                                                 <button
                                                     title="Edit Task"
                                                     onClick={() => updateTask(task._id)}
-                                                    className="p-2 rounded-sm text-green-500 hover:bg-red-50">
+                                                    className="p-2 rounded-sm text-teal-500 hover:bg-red-50">
                                                     <EditIcon size={16} />
                                                 </button>
                                             )}
@@ -352,7 +352,7 @@ export default function Tasks() {
                                                 <button
                                                     title="View Task"
                                                     onClick={() => viewTask(task._id)}
-                                                    className="p-2 rounded-sm text-green-500 hover:bg-red-50">
+                                                    className="p-2 rounded-sm text-teal-500 hover:bg-red-50">
                                                     <Eye size={16} />
                                                 </button>
                                             )}
@@ -365,7 +365,7 @@ export default function Tasks() {
                 </table>
             </div>
             {!loading && paginatedTasks.length > 0 && (
-                <div className="px-2 py-3 border border-gray-300 bg-green-100 text-xs text-gray-800 flex items-center justify-between">
+                <div className="px-2 py-3 border border-gray-300 bg-teal-100 text-xs text-gray-800 flex items-center justify-between">
                     <span>
                         Showing{" "}
                         {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, filteredTasks.length)}
@@ -374,7 +374,7 @@ export default function Tasks() {
                         {" "}of {filteredTasks.length} task{filteredTasks.length !== 1 ? "s" : ""}
                     </span>
                     {filteredTasks.length < tasks.length ? (
-                        <span className="text-green-400">(Filtered from {tasks.length} task)</span>
+                        <span className="text-teal-400">(Filtered from {tasks.length} task)</span>
                     ) : null}
                 </div>
             )}
@@ -410,7 +410,7 @@ export default function Tasks() {
                                     onClick={() => handlePageChange(page)}
                                     className={`w-10 h-7 rounded-sm text-sm font-semibold transition
                                         ${currentPage === page
-                                            ? "bg-green-600 text-white"
+                                            ? "bg-teal-600 text-white"
                                             : "bg-white border hover:bg-gray-50"
                                         }
                                     `} >

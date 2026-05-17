@@ -45,9 +45,9 @@ const Home = () => {
     const imageUrl = `../src/assets/S.png`
 
     return (
-        <section className="relative overflow-hidden min-h-screen pt-45 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-gradient-to-br from-green-50 -mt-15 via-white to-emerald-100 px-4 transition-all duration-1000">
+        <section className="relative overflow-hidden min-h-screen pt-45 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-gradient-to-br from-teal-50 -mt-15 via-white to-emerald-100 px-4 transition-all duration-1000">
             {/* Background Blur Effects */}
-            <div className="absolute top-0 left-0 w-72 md:h-72 h-50 bg-green-300/30 blur-3xl rounded-full" />
+            <div className="absolute top-0 left-0 w-72 md:h-72 h-50 bg-teal-300/30 blur-3xl rounded-full" />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-300/30 blur-3xl rounded-full" />
             <div className="absolute hidden md:block rotate-[270deg] top-30 left-[-290px] w-full h-135"
                 style={{
@@ -63,7 +63,7 @@ const Home = () => {
 
                 {/* Left Content */}
                 <div>
-                    <div className="inline-flex w-full border-2 border-green-200 md:w-auto items-center gap-2 justify-center text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
+                    <div className="inline-flex w-full border-2 border-teal-200 md:w-auto items-center gap-2 justify-center text-teal-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 shadow-lg">
                         <CheckCircle2 size={16} />
                         Team Task Management Platform
                     </div>
@@ -71,7 +71,7 @@ const Home = () => {
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl text-center md:text-start font-black leading-tight tracking-tight text-gray-900">
 
                         Organize Team
-                        <span className="block bg-gradient-to-r from-green-600 to-emerald-500 text-transparent bg-clip-text">
+                        <span className="block bg-gradient-to-r from-teal-600 to-emerald-500 text-transparent bg-clip-text">
                             Tasks Efficiently
                         </span>
                     </h1>
@@ -87,7 +87,7 @@ const Home = () => {
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-4 mt-13">
                         <Link
                             to="/docs"
-                            className="group flex w-full md:w-auto justify-center items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                            className="group flex w-full md:w-auto justify-center items-center gap-2 bg-gradient-to-r from-teal-500 to-emerald-600 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >
                             Documentation
                             <ArrowRight size={18}
@@ -156,20 +156,20 @@ const Home = () => {
                                     Team Task Overview
                                 </p>
                             </div>
-                            <div className="w-13 h-13 flex items-center justify-center text-white rounded-full bg-gradient-to-r from-green-500 to-emerald-600">
-                                <LayoutDashboardIcon/>
+                            <div className="w-13 h-13 flex items-center justify-center text-white rounded-full bg-gradient-to-r from-teal-500 to-emerald-600">
+                                <LayoutDashboardIcon />
                             </div>
                         </div>
                         {/* Cards */}
                         <div className="grid grid-cols-2 gap-2 md:gap-4">
-                            <div className="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-md p-5">
+                            <div className="bg-gradient-to-br from-teal-50 to-white border border-teal-100 rounded-md p-5">
                                 <div className="flex items-center justify-between">
                                     <ListChecks
-                                        className="text-green-600"
+                                        className="text-teal-600"
                                         size={22}
                                     />
-                                    <span className="text-xs text-green-600 font-semibold">
-                                       Tasks
+                                    <span className="text-xs text-teal-600 font-semibold">
+                                        Tasks
                                     </span>
                                 </div>
 
@@ -203,7 +203,7 @@ const Home = () => {
                                 </p>
                             </div>
 
-                            <div className="col-span-2 mt-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg p-6 text-white shadow-xl">
+                            <div className="col-span-2 mt-3 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-lg p-6 text-white shadow-xl">
                                 <div className="flex items-center justify-between">
 
                                     <div>
@@ -235,7 +235,7 @@ const Home = () => {
                     </div>
 
                     {/* Floating Decoration */}
-                    <div className="absolute -top-6 -right-6 w-24 h-24 bg-green-400/30 blur-2xl rounded-full" />
+                    <div className="absolute -top-6 -right-6 w-24 h-24 bg-teal-400/30 blur-2xl rounded-full" />
                     <div className="absolute -bottom-6 -left-6 w-28 h-28 bg-emerald-400/30 blur-2xl rounded-full" />
                 </div>
             </div>

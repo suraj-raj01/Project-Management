@@ -21,7 +21,7 @@ export default function Docs() {
         },
         {
             title: "Dashboard Analytics",
-            icon: <LayoutDashboard className="text-blue-600" size={22} />,
+            icon: <LayoutDashboard className="text-teal-600" size={22} />,
             desc: "Track total tasks, completed tasks, overdue tasks, and project statistics.",
         },
         {
@@ -62,7 +62,7 @@ export default function Docs() {
 
                 {/* Hero Section */}
 
-                <div className="bg-green-50 rounded-lg mt-20 p-3 md:p-6">
+                <div className="bg-teal-50 rounded-lg mt-20 p-3 md:p-6">
                     <div className="flex items-center md:gap-3 gap-2 mb-5">
                         <div className="bg-indigo-100 p-3 rounded-lg">
                             <ListCheckIcon
@@ -93,7 +93,7 @@ export default function Docs() {
                             React.js
                         </span>
 
-                        <span className="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-medium">
+                        <span className="bg-teal-100 text-teal-600 px-4 py-2 rounded-full text-sm font-medium">
                             Node.js
                         </span>
 
@@ -105,7 +105,7 @@ export default function Docs() {
                             MongoDB
                         </span>
 
-                        <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
+                        <span className="bg-teal-100 text-teal-700 px-4 py-2 rounded-full text-sm font-medium">
                             Tailwind CSS
                         </span>
                     </div>
@@ -142,10 +142,10 @@ export default function Docs() {
                         {features.map((feature, index) => (
                             <div
                                 key={index}
-                                className=" rounded-lg border border-gray-100 shadow-sm p-4 hover:bg-green-50 hover:shadow-md transition"
+                                className=" rounded-lg border border-gray-100 shadow-sm p-4 hover:bg-teal-50 hover:shadow-md transition"
                             >
                                 <div className="flex items-center gap-3 mb-4">
-                                    <div className="bg-green-100 p-3 rounded-xl">
+                                    <div className="bg-teal-100 p-3 rounded-xl">
                                         {feature.icon}
                                     </div>
 
@@ -168,7 +168,7 @@ export default function Docs() {
 
                     <div className="flex items-center gap-3 mb-6">
                         <CalendarClock
-                            className="text-green-600"
+                            className="text-teal-600"
                             size={24}
                         />
 
@@ -184,7 +184,7 @@ export default function Docs() {
                                 key={index}
                                 className="flex items-start gap-4"
                             >
-                                <div className="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0">
+                                <div className="bg-teal-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0">
                                     {index + 1}
                                 </div>
 
@@ -209,35 +209,35 @@ export default function Docs() {
 
                     {/* Admin */}
 
-                    <div className="hover:bg-green-50 rounded-lg border border-gray-100 shadow-sm p-8">
+                    <div className="hover:bg-teal-50 rounded-lg border border-gray-100 shadow-sm p-8">
 
                         <h2 className="text-2xl font-bold text-indigo-600 mb-5">
                             Admin Access
                         </h2>
 
                         <ul className="space-y-4 text-gray-700">
-                            <li className="flex items-center gap-2"><CheckSquare className="text-green-600" size={16} /> Create Projects</li>
-                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16} /> Add Team Members</li>
-                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16} /> Create Tasks</li>
-                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16} /> Assign Tasks</li>
-                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16} /> Delete Tasks</li>
-                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16} /> View Analytics</li>
-                            <li className="flex items-center gap-2"> <CheckSquare className="text-green-600" size={16} /> Manage Entire Workflow</li>
+                            <li className="flex items-center gap-2"><CheckSquare className="text-teal-600" size={16} /> Create Projects</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-teal-600" size={16} /> Add Team Members</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-teal-600" size={16} /> Create Tasks</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-teal-600" size={16} /> Assign Tasks</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-teal-600" size={16} /> Delete Tasks</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-teal-600" size={16} /> View Analytics</li>
+                            <li className="flex items-center gap-2"> <CheckSquare className="text-teal-600" size={16} /> Manage Entire Workflow</li>
                         </ul>
                     </div>
 
                     {/* Member */}
 
-                    <div className="hover:bg-green-50 rounded-lg border border-gray-100 shadow-sm p-8">
+                    <div className="hover:bg-teal-50 rounded-lg border border-gray-100 shadow-sm p-8">
 
                         <h2 className="text-2xl font-bold text-emerald-600 mb-5">
                             Member Access
                         </h2>
 
                         <ul className="space-y-4 text-gray-700">
-                            <li className="flex items-center gap-2"><CheckSquare className="text-green-600" size={16} /> View Assigned Tasks</li>
-                            <li className="flex items-center gap-2"><CheckSquare className="text-green-600" size={16} /> Update Task Status</li>
-                            <li className="flex items-center gap-2"><CheckSquare className="text-green-600" size={16} /> Track Progress</li>
+                            <li className="flex items-center gap-2"><CheckSquare className="text-teal-600" size={16} /> View Assigned Tasks</li>
+                            <li className="flex items-center gap-2"><CheckSquare className="text-teal-600" size={16} /> Update Task Status</li>
+                            <li className="flex items-center gap-2"><CheckSquare className="text-teal-600" size={16} /> Track Progress</li>
                             <li className="flex items-center gap-2"><SquareX className="text-red-600" size={16} /> Access Assigned Projects</li>
                             <li className="flex items-center gap-2"><SquareX className="text-red-600" size={16} /> Cannot Create Projects</li>
                             <li className="flex items-center gap-2"><SquareX className="text-red-600" size={16} /> Cannot Delete Tasks</li>

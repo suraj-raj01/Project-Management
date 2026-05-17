@@ -23,7 +23,7 @@ export default function TaskViewSkeleton() {
             `}</style>
 
             <section className="max-w-full mx-auto">
-                <div className="bg-green-50 rounded-sm shadow border-gray-200 overflow-hidden">
+                <div className="bg-teal-50 rounded-sm shadow border-gray-200 overflow-hidden">
 
                     {/* ── Header ── */}
                     <div className="border-b border-gray-200 p-5">

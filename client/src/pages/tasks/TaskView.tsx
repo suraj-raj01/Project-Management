@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 
 import {
@@ -26,17 +25,10 @@ export default function TaskView() {
     const fetchTaskById = async () => {
         try {
             setFetching(true);
-
-            const { data } = await API.get(
-                `/tasks/${id}`
-            );
-
+            const { data } = await API.get(`/tasks/${id}`);
             setTask(data.task);
-
-        } catch {
-            toast.error(
-                "Failed to load task"
-            );
+        } catch (error: any) {
+            console.log(error.response.data.message)
         } finally {
             setFetching(false);
         }
@@ -60,7 +52,7 @@ export default function TaskView() {
                 return "bg-yellow-100 text-yellow-700";
 
             case "Low":
-                return "bg-green-100 text-green-700";
+                return "bg-teal-100 text-teal-700";
 
             default:
                 return "bg-gray-100 text-gray-700";
@@ -73,10 +65,10 @@ export default function TaskView() {
     ) => {
         switch (status) {
             case "Completed":
-                return "bg-green-100 text-green-700";
+                return "bg-teal-100 text-teal-700";
 
             case "In Progress":
-                return "bg-green-100 text-green-700";
+                return "bg-teal-100 text-teal-700";
 
             case "Pending":
                 return "bg-yellow-100 text-yellow-700";
@@ -89,7 +81,7 @@ export default function TaskView() {
     // Loading State
     if (fetching) {
         return (
-            <TaskViewSkeleton/>
+            <TaskViewSkeleton />
         );
     }
 
@@ -107,7 +99,7 @@ export default function TaskView() {
     return (
         <section className="max-w-full mx-auto">
             {/* Card */}
-            <div className="bg-green-50 rounded-sm shadow border-gray-200 overflow-hidden">
+            <div className="bg-teal-50 rounded-sm shadow border-gray-200 overflow-hidden">
                 {/* Header */}
                 <div className="border-b border-gray-200 p-5">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -166,7 +158,7 @@ export default function TaskView() {
                         <div className="bg-gray-50 rounded-sm p-5">
                             <div className="flex items-center gap-3 mb-3">
                                 <FolderKanban
-                                    className="text-green-500"
+                                    className="text-teal-500"
                                     size={22}
                                 />
 
@@ -200,7 +192,7 @@ export default function TaskView() {
                             </h2>
 
                             <div className="flex items-center gap-4">
-                                <div className="h-14 w-14 rounded-full bg-green-400 text-white flex items-center justify-center text-3xl font-bold uppercase">
+                                <div className="h-14 w-14 rounded-full bg-teal-400 text-white flex items-center justify-center text-3xl font-bold uppercase">
                                     {task
                                         ?.assignedTo
                                         ?.name?.[0] ||
@@ -208,9 +200,9 @@ export default function TaskView() {
                                 </div>
 
                                 <div>
-                                    <h3 title="View profile" className="font-semibold -mb-1 hover:text-green-500 cursor-pointer text-lg uppercase" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
+                                    <h3 title="View profile" className="font-semibold -mb-1 hover:text-teal-500 cursor-pointer text-lg uppercase" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
                                         {
-                                            task ?.assignedTo ?.name
+                                            task?.assignedTo?.name
                                         }
                                     </h3>
 
@@ -236,7 +228,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <CalendarDays
                                         size={18}
-                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
+                                        className="text-teal-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -256,7 +248,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <Flag
                                         size={18}
-                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
+                                        className="text-teal-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -276,7 +268,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <CircleCheckBig
                                         size={18}
-                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
+                                        className="text-teal-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -296,7 +288,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <User
                                         size={18}
-                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
+                                        className="text-teal-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -304,9 +296,9 @@ export default function TaskView() {
                                             Assigned User
                                         </p>
 
-                                        <p title="profile" className="font-medium capitalize cursor-pointer hover:text-green-500" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
+                                        <p title="profile" className="font-medium capitalize cursor-pointer hover:text-teal-500" onClick={() => navigate(`/dashboard/users/${task?.assignedTo?._id}/view`)}>
                                             {
-                                                task ?.assignedTo ?.name
+                                                task?.assignedTo?.name
                                             }
                                         </p>
                                     </div>
@@ -316,7 +308,7 @@ export default function TaskView() {
                                 <div className="flex items-center gap-3">
                                     <Mail
                                         size={18}
-                                        className="text-green-500 border rounded-full h-10 w-10 p-2"
+                                        className="text-teal-500 border rounded-full h-10 w-10 p-2"
                                     />
 
                                     <div>
@@ -335,7 +327,7 @@ export default function TaskView() {
                                 </div>
                             </div>
                             {/* Footer */}
-                            <div className="text-xs rounded-sm text-gray-600 text-center p-3 mt-5 bg-green-100">
+                            <div className="text-xs rounded-sm text-gray-600 text-center p-3 mt-5 bg-teal-100">
                                 Last updated{" "}
                                 {new Date(
                                     task.updatedAt

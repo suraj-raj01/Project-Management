@@ -124,8 +124,8 @@ export default function CreateDiscussion() {
     return (
         <section className="max-w-3xl mx-auto md:p-8">
             <div className="bg-white shadow-lg rounded-md border border-gray-200 md:p-6 p-3">
-                <h1 className="text-2xl text-green-500 font-bold mb-6">
-                  {id?"Update Discussion":"Create Discussion"}  
+                <h1 className="text-2xl text-teal-500 font-bold mb-6">
+                    {id ? "Update Discussion" : "Create Discussion"}
                 </h1>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -144,7 +144,7 @@ export default function CreateDiscussion() {
                             className={`w-full bg-gray-50 border rounded-sm px-4 py-3 outline-none focus:ring-2 resize-none
                                 ${errors.title
                                     ? "border-red-500 focus:ring-red-300"
-                                    : "border-gray-200 focus:ring-green-500"
+                                    : "border-gray-200 focus:ring-teal-500"
                                 }`}
                         />
 
@@ -170,7 +170,7 @@ export default function CreateDiscussion() {
                             className={`w-full bg-gray-50 border rounded-sm px-4 py-3 outline-none focus:ring-2 resize-none
                                 ${errors.description
                                     ? "border-red-500 focus:ring-red-300"
-                                    : "border-gray-200 focus:ring-green-500"
+                                    : "border-gray-200 focus:ring-teal-500"
                                 }`}
                         />
 
@@ -185,7 +185,7 @@ export default function CreateDiscussion() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-green-600 hover:bg-green-700 w-full md:w-auto cursor-pointer text-white px-6 py-2 rounded-sm transition-all disabled:opacity-50"
+                        className="bg-teal-600 hover:bg-teal-700 w-full md:w-auto cursor-pointer text-white px-6 py-2 rounded-sm transition-all disabled:opacity-50"
                     >
                         {loading
                             ? "Submitting..."

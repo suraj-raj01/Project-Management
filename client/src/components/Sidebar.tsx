@@ -100,7 +100,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             {/* Mobile backdrop */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 z-20 bg-green-200/50 backdrop-blur-xs lg:hidden"
+                    className="fixed inset-0 z-20 bg-teal-200/50 backdrop-blur-xs lg:hidden"
                     onClick={onClose}
                 />
             )}
@@ -108,18 +108,31 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             {/* Sidebar panel */}
             <aside
                 className={`
-                    fixed top-0 left-0 z-30 h-full w-70 bg-gray-900 text-white
-                    flex flex-col py-6 px-2 shadow-2xl
-                    transition-transform duration-300 ease-in-out
+                    fixed top-0 left-0 z-30 h-full w-72
+                    bg-gray-950/95 backdrop-blur-xl text-white
+                    flex flex-col py-6 px-3
+                    border-r border-white/10
+                    shadow-md shadow-black/20
+                    transition-all duration-300 ease-in-out
                     ${isOpen ? "translate-x-0" : "-translate-x-full"}
-                    lg:static lg:translate-x-0 lg:z-auto lg:shadow-none lg:w-68
-                `}
-            >
+                    lg:static lg:translate-x-0 lg:z-auto lg:w-72
+                    `}>
                 {/* Header */}
                 <div className="flex items-center justify-between mb-5">
-                    <h1 className="md:text-xl md:pb-0 pb-2 font-bold uppercase w-full">
-                        {user.role === "Admin" ? "Admin Dashboard" : "Dashboard"}
-                    </h1>
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                            <span className="font-bold text-white">{user.role === "Admin" ? "A" : "W"}</span>
+                        </div>
+
+                        <div>
+                            <h1 className="text-lg font-bold tracking-wide">
+                                {user.role === "Admin" ? "Admin Panel" : "Workspace"}
+                            </h1>
+                            <p className="text-xs text-gray-400">
+                                Team Management System
+                            </p>
+                        </div>
+                    </div>
                     <button
                         onClick={onClose}
                         className="lg:hidden p-1 rounded-sm hover:bg-white/10 transition-colors"
@@ -139,9 +152,11 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 end={end}
                                 onClick={handleNavClick}
                                 className={({ isActive }) =>
-                                    `flex items-center gap-3 px-2 py-2.5 rounded-xs text-sm font-medium transition-all duration-150 ${isActive
-                                        ? "bg-green-600 text-white"
-                                        : "text-gray-400 hover:bg-white/10 hover:text-white"
+                                    `group flex items-center gap-3 px-4 py-3 rounded-sm text-sm font-medium 
+                                        transition-all duration-200 relative overflow-hidden
+                                        ${isActive
+                                        ? "bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-sm shadow-teal-900/30"
+                                        : "text-gray-400 hover:bg-white/5 hover:text-white"
                                     }`
                                 }
                             >
@@ -158,9 +173,11 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                 end={end}
                                 onClick={handleNavClick}
                                 className={({ isActive }) =>
-                                    `flex items-center gap-3 px-2 py-2.5 rounded-xs text-sm font-medium transition-all duration-150 ${isActive
-                                        ? "bg-green-600 text-white"
-                                        : "text-gray-400 hover:bg-white/10 hover:text-white"
+                                    `group flex items-center gap-3 px-4 py-3 rounded-sm text-sm font-medium 
+                                        transition-all duration-200 relative overflow-hidden
+                                        ${isActive
+                                        ? "bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-sm shadow-teal-900/30"
+                                        : "text-gray-400 hover:bg-white/5 hover:text-white"
                                     }`
                                 }
                             >
@@ -176,7 +193,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <div className="border-t border-white/10 pt-4 mt-4 flex flex-col gap-3">
                     {user?.name && (
                         <div className="flex items-center gap-3 cursor-pointer" onClick={() => { navigate(`/dashboard/users/${user?._id}/view`) }}>
-                            <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-xs font-bold uppercase shrink-0">
+                            <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-xl font-bold uppercase shrink-0">
                                 {user.name[0]}
                             </div>
                             <div className="min-w-0">
@@ -187,7 +204,10 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                     )}
                     <button
                         onClick={logoutHandler}
-                        className="flex items-center gap-3 px-2 py-2.5 rounded-lg text-sm font-medium text-red-400 bg-red-400/10 hover:bg-red-500/10 hover:text-red-500 transition-all duration-150 w-full"
+                        className="flex items-center justify-center gap-3 px-4 py-3 rounded-sm 
+                        text-sm font-medium text-red-300 bg-red-500/10 
+                        hover:bg-red-500/20 hover:text-red-200
+                        transition-all duration-200 w-full"
                     >
                         <LogOut size={18} strokeWidth={1.8} />
                         Logout

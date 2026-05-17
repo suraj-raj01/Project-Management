@@ -8,7 +8,7 @@ import { AuthProvider } from './contexts/AuthContext'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <AuthProvider>
-    <App />
+      <App />
     </AuthProvider>
     <Toaster
       position="top-center"

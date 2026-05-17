@@ -7,7 +7,7 @@ interface StatCardProps {
     icon: React.ReactNode;
     iconBg: string;
     trend?: string;
-    navigation?:string;
+    navigation?: string;
 }
 
 export function StatCard({
@@ -20,7 +20,7 @@ export function StatCard({
 }: StatCardProps) {
     const navigate = useNavigate();
     return (
-        <div className={`rounded-t-md rounded-b-md px-2 bg-linear-to-t from-gray-100 to-emerald-0 text-white shadow-md border-t-4 border-green-500 md:px-6 py-3 hover:shadow-lg transition-all`}>
+        <div className={`rounded-t-md rounded-b-md px-2 bg-linear-to-t from-gray-100 to-emerald-0 text-white shadow-md border-t-4 border-teal-500 md:px-6 py-3 hover:shadow-lg transition-all`}>
             <div className="cursor-pointer" onClick={() => { navigate(`/dashboard/${navigation}`) }}>
                 <div>
                     <p className="text-sm text-gray-500 font-medium">

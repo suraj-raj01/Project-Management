@@ -54,7 +54,7 @@ export default function Profile() {
     if (loading) {
         return (
             <div className="min-h-130 flex items-center justify-center">
-                <div className="animate-pulse text-green-600 text-lg font-semibold">
+                <div className="animate-pulse text-teal-600 text-lg font-semibold">
                     Loading profile...
                 </div>
             </div>
@@ -75,20 +75,20 @@ export default function Profile() {
         <section className="min-h-screen">
             <div className="max-w-full mx-auto">
                 {/* Profile Header */}
-                <div className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-emerald-50 border border-green-100 p-4 md:p-8 max-w-full mx-auto">
+                <div className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-emerald-50 border border-teal-100 border-b-0 p-4 md:p-8 max-w-full mx-auto">
                     {/* Background Glow */}
-                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-green-200/30 blur-3xl rounded-full" />
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-teal-200/30 blur-3xl rounded-full" />
                     <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-200/20 blur-3xl rounded-full" />
 
                     <div className="relative flex flex-col md:flex-row md:items-center gap-6">
                         {/* Avatar */}
                         <div className="relative">
-                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-6xl font-bold uppercase shadow-lg ring-4 ring-white">
+                            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white text-6xl font-bold uppercase shadow-lg ring-4 ring-white">
                                 {user?.name?.charAt(0)}
                             </div>
 
                             {/* Online Badge */}
-                            <div className="absolute bottom-2 right-2 w-5 h-5 bg-green-500 border-4 border-white rounded-full" />
+                            <div className="absolute bottom-2 right-2 w-5 h-5 bg-teal-500 border-4 border-white rounded-full" />
                         </div>
 
                         {/* User Info */}
@@ -105,7 +105,7 @@ export default function Profile() {
                                 </div>
 
                                 {/* Role Badge */}
-                                <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-md text-sm font-semibold w-fit">
+                                <div className="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-4 py-2 rounded-md text-sm font-semibold w-fit">
                                     <User2 size={16} />
                                     {user?.role}
                                 </div>
@@ -114,7 +114,7 @@ export default function Profile() {
                             {/* User Meta */}
                             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 mt-2 text-gray-600">
                                 <div className="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-md border border-gray-100 shadow-sm">
-                                    <Mail size={18} className="text-green-600" />
+                                    <Mail size={18} className="text-teal-600" />
                                     <span className="text-sm md:text-base">
                                         {user?.email}
                                     </span>
@@ -123,7 +123,7 @@ export default function Profile() {
                                 <div className="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-md border border-gray-100 shadow-sm">
                                     <CalendarDays
                                         size={18}
-                                        className="text-green-600"
+                                        className="text-teal-600"
                                     />
                                     <span className="text-sm md:text-base">
                                         Joined{" "}
@@ -143,7 +143,7 @@ export default function Profile() {
 
                 {/* Discussions */}
                 <div>
-                    <div className="bg-gradient-to-br from-green-50 via-white to-emerald-50 flex items-center justify-between bg-green-200 mb-4">
+                    <div className="bg-gradient-to-br from-teal-50 via-white to-emerald-50 flex items-center justify-between bg-teal-200 mb-4">
                         <h2 className="text-xl font-bold text-gray-800 uppercase px-2 py-3">ALL DISCUSSION POSTS</h2>
                     </div>
                     {discussions?.length === 0 ? (
@@ -158,7 +158,7 @@ export default function Profile() {
                                         key={discussion?._id}
                                         className="md:w-4xl bg-white border-b border-gray-100 mx-auto p-2 md:p-5 hover:shadow-md transition-all"
                                     >
-                                        <h3 className="text-xl font-semibold text-green-900 line-clamp-2">
+                                        <h3 className="text-xl font-semibold text-teal-900 line-clamp-2">
                                             ({index + 1}.) {discussion?.title}
                                         </h3>
 
@@ -209,7 +209,7 @@ export default function Profile() {
                                                             <div className="flex items-center justify-between mb-1">
                                                                 <div className="flex items-center gap-2">
                                                                     <div>
-                                                                        <div className="w-6 h-6 rounded-full bg-gray-600 flex items-center justify-center text-white text-sm font-bold uppercase shadow-lg ">
+                                                                        <div className="w-6 h-6 rounded-full bg-black/50 flex items-center justify-center text-white text-sm font-bold uppercase shadow-lg ">
                                                                             {reply?.user?.name?.charAt(0)}
                                                                         </div>
                                                                     </div>
@@ -219,7 +219,11 @@ export default function Profile() {
                                                                 </div>
 
                                                                 <span className="text-xs text-gray-400">
-                                                                    {new Date(reply?.createdAt).toLocaleDateString()}
+                                                                    {new Date(reply?.createdAt).toLocaleDateString("en-US", {
+                                                                        year: "numeric",
+                                                                        month: "short",
+                                                                        day: "numeric",
+                                                                    })}
                                                                 </span>
                                                             </div>
 
@@ -230,13 +234,13 @@ export default function Profile() {
                                                     )
                                                 )}
                                                 {discussion?.replies?.length > comment && (
-                                                    <button title="See More" onClick={() => { setComment((prev)=> prev + 2) }} className="mt-2 cursor-pointer text-green-500 flex items-center w-full justify-center hover:text-green-700 text-sm">
-                                                       <ChevronsDown/>
+                                                    <button title="See More" onClick={() => { setComment((prev) => prev + 2) }} className="mt-2 cursor-pointer text-teal-500 flex items-center w-full justify-center hover:text-teal-700 text-sm">
+                                                        <ChevronsDown />
                                                     </button>
                                                 )}
                                                 {comment > discussion?.replies?.length && (
-                                                    <button title="See Less" onClick={() => { setComment((prev)=> prev > discussion?.replies?.length? prev - 2 : 2) }} className="mt-2 cursor-pointer text-green-500 flex items-center w-full justify-center hover:text-green-700 text-sm">
-                                                        <ChevronsUp/>
+                                                    <button title="See Less" onClick={() => { setComment((prev) => prev > discussion?.replies?.length ? prev - 2 : 2) }} className="mt-2 cursor-pointer text-teal-500 flex items-center w-full justify-center hover:text-teal-700 text-sm">
+                                                        <ChevronsUp />
                                                     </button>
                                                 )}
                                             </div>

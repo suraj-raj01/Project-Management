@@ -146,16 +146,16 @@ export default function Projects() {
                     <p className="text-gray-500 text-sm">Manage and track your projects</p>
                 </div>
                 <div>
-                    <Link to="/dashboard/projects/create" className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 transition">
+                    <Link to="/dashboard/projects/create" className="bg-teal-500 text-white px-4 py-2 rounded-sm hover:bg-teal-600 transition">
                         Add Project
                     </Link>
                 </div>
             </div>
 
             {/* Projects Table */}
-            <div className="overflow-x-auto rounded-sm rounded-b-xs bg-white border border-green-50">
+            <div className="overflow-x-auto rounded-sm rounded-b-xs bg-white border border-teal-50">
                 <table className="w-full text-sm text-left border-collapse">
-                    <thead className="bg-green-500 text-white">
+                    <thead className="bg-teal-500 text-white">
                         <tr>
                             <th className="px-3 py-4 font-semibold hidden md:block">
                                 Index
@@ -188,7 +188,7 @@ export default function Projects() {
                                 (project: any, index: number) => (
                                     <tr
                                         key={project._id}
-                                        className="border-b border-gray-100 hover:bg-green-50/40 transition"
+                                        className="border-b border-gray-100 hover:bg-teal-50/40 transition"
                                     >
                                         {/* Serial Number */}
                                         <td className="px-3 py-2 text-gray-500 hidden md:block">
@@ -199,7 +199,7 @@ export default function Projects() {
                                         </td>
 
                                         {/* Project Name */}
-                                        <td className="px-3 py-2 bg-green-100 min-w-40">
+                                        <td className="px-3 py-2 bg-teal-100 min-w-40">
                                             <div>
                                                 <h2 className="font-semibold">
                                                     {project.name}
@@ -227,7 +227,7 @@ export default function Projects() {
 
                                         {/* Actions */}
                                         {user?.role === "Admin" && (
-                                            <td className="px-3 py-2 bg-green-100">
+                                            <td className="px-3 py-2 bg-teal-100">
                                                 <div className="flex items-center justify-center">
                                                     {/* Edit */}
                                                     <button
@@ -237,7 +237,7 @@ export default function Projects() {
                                                                 project._id
                                                             )
                                                         }
-                                                        className="p-2 rounded-sm text-green-600 hover:bg-green-50 transition"
+                                                        className="p-2 rounded-sm text-teal-600 hover:bg-teal-50 transition"
                                                     >
                                                         <Edit size={16} />
                                                     </button>
@@ -260,9 +260,9 @@ export default function Projects() {
                                                         onClick={() =>
                                                             navigate(`/dashboard/projects/view/${project._id}`)
                                                         }
-                                                        className="p-2 rounded-sm text-blue-500 hover:bg-blue-50 transition"
+                                                        className="p-2 rounded-sm text-teal-500 hover:bg-teal-50 transition"
                                                     >
-                                                        <Eye size={16} className="text-blue-500" />
+                                                        <Eye size={16} className="text-teal-500" />
                                                     </button>
                                                 </div>
                                             </td>
@@ -291,7 +291,7 @@ export default function Projects() {
             </div>
 
             {paginatedProjects.length > 0 && (
-                <div className="px-2 py-3 border border-gray-300 bg-green-100 text-xs text-gray-800 flex items-center justify-between">
+                <div className="px-2 py-3 border border-gray-300 bg-teal-100 text-xs text-gray-800 flex items-center justify-between">
                     <span>
                         Showing{" "}
                         {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, paginatedProjects.length)}
@@ -300,7 +300,7 @@ export default function Projects() {
                         {" "}of {paginatedProjects.length} task{paginatedProjects.length !== 1 ? "s" : ""}
                     </span>
                     {paginatedProjects.length < projects.length ? (
-                        <span className="text-green-400">(Filtered from {projects.length} task)</span>
+                        <span className="text-teal-400">(Filtered from {projects.length} task)</span>
                     ) : null}
                 </div>
             )}
@@ -337,7 +337,7 @@ export default function Projects() {
                                     onClick={() => handlePageChange(page)}
                                     className={`w-10 h-7 rounded-sm text-sm font-semibold transition
                                         ${currentPage === page
-                                            ? "bg-green-600 text-white"
+                                            ? "bg-teal-600 text-white"
                                             : "bg-white border hover:bg-gray-50"
                                         }
                                     `} >

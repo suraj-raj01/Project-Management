@@ -135,10 +135,10 @@ export default function Login() {
     };
 
     return (
-        <section className="relative overflow-hidden -mt-15 pt-18 min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-emerald-100 px-4 py-5">
+        <section className="relative overflow-hidden -mt-15 pt-18 min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 via-white to-emerald-100 px-4 py-5">
             {/* Background Effects */}
 
-            <div className="absolute top-0 left-0 w-72 h-72 bg-green-300/30 blur-3xl rounded-full" />
+            <div className="absolute top-0 left-0 w-72 h-72 bg-teal-300/30 blur-3xl rounded-full" />
 
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-300/30 blur-3xl rounded-full" />
 
@@ -148,7 +148,7 @@ export default function Login() {
 
                 {/* Left Content */}
 
-                <div className="hidden lg:flex flex-col justify-center p-10 bg-gradient-to-br from-green-500 to-emerald-700 text-white relative overflow-hidden">
+                <div className="hidden lg:flex flex-col justify-center p-10 bg-gradient-to-br from-teal-500 to-emerald-700 text-white relative overflow-hidden">
 
                     <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
 
@@ -258,7 +258,7 @@ export default function Login() {
                                                     e.target.value,
                                             })
                                         }
-                                        className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:ring-4 focus:ring-green-100 focus:border-green-400 transition"
+                                        className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:ring-4 focus:ring-teal-100 focus:border-teal-400 transition"
                                     />
                                 </div>
 
@@ -300,7 +300,7 @@ export default function Login() {
                                                     e.target.value,
                                             })
                                         }
-                                        className="w-full pl-12 pr-14 py-3 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:ring-4 focus:ring-green-100 focus:border-green-400 transition"
+                                        className="w-full pl-12 pr-14 py-3 rounded-full border border-gray-200 bg-white/80 focus:outline-none focus:ring-4 focus:ring-teal-100 focus:border-teal-400 transition"
                                     />
 
                                     <button
@@ -341,7 +341,7 @@ export default function Login() {
 
                                 <Link
                                     to="/change-password"
-                                    className="text-sm font-semibold text-green-600 hover:text-green-700 hover:underline"
+                                    className="text-sm font-semibold text-teal-600 hover:text-teal-700 hover:underline"
                                 >
                                     Change Password
                                 </Link>
@@ -351,7 +351,7 @@ export default function Login() {
 
                             <button
                                 disabled={loading}
-                                className="group w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 disabled:opacity-50"
+                                className="group w-full flex items-center justify-center gap-2 bg-gradient-to-r from-teal-500 to-emerald-600 text-white py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 disabled:opacity-50"
                             >
                                 {loading
                                     ? "Logging in..."
@@ -373,7 +373,7 @@ export default function Login() {
 
                                 <Link
                                     to="/register"
-                                    className="ml-2 font-semibold text-green-600 hover:text-green-700 hover:underline"
+                                    className="ml-2 font-semibold text-teal-600 hover:text-teal-700 hover:underline"
                                 >
                                     Register
                                 </Link>

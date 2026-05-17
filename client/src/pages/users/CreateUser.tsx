@@ -53,7 +53,7 @@ export default function CreateUser() {
                 toast.success("User Created Successfully");
             }
             navigate("/dashboard/users");
-        } catch (error:any) {
+        } catch (error: any) {
             // console.log(error);
             toast.error(error?.response?.data?.message);
         } finally {
@@ -67,7 +67,7 @@ export default function CreateUser() {
                 onSubmit={handleSubmit}
                 className=" p-8 border border-gray-200 rounded-sm shadow-md w-full max-w-2xl"
             >
-                <h1 className="text-3xl font-bold mb-6 text-green-800 text-center">
+                <h1 className="text-3xl font-bold mb-6 text-teal-800 text-center">
                     {id ? ("Update Member") : ("Create Member")}
                 </h1>
                 <input
@@ -118,7 +118,7 @@ export default function CreateUser() {
 
                 <button
                     type="submit"
-                    className="w-full bg-green-500 text-white py-3 rounded-sm"
+                    className="w-full bg-teal-500 text-white py-3 rounded-sm"
                     disabled={loading}
                 >
                     {loading ? "Creating..." : (id ? "Update Member" : "Create Member")}

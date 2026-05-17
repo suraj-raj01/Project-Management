@@ -27,7 +27,7 @@ interface DashboardStats {
     totalUsers?: number;
 }
 
-// ─── Dashboard ────────────────────────────────────────────────────────────────
+// ─── Dashboard 
 
 export default function AdminDashboard() {
     const [loading, setLoading] = useState(false);
@@ -82,13 +82,13 @@ export default function AdminDashboard() {
                             <h2 className="text-xl font-bold text-gray-700">Stats Overview</h2>
                             <p className="text-gray-500 text-sm">Manage and track your tasks and projects</p>
                         </div>
-                        
+
                         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 md:gap-4">
                             <StatCard
                                 label="Total Tasks"
                                 value={stats.totalTasks}
-                                icon={<ListChecks size={20} className="text-green-600" />}
-                                iconBg="bg-green-200"
+                                icon={<ListChecks size={20} className="text-teal-600" />}
+                                iconBg="bg-teal-200"
                                 trend="All tasks"
                                 navigation=""
                             />
@@ -103,16 +103,16 @@ export default function AdminDashboard() {
                             <StatCard
                                 label="In Progress"
                                 value={stats.inProgressTasks}
-                                icon={<Activity size={20} className="text-green-600" />}
-                                iconBg="bg-green-200"
+                                icon={<Activity size={20} className="text-teal-600" />}
+                                iconBg="bg-teal-200"
                                 trend="Active tasks"
                                 navigation=""
                             />
                             <StatCard
                                 label="Completed"
                                 value={stats.doneTasks}
-                                icon={<CheckCircle2 size={20} className="text-green-600" />}
-                                iconBg="bg-green-200"
+                                icon={<CheckCircle2 size={20} className="text-teal-600" />}
+                                iconBg="bg-teal-200"
                                 trend="Successfully done"
                                 navigation=""
                             />
@@ -151,7 +151,7 @@ export default function AdminDashboard() {
                             <h3 className="text-lg text-gray-700 font-bold">Task Completion Rate</h3>
                             <p className="text-gray-500 text-sm">Track your team's task completion rate and progress over time</p>
                         </div>
-                        <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
+                        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                             <CompletionRate completionRate={completionPct} title={"Completion Rate"} />
                             <CompletionRate completionRate={pendingPct} title={"Pending Rate"} />
                             <CompletionRate completionRate={progressPct} title={"Progress Rate"} />

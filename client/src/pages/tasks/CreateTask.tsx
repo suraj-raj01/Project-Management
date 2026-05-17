@@ -139,7 +139,7 @@ export default function CreateTask() {
     if (fetching) {
         return (
             <div className="flex items-center justify-center py-24 text-gray-400">
-                <Loader2 size={28} className="animate-spin mr-2 text-green-500" />
+                <Loader2 size={28} className="animate-spin mr-2 text-teal-500" />
                 <span className="text-sm">Loading task…</span>
             </div>
         );
@@ -163,7 +163,7 @@ export default function CreateTask() {
                 </div>
                 <Link
                     to="/dashboard/tasks"
-                    className="flex w-full md:w-fit justify-center items-center gap-1.5 text-md rounded-sm bg-green-600 px-4 py-2 text-white hover:bg-green-700 transition-colors"
+                    className="flex w-full md:w-fit justify-center items-center gap-1.5 text-md rounded-sm bg-teal-600 px-4 py-2 text-white hover:bg-teal-700 transition-colors"
                 >
                     See All Tasks
                 </Link>
@@ -172,7 +172,7 @@ export default function CreateTask() {
             {/* Form */}
             <form
                 onSubmit={handleSubmit}
-                className="mx-auto border border-gray-200 bg-green-50/30 p-3 md:p-6 md:max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 rounded-sm shadow-sm"
+                className="mx-auto border border-gray-200 bg-teal-50/30 p-3 md:p-6 md:max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-3 rounded-sm shadow-sm"
             >
 
                 {/* Task Title */}
@@ -185,7 +185,7 @@ export default function CreateTask() {
                         required
                         value={formData.title}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
+                        className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
                     />
                 </div>
 
@@ -198,7 +198,7 @@ export default function CreateTask() {
                         rows={4}
                         value={formData.description}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
+                        className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm resize-none focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
                     />
                 </div>
 
@@ -212,7 +212,7 @@ export default function CreateTask() {
                         required
                         value={formData.dueDate}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
+                        className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
                     />
                 </div>
 
@@ -224,7 +224,7 @@ export default function CreateTask() {
                         name="priority"
                         value={formData.priority}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
+                        className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
                     >
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
@@ -240,7 +240,7 @@ export default function CreateTask() {
                         name="assignedTo"
                         value={formData.assignedTo}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
+                        className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
                     >
                         <option value="">Select User</option>
                         {users.map((user) => (
@@ -259,7 +259,7 @@ export default function CreateTask() {
                         name="project"
                         value={formData.project}
                         onChange={handleChange}
-                        className="w-full border border-gray-200 bg-green-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-400"
+                        className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
                     >
                         <option value="">Select Project</option>
                         {projects.map((project) => (
@@ -274,7 +274,7 @@ export default function CreateTask() {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="col-span-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 disabled:opacity-60 transition-colors text-white px-6 py-3 mt-3 rounded-sm font-medium text-sm cursor-pointer"
+                    className="col-span-2 flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 disabled:opacity-60 transition-colors text-white px-6 py-3 mt-3 rounded-sm font-medium text-sm cursor-pointer"
                 >
                     {loading && <Loader2 size={16} className="animate-spin" />}
                     {loading

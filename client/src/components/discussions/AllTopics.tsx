@@ -71,7 +71,7 @@ export default function AllTopics() {
 
     if (!loading && discussions.length === 0) {
         return (
-            <div className="p-10 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 flex items-center justify-center rounded-2xl text-gray-600 shadow-sm">
+            <div className="p-10 bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 flex items-center justify-center rounded-2xl text-gray-600 shadow-sm">
                 No discussions yet. Start the conversation 🚀
             </div>
         );
@@ -102,17 +102,17 @@ export default function AllTopics() {
                 discussions.map((discussion) => (
                     <div
                         key={discussion._id}
-                        className="group bg-white hover:border-green-200 hover:shadow-lg transition-all duration-300 md:p-5 p-2"
+                        className="group bg-white hover:border-teal-200 hover:shadow-lg transition-all duration-300 md:p-5 p-2"
                     >
 
                         <div className="flex items-center justify-between flex-wrap w-fit gap-2">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
                                 {discussion?.createdBy?.name
                                     ?.charAt(0)
                                     ?.toUpperCase()}
                             </div>
                             <div className="flex flex-col items-start gap-0">
-                                <h3 title="View Profile" onClick={() => navigate(`/dashboard/discussion/profile/${discussion?.createdBy._id}`)} className="cursor-pointer hover:text-green-600 font-semibold text-gray-800 uppercase tracking-wide text-sm">
+                                <h3 title="View Profile" onClick={() => navigate(`/dashboard/discussion/profile/${discussion?.createdBy._id}`)} className="cursor-pointer hover:text-teal-600 font-semibold text-gray-800 uppercase tracking-wide text-sm">
                                     {discussion?.createdBy?.name}
                                 </h3>
                                 <span className="text-xs text-gray-500">
@@ -127,7 +127,7 @@ export default function AllTopics() {
                         {/* Top */}
                         <div className="md:max-w-4xl mt-1 flex flex-col md:flex-row md:items-start md:justify-between gap-3">
                             <div className="space-y-2">
-                                <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                                <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-teal-700 transition-colors">
                                     {discussion.title}
                                 </h3>
 
@@ -137,7 +137,7 @@ export default function AllTopics() {
                             </div>
 
                             {/* <div className="flex flex-col items-start md:items-end md:min-w-50 gap-2">
-                                    <span className="px-3 py-1 font-semibold bg-green-100 text-green-700 text-xs font-medium rounded-sm">
+                                    <span className="px-3 py-1 font-semibold bg-teal-100 text-teal-700 text-xs font-medium rounded-sm">
                                         Active Discussion
                                     </span>
                                 </div> */}
@@ -148,7 +148,7 @@ export default function AllTopics() {
                             {/* Comments */}
                             <Link
                                 to={`/dashboard/discussion/comments/${discussion._id}`}
-                                className="flex items-center gap-2 text-sm text-gray-600 hover:text-green-600 transition-colors"
+                                className="flex items-center gap-2 text-sm text-gray-600 hover:text-teal-600 transition-colors"
                             >
                                 <MessageCircle size={18} />
                                 <span className="font-semibold">
@@ -166,10 +166,10 @@ export default function AllTopics() {
                                 }
                                 className={`flex items-center gap-2 text-sm transition-all ${likeLoading === discussion._id
                                     ? "text-gray-400 cursor-not-allowed"
-                                    : "text-gray-600 hover:text-green-600 cursor-pointer font-semibold"
+                                    : "text-gray-600 hover:text-teal-600 cursor-pointer font-semibold"
                                     }`}
                             >
-                                <ThumbsUp size={18} className={discussion.likes.length > 0 ? "fill-green-500 text-white" : "text-green-600"} />
+                                <ThumbsUp size={18} className={discussion.likes.length > 0 ? "fill-teal-500 text-white" : "text-teal-600"} />
 
                                 {likeLoading === discussion._id ? (
                                     <span className="animate-pulse font-semibold">
@@ -185,7 +185,7 @@ export default function AllTopics() {
                             {/* Reply */}
                             <Link
                                 to={`/dashboard/discussion/reply/${discussion._id}`}
-                                className="flex items-center gap-2 text-sm text-gray-600 hover:text-green-600 transition-colors"
+                                className="flex items-center gap-2 text-sm text-gray-600 hover:text-teal-600 transition-colors"
                             >
                                 <Reply size={18} />
                                 <span className="font-semibold">Reply</span>
@@ -204,7 +204,7 @@ export default function AllTopics() {
                             setCurrentPage((prev) => prev - 1)
                         }
                         disabled={currentPage === 1}
-                        className="px-4 py-1 font-semibold rounded-sm border border-gray-400 bg-white text-gray-700 hover:bg-green-50 hover:border-green-300 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="px-4 py-1 font-semibold rounded-sm border border-gray-400 bg-white text-gray-700 hover:bg-teal-50 hover:border-teal-300 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                     >
                         Previous
                     </button>
@@ -218,8 +218,8 @@ export default function AllTopics() {
                                 key={page}
                                 onClick={() => setCurrentPage(page)}
                                 className={`w-10 h-8 rounded-sm text-sm font-semibold transition-all ${currentPage === page
-                                    ? "bg-green-600 text-white shadow-md"
-                                    : "bg-white border border-gray-400 text-gray-700 hover:bg-green-50 hover:border-green-300"
+                                    ? "bg-teal-600 text-white shadow-md"
+                                    : "bg-white border border-gray-400 text-gray-700 hover:bg-teal-50 hover:border-teal-300"
                                     }`}
                             >
                                 {page}
@@ -233,7 +233,7 @@ export default function AllTopics() {
                             setCurrentPage((prev) => prev + 1)
                         }
                         disabled={currentPage === totalPages}
-                        className="px-4 py-1 font-semibold rounded-sm border border-gray-400 bg-white text-gray-700 hover:bg-green-50 hover:border-green-300 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="px-4 py-1 font-semibold rounded-sm border border-gray-400 bg-white text-gray-700 hover:bg-teal-50 hover:border-teal-300 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                     >
                         Next
                     </button>
