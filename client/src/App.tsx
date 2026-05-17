@@ -11,6 +11,7 @@ import CreateDiscussion from "./components/discussions/CreateTopic";
 import Reply from "./components/discussions/Reply";
 import Comments from "./components/discussions/Comments";
 import Profile from "./components/Profile";
+import ProjectView from "./pages/projects/ProjectView";
 
 // Layouts
 const Layout = lazy(() => import("./layouts/Layout"));
@@ -75,6 +76,7 @@ export default function App() {
             <Route path="projects" element={<Projects />} />
             <Route path="projects/create" element={<ProjectForm />} />
             <Route path="projects/edit/:id" element={<ProjectForm />} />
+            <Route path="projects/view/:id" element={<ProjectView />} />
 
             {/* Users */}
             <Route path="users" element={<Users />} />

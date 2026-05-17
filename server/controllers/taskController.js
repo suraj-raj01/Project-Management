@@ -15,7 +15,7 @@ export const createTask = async (req, res) => {
 
 export const getAllTasks = async (req, res) => {
     try {
-        const tasks = await Task.find().populate("assignedTo").populate("project");
+        const tasks = await Task.find().populate("assignedTo").populate("project").sort({createdAt: -1})
         res.status(200).json({tasks, success: true});
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -24,7 +24,7 @@ export const getAllTasks = async (req, res) => {
 
 export const getTasks = async (req, res) => {
     try {
-        const tasks = await Task.find({ assignedTo: req.query.userId}).populate("assignedTo", "name email").populate("project", "name description");
+        const tasks = await Task.find({ assignedTo: req.query.userId}).populate("assignedTo", "name email").populate("project", "name description").sort({createdAt: -1})
         res.status(200).json({tasks, success: true});
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -35,7 +35,7 @@ export const getTaskById = async (req, res) => {
     try {
         const task = await Task.findById(req.params.id)
             .populate("assignedTo", "name email")
-            .populate("project", "name description");
+            .populate("project", "name description").sort({createdAt: -1})
 
         if (!task) {
             return res.status(404).json({ message: "Task not found" });

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import API from "../../services/api";
-import { AlertCircle, Edit, Trash2 } from "lucide-react";
+import { AlertCircle, Edit, Eye, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import TableSkeleton from "../skeleton/TableSkeleton";
@@ -157,7 +157,7 @@ export default function Projects() {
                 <table className="w-full text-sm text-left border-collapse">
                     <thead className="bg-green-500 text-white">
                         <tr>
-                            <th className="px-3 py-4 font-semibold">
+                            <th className="px-3 py-4 font-semibold hidden md:block">
                                 Index
                             </th>
 
@@ -191,7 +191,7 @@ export default function Projects() {
                                         className="border-b border-gray-100 hover:bg-green-50/40 transition"
                                     >
                                         {/* Serial Number */}
-                                        <td className="px-3 py-2 text-gray-500">
+                                        <td className="px-3 py-2 text-gray-500 hidden md:block">
                                             {(currentPage - 1) *
                                                 ITEMS_PER_PAGE +
                                                 index +
@@ -199,7 +199,7 @@ export default function Projects() {
                                         </td>
 
                                         {/* Project Name */}
-                                        <td className="px-3 py-2 bg-green-100">
+                                        <td className="px-3 py-2 bg-green-100 min-w-40">
                                             <div>
                                                 <h2 className="font-semibold">
                                                     {project.name}
@@ -209,13 +209,13 @@ export default function Projects() {
 
                                         {/* Description */}
                                         <td className="px-3 py-2 max-w-sm">
-                                            <p className="line-clamp-2">
+                                            <p className="line-clamp-2 min-w-60">
                                                 {project.description}
                                             </p>
                                         </td>
 
                                         {/* Created At */}
-                                        <td className="px-3 py-2 text-gray-500">
+                                        <td className="px-3 py-2 text-gray-500 min-w-30">
                                             {new Date(
                                                 project.createdAt
                                             ).toLocaleDateString("en-Us", {
@@ -228,7 +228,7 @@ export default function Projects() {
                                         {/* Actions */}
                                         {user?.role === "Admin" && (
                                             <td className="px-3 py-2 bg-green-100">
-                                                <div className="flex items-center justify-center gap-2">
+                                                <div className="flex items-center justify-center">
                                                     {/* Edit */}
                                                     <button
                                                         title="Edit"
@@ -253,6 +253,16 @@ export default function Projects() {
                                                         className="p-2 rounded-sm text-red-500 hover:bg-red-50 transition"
                                                     >
                                                         <Trash2 size={16} className="text-red-500" />
+                                                    </button>
+                                                    {/* View */}
+                                                    <button
+                                                        title="View"
+                                                        onClick={() =>
+                                                            navigate(`/dashboard/projects/view/${project._id}`)
+                                                        }
+                                                        className="p-2 rounded-sm text-blue-500 hover:bg-blue-50 transition"
+                                                    >
+                                                        <Eye size={16} className="text-blue-500" />
                                                     </button>
                                                 </div>
                                             </td>

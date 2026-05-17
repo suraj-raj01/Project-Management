@@ -181,20 +181,20 @@ export default function Users() {
                 </div>
                 <Link
                     to="/dashboard/create-user"
-                    className="bg-green-600 hover:bg-green-700 transition-colors text-white px-4 py-2 rounded-sm text-sm font-semibold"
+                    className="bg-green-600 hover:bg-green-700 text-center transition-colors text-white px-4 py-2 rounded-sm text-sm font-semibold"
                 >
                     + Create Member
                 </Link>
             </div>
 
             {/* Summary cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {[
                     { label: "Total Users", value: users.length, icon: <UsersIcon size={18} className="text-green-500" />, bg: "bg-green-50" },
                     { label: "Admins", value: adminCount, icon: <Shield size={18} className="text-purple-500" />, bg: "bg-purple-50" },
                     { label: "Members", value: memberCount, icon: <User size={18} className="text-green-500" />, bg: "bg-green-50" },
                 ].map(({ label, value, icon, bg }) => (
-                    <div key={label} className="bg-green-50/40 rounded-sm border border-gray-100 shadow-sm p-5 flex items-center gap-4">
+                    <div key={label} className="bg-green-50/40 rounded-sm border border-gray-100 shadow-sm md:p-5 p-2 flex items-center gap-4">
                         <div className={`w-11 h-11 rounded-sm flex items-center justify-center ${bg}`}>{icon}</div>
                         <div>
                             <p className="text-sm text-gray-500">{label}</p>

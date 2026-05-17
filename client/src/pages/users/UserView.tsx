@@ -169,7 +169,7 @@ export default function UserView() {
                 </div>
                 <>
                     {/* User Card */}
-                    <div className="bg-green-50/40 border-2 border-green-100 rounded-sm p-3">
+                    <div className="to-gray-50 border-2 border-green-100 rounded-sm p-3">
                         <div className="flex sm:flex-row sm:items-center gap-3 md:gap-8">
                             {/* Avatar */}
                             <div className="h-23 w-23 rounded-full border-3 bg-green-100 flex items-center justify-center text-5xl font-bold text-green-800">
@@ -252,7 +252,7 @@ export default function UserView() {
                     </div>
 
                     {/* Tasks Section */}
-                    <div className=" rounded-sm bg-gray-50">
+                    <div className=" rounded-sm">
                         <div className="flex items-center justify-between mb-4">
                             <h2 className="text-xl font-bold text-green-800">
                                 Assigned Tasks
