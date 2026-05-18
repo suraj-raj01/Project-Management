@@ -31,7 +31,7 @@ export default function Comments() {
 
     const navigate = useNavigate();
 
-    if (loading) return <div className="space-y-4 md:p-8">
+    if (loading) return <div className="space-y-4 md:p-6">
         <div>
             <div className="animate-pulse h-6 w-50 bg-gray-200 rounded mb-3" />
             <div className="animate-pulse h-10 md:w-150 bg-gray-200 rounded mb-3" />
@@ -66,7 +66,7 @@ export default function Comments() {
                 {/* Main Discussion Card */}
                 <div className="bg-white rounded-md overflow-hidden">
                     {/* Header */}
-                    <div className="md:p-8">
+                    <div className="md:p-6">
                         <div className="flex bg-teal-200/50 text-teal-700 w-fit px-3.5 py-1.5 text-xs md:text-sm rounded-sm items-center gap-2">
                             <MessageCircle size={22} />
                             <span className="text-xs uppercase tracking-wider font-semibold">
@@ -107,7 +107,7 @@ export default function Comments() {
                     </div>
 
                     {/* Replies Section */}
-                    <div className="md:p-8 py-5">
+                    <div className="md:p-6 py-5">
                         <div className="flex items-center justify-between mb-6">
                             <h2 className="text-xl font-bold text-gray-500">
                                 Comments ({discussion?.replies?.length})

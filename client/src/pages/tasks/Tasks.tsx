@@ -181,7 +181,7 @@ export default function Tasks() {
                 return "bg-yellow-400";
 
             case "In Progress":
-                return "bg-teal-600 text-white";
+                return "bg-orange-400 text-white";
 
             case "Completed":
                 return "bg-teal-600 text-white";

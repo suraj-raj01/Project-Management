@@ -13,7 +13,7 @@ export default function UserViewSkeleton() {
 
                 {/* User Card */}
                 <div className="bg-teal-50/40 border-2 border-teal-100 rounded-sm p-4">
-                    <div className="flex sm:flex-row sm:items-center gap-4 md:gap-8">
+                    <div className="flex sm:flex-row sm:items-center gap-4 md:gap-10">
 
                         {/* Avatar */}
                         <div className="h-24 w-24 rounded-full bg-gray-200" />

@@ -6,14 +6,14 @@ export default function TableSkeleton({
     columns?: number;
 }) {
     return (
-        <div className="w-full overflow-hidden rounded-sm border border-gray-200 bg-white shadow-sm animate-pulse">
+        <div className="w-full overflow-hidden rounded-sm bg-white animate-pulse">
             {/* Header */}
-            <div className="border-b flex items-center justify-between border-gray-100 bg-gray-50 px-6 py-5">
+            <div className="border-b flex items-center justify-between border-gray-100 bg-gray-50 px-2 py-5">
                 <div className="flex flex-col gap-1">
-                    <div className="h-8 w-52 rounded-md bg-gray-200" />
-                    <div className="h-4 w-70 rounded-md bg-gray-200" />
+                    <div className="h-8 md:w-52 w-35 rounded-md bg-gray-200" />
+                    <div className="h-4 md:w-70 w-45 rounded-md bg-gray-200" />
                 </div>
-                <div className="h-8 w-52 rounded-md bg-gray-200" />
+                <div className="h-8 md:w-52 w-30 rounded-md bg-gray-200" />
             </div>
             {/* Table */}
 
@@ -26,7 +26,7 @@ export default function TableSkeleton({
                             {Array.from({ length: columns }).map((_, i) => (
                                 <th
                                     key={i}
-                                    className="px-6 py-2"
+                                    className="px-2 py-2"
                                 >
                                     <div className="h-4 w-24 rounded-md bg-gray-200" />
                                 </th>
@@ -45,7 +45,7 @@ export default function TableSkeleton({
                                 {Array.from({ length: columns }).map((_, colIndex) => (
                                     <td
                                         key={colIndex}
-                                        className="px-6 py-2"
+                                        className="px-2 py-2"
                                     >
 
                                         {/* Avatar + Text */}
@@ -92,7 +92,7 @@ export default function TableSkeleton({
 
             {/* Footer Pagination */}
 
-            <div className="flex items-center justify-between border-t gap-3 border-gray-100 px-6 py-4">
+            <div className="flex items-center justify-between border-t gap-3 border-gray-100 px-2 py-4">
                 <div className="flex items-center gap-2">
                     <div className="h-8 w-20 rounded-sm bg-gray-200" />
                     <div className="h-8 w-10 rounded-sm bg-gray-100" />

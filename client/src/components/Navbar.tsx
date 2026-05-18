@@ -32,11 +32,11 @@ export default function Navbar() {
                         </div>
 
                         <div>
-                            <h1 className="text-lg hidden md:block font-extrabold md:text-xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-500 text-transparent bg-clip-text">
-                                Team Task Management
+                            <h1 className="text-lg uppercase hidden md:block font-extrabold md:text-xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-500 text-transparent bg-clip-text">
+                                Team Management
                             </h1>
-                            <h1 className="text-lg md:hidden -mb-1 md:text-2xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-500 text-transparent bg-clip-text">
-                                TTM
+                            <h1 className="text-lg uppercase md:hidden -mb-1 md:text-2xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-500 text-transparent bg-clip-text">
+                                Team Management
                             </h1>
 
                             <p className="text-xs text-gray-500">
@@ -100,7 +100,7 @@ export default function Navbar() {
                         onClick={() =>
                             setMobileMenu(!mobileMenu)
                         }
-                        className="md:hidden p-2 rounded-sm bg-gray-100 hover:bg-gray-200 transition"
+                        className="md:hidden p-2 rounded-sm bg-gray-50 hover:bg-gray-100 transition"
                     >
                         {mobileMenu ? (
                             <X size={22} />

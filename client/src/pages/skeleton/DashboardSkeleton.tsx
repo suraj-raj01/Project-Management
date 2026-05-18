@@ -29,14 +29,14 @@ function CompletionRateSkeleton() {
     return (
         <section className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
             <div className="bg-white border border-teal-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 justify-between">
                     <Skeleton className="h-4 w-40" />
                     <Skeleton className="h-4 w-10" />
                 </div>
                 <Skeleton className="h-3 w-full rounded-full" />
             </div>
             <div className="bg-white border border-teal-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 justify-between">
                     <Skeleton className="h-4 w-40" />
                     <Skeleton className="h-4 w-10" />
                 </div>

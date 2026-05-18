@@ -193,8 +193,8 @@ export default function UserDashboard() {
                                                 className={`px-3 py-1 text-xs md:w-full rounded-sm font-medium ${task.priority === "High"
                                                     ? "bg-red-100 text-red-600"
                                                     : task.priority === "Medium"
-                                                        ? "bg-yellow-100 text-yellow-700"
-                                                        : "bg-teal-400 text-white"
+                                                        ? "bg-yellow-200 text-yellow-700"
+                                                        : "bg-teal-200 text-teal-800"
                                                     }`}
                                             >
                                                 {task.priority}
@@ -203,7 +203,7 @@ export default function UserDashboard() {
                                                 className={`px-3 py-1 text-xs rounded-sm md:w-22 w-25 text-center font-medium ${task.status === "Completed"
                                                     ? "bg-teal-500 text-white"
                                                     : task.status === "In Progress"
-                                                        ? "bg-teal-500 text-white"
+                                                        ? "bg-orange-500 text-white"
                                                         : "bg-yellow-500 text-white"
                                                     }`}
                                             >
@@ -217,7 +217,7 @@ export default function UserDashboard() {
 
                         {userTasks && userTasks.length > 3 ? (
                             <div className="w-full flex items-center py-5">
-                                <Link to='/dashboard/usertasks' className="w-full md:w-fit flex items-center justify-center gap-2 mx-auto">
+                                <Link to='/dashboard/usertasks' className="w-full md:w-fit flex text-teal-600 text-sm font-semibold items-center justify-center gap-2 mx-auto">
                                     Show More <ChevronsDown size={18} />
                                 </Link>
                             </div>

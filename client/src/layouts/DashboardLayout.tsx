@@ -39,7 +39,7 @@ export default function DashboardLayout() {
 
                 {/* Top Navbar */}
                 <header className="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-6 py-3 
-                    bg-white/80 backdrop-blur-xl border-b border-gray-200/60 shadow-sm shrink-0">
+                    bg-white/40 backdrop-blur-sm border-b border-gray-200/60 shadow-sm shrink-0">
 
                     {/* Left */}
                     <div className="flex items-center gap-3">
@@ -79,7 +79,7 @@ export default function DashboardLayout() {
                         <button
                             className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-300 
                             text-white text-xl font-bold uppercase flex items-center justify-center 
-                            shadow-md shadow-teal-200 hover:scale-105 transition-all"
+                            shadow-md shadow-teal-100 hover:scale-105 transition-all"
                             title={userName}
                         >
                             {userInitial}

@@ -75,7 +75,7 @@ export default function Profile() {
         <section className="min-h-screen">
             <div className="max-w-full mx-auto">
                 {/* Profile Header */}
-                <div className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-emerald-50 border border-teal-100 border-b-0 p-4 md:p-8 max-w-full mx-auto">
+                <div className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-emerald-50 border border-teal-100 border-b-0 p-4 md:p-8 max-w-5xl mx-auto">
                     {/* Background Glow */}
                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-teal-200/30 blur-3xl rounded-full" />
                     <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-200/20 blur-3xl rounded-full" />
@@ -139,24 +139,22 @@ export default function Profile() {
                             </div>
                         </div>
                     </div>
+                    <h2 className="text-xl mt-8 font-bold text-teal-800 uppercase px-2">ALL DISCUSSION POSTS</h2>
                 </div>
 
                 {/* Discussions */}
-                <div>
-                    <div className="bg-gradient-to-br from-teal-50 via-white to-emerald-50 flex items-center justify-between bg-teal-200 mb-4">
-                        <h2 className="text-xl font-bold text-gray-800 uppercase px-2 py-3">ALL DISCUSSION POSTS</h2>
-                    </div>
+                <div className="mt-7">
                     {discussions?.length === 0 ? (
                         <div className="bg-white rounded-sm border border-gray-100 p-10 text-center text-gray-500">
                             No discussions found
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 gap-5">
+                        <div className="grid grid-cols-1 md:gap-6 gap-3">
                             {discussions?.map(
                                 (discussion: any, index: number) => (
                                     <div
                                         key={discussion?._id}
-                                        className="md:w-4xl bg-white border-b border-gray-100 mx-auto p-2 md:p-5 hover:shadow-md transition-all"
+                                        className="md:w-5xl mx-auto bg-white border border-gray-100 p-2 rounded-md md:p-5 hover:shadow-md transition-all"
                                     >
                                         <h3 className="text-xl font-semibold text-teal-900 line-clamp-2">
                                             ({index + 1}.) {discussion?.title}
@@ -209,11 +207,11 @@ export default function Profile() {
                                                             <div className="flex items-center justify-between mb-1">
                                                                 <div className="flex items-center gap-2">
                                                                     <div>
-                                                                        <div className="w-6 h-6 rounded-full bg-black/50 flex items-center justify-center text-white text-sm font-bold uppercase shadow-lg ">
+                                                                        <div className="w-6 h-6 rounded-full bg-teal-900/70 flex items-center justify-center text-white text-sm font-bold uppercase shadow-lg ">
                                                                             {reply?.user?.name?.charAt(0)}
                                                                         </div>
                                                                     </div>
-                                                                    <p onClick={() => { navigate(`/dashboard/discussion/profile/${reply?.user?._id}`) }} className="font-medium text-sm text-gray-800 uppercase cursor-pointer hover:underline">
+                                                                    <p onClick={() => { navigate(`/dashboard/discussion/profile/${reply?.user?._id}`) }} className="font-medium text-sm text-gray-800 uppercase cursor-pointer hover:text-teal-800 hover:underline">
                                                                         {reply?.user?.name}
                                                                     </p>
                                                                 </div>

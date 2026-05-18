@@ -30,7 +30,7 @@ const PRIORITY_STYLES: Record<string, string> = {
 
 const STATUS_STYLES: Record<string, string> = {
     Pending: "bg-yellow-100 text-yellow-700",
-    "In Progress": "bg-teal-500 text-white",
+    "In Progress": "bg-orange-500 text-white",
     Completed: "bg-teal-600 text-white",
 };
 
@@ -170,6 +170,7 @@ export default function TaskbyUser() {
                 <table className="min-w-full border border-gray-100 text-sm text-left">
                     <thead className="bg-teal-600 text-white text-xs uppercase tracking-wide">
                         <tr>
+                            <th className="px-5 py-4 font-semibold">Index</th>
                             <th className="px-5 py-4 font-semibold">Title</th>
                             <th className="px-5 py-4 font-semibold">Project</th>
                             <th className="px-5 py-4 font-semibold">Assigned To</th>
@@ -201,9 +202,12 @@ export default function TaskbyUser() {
                                 </td>
                             </tr>
                         ) : (
-                            paginatedTasks.map((task) => (
+                            paginatedTasks.map((task,index:number) => (
                                 <tr key={task._id} className="hover:bg-teal-50 transition-colors" >
                                     {/* Title */}
+                                    <td className="px-5 py-4">
+                                        <p className="font-semibold text-gray-900">{index+1}</p>
+                                    </td>
                                     <td className="px-5 py-4 min-w-55 bg-teal-100">
                                         <p className="font-semibold text-gray-900">{task.title}</p>
                                         <p className="text-gray-400 text-xs mt-0.5 line-clamp-1">{task.description}</p>

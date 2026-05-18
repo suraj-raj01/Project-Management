@@ -78,9 +78,9 @@ export default function AllTopics() {
     }
 
     return (
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 mt-5">
             {loading ? (
-                <div className="space-y-4">
+                <div className="space-y-4 max-w-4xl">
                     {Array.from({ length: 4 }).map((_, index) => (
                         <div
                             key={index}
@@ -102,9 +102,8 @@ export default function AllTopics() {
                 discussions.map((discussion) => (
                     <div
                         key={discussion._id}
-                        className="group bg-white hover:border-teal-200 hover:shadow-lg transition-all duration-300 md:p-5 p-2"
+                        className="group md:max-w-4xl rounded-md bg-white hover:border-gray-200 hover:shadow-lg transition-all duration-300 md:p-5 p-2 border border-gray-100"
                     >
-
                         <div className="flex items-center justify-between flex-wrap w-fit gap-2">
                             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
                                 {discussion?.createdBy?.name
@@ -135,16 +134,10 @@ export default function AllTopics() {
                                     {discussion.description}
                                 </p>
                             </div>
-
-                            {/* <div className="flex flex-col items-start md:items-end md:min-w-50 gap-2">
-                                    <span className="px-3 py-1 font-semibold bg-teal-100 text-teal-700 text-xs font-medium rounded-sm">
-                                        Active Discussion
-                                    </span>
-                                </div> */}
                         </div>
 
                         {/* Actions */}
-                        <div className="flex flex-wrap border-b pb-5 items-center gap-6 mt-5 pt-4 border-t border-gray-100">
+                        <div className="flex flex-wrap bg-teal-50/50 pb-5 items-center md:justify-end justify-center md:gap-6 gap-3 md:px-2 mt-5 pt-4">
                             {/* Comments */}
                             <Link
                                 to={`/dashboard/discussion/comments/${discussion._id}`}
@@ -158,12 +151,8 @@ export default function AllTopics() {
 
                             {/* Likes */}
                             <button
-                                onClick={() =>
-                                    handleLike(discussion._id)
-                                }
-                                disabled={
-                                    likeLoading === discussion._id
-                                }
+                                onClick={() => handleLike(discussion._id)}
+                                disabled={likeLoading === discussion._id}
                                 className={`flex items-center gap-2 text-sm transition-all ${likeLoading === discussion._id
                                     ? "text-gray-400 cursor-not-allowed"
                                     : "text-gray-600 hover:text-teal-600 cursor-pointer font-semibold"

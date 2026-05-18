@@ -116,35 +116,23 @@ export default function Register() {
         <section className="relative overflow-hidden -mt-15 pt-18 min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 via-white to-emerald-100 px-4 py-5">
 
             {/* Background Effects */}
-
             <div className="absolute top-0 left-0 w-72 h-72 bg-teal-300/30 blur-3xl rounded-full" />
-
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-300/30 blur-3xl rounded-full" />
-
             {/* Main Card */}
 
             <div className="relative z-10 w-full max-w-6xl grid lg:grid-cols-2 rounded-lg overflow-hidden shadow-2xl border border-white/30 bg-white/70 backdrop-blur-xl">
-
                 {/* Left Side */}
-
                 <div className="hidden lg:flex flex-col justify-center px-10 bg-gradient-to-br from-teal-500 to-emerald-700 text-white relative overflow-hidden">
-
                     <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
-
                     <div className="absolute bottom-0 left-0 w-72 h-72 bg-black/10 rounded-full blur-3xl" />
-
                     <div className="relative z-10">
-
                         <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 px-4 py-2 rounded-full text-sm font-medium mb-5">
                             <ShieldCheck size={18} />
-
-                            MERN Stack Team Collaboration
+                            Team Task Collaboration
                         </div>
-
                         <h1 className="text-5xl font-black leading-tight">
                             Create Account 🚀
                         </h1>
-
                         <p className="mt-6 text-lg text-white/80 leading-8">
                             Join the Team Task Manager platform
                             and start managing projects,
@@ -152,9 +140,7 @@ export default function Register() {
                         </p>
 
                         <div className="mt-10 space-y-5">
-
                             <div className="flex items-center gap-3">
-
                                 <div className="w-11 h-11 rounded-2xl bg-white/15 flex items-center justify-center">
                                     <ShieldCheck size={20} />
                                 </div>
@@ -193,15 +179,11 @@ export default function Register() {
                 {/* Right Form */}
 
                 <div className="p-5 sm:p-12 lg:p-5">
-
                     <div className="max-w-md mx-auto">
-
                         <div className="mb-5">
-
                             <h2 className="text-4xl font-black text-gray-900">
                                 Register
                             </h2>
-
                             <p className="text-gray-500 mt-2">
                                 Create your account to continue.
                             </p>

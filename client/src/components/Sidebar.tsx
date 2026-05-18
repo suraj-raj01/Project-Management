@@ -143,7 +143,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </div>
 
                 {/* Nav links */}
-                <nav className="flex flex-col gap-1 flex-1">
+                <nav className="flex flex-col flex-1">
                     {user.role === "Admin" ? (
                         navItems1.map(({ to, icon: Icon, label, end }) => (
                             <NavLink
@@ -192,26 +192,28 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 {/* User info + Logout */}
                 <div className="border-t border-white/10 pt-4 mt-4 flex flex-col gap-3">
                     {user?.name && (
-                        <div className="flex items-center gap-3 cursor-pointer" onClick={() => { navigate(`/dashboard/users/${user?._id}/view`) }}>
-                            <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-xl font-bold uppercase shrink-0">
-                                {user.name[0]}
+                        <div className="flex items-center gap-2 justify-between cursor-pointer">
+                            <div className="min-w-0 flex gap-1 items-center justify-between"  onClick={() => { navigate(`/dashboard/users/${user?._id}/view`) }}>
+                                <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-xl font-bold uppercase shrink-0">
+                                    {user.name[0]}
+                                </div>
+                                <div>
+                                    <p className="text-sm font-semibold uppercase truncate">{user.name}</p>
+                                    <p className="text-xs text-gray-400 truncate">{user.email || ""}</p>
+                                </div>
                             </div>
-                            <div className="min-w-0">
-                                <p className="text-sm font-semibold uppercase truncate">{user.name}</p>
-                                <p className="text-xs text-gray-400 truncate">{user.email || ""}</p>
-                            </div>
+                            <button
+                                onClick={logoutHandler}
+                                className="flex items-center cursor-pointer justify-center gap-2 px-4 py-2 rounded-sm 
+                        text-sm font-medium text-gray-50 bg-red-500/60 
+                        hover:bg-red-500 hover:text-white
+                        transition-all duration-200 w-fit"
+                            >
+                                <LogOut size={18} strokeWidth={1.8} />
+                                Logout
+                            </button>
                         </div>
                     )}
-                    <button
-                        onClick={logoutHandler}
-                        className="flex items-center justify-center gap-3 px-4 py-3 rounded-sm 
-                        text-sm font-medium text-red-300 bg-red-500/10 
-                        hover:bg-red-500/20 hover:text-red-200
-                        transition-all duration-200 w-full"
-                    >
-                        <LogOut size={18} strokeWidth={1.8} />
-                        Logout
-                    </button>
                 </div>
             </aside>
         </>

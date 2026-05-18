@@ -111,7 +111,7 @@ const Home = () => {
                     <div className="flex flex-wrap gap-10 md:mt-8 mt-25 md:mt-8">
 
                         <div className="md:w-auto flex flex-col text-center w-full">
-                            <h3 className="text-4xl font-black text-gray-900">
+                            <h3 className="text-4xl font-black text-teal-900">
                                 100%
                             </h3>
 
@@ -121,7 +121,7 @@ const Home = () => {
                         </div>
 
                         <div className="md:w-auto flex flex-col text-center w-full">
-                            <h3 className="text-4xl font-black text-gray-900">
+                            <h3 className="text-4xl font-black text-teal-900">
                                 JWT
                             </h3>
 
@@ -131,7 +131,7 @@ const Home = () => {
                         </div>
 
                         <div className="md:w-auto flex flex-col text-center w-full">
-                            <h3 className="text-4xl font-black text-gray-900">
+                            <h3 className="text-4xl font-black text-teal-900">
                                 RBAC
                             </h3>
 
