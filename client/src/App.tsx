@@ -12,6 +12,7 @@ import Reply from "./components/discussions/Reply";
 import Comments from "./components/discussions/Comments";
 import Profile from "./components/Profile";
 import ProjectView from "./pages/projects/ProjectView";
+import Pricing from "./pages/subscriptions/Pricing";
 
 // Layouts
 const Layout = lazy(() => import("./layouts/Layout"));
@@ -60,6 +61,7 @@ export default function App() {
             <Route path="change-password" element={<ChangePassword />} />
             <Route path="register" element={<Register />} />
             <Route path="docs" element={<Docs />} />
+            <Route path="pricing" element={<Pricing />} />
           </Route>
 
           {/* Dashboard Layout */}

@@ -119,7 +119,7 @@ export default function UserDashboard() {
                             value={userTaskStats.pending}
                             icon={<Clock size={20} className="text-yellow-600" />}
                             iconBg="bg-yellow-100"
-                            trend="Projects in Pending"
+                            trend="Tasks in pending"
                             navigation=""
                         />
                         <StatCard

@@ -15,15 +15,8 @@ function Skeleton({ className = "" }: { className?: string }) {
 export default function TaskViewSkeleton() {
     return (
         <>
-            <style>{`
-                @keyframes shimmer {
-                    0%   { background-position: 100% 0; }
-                    100% { background-position: -100% 0; }
-                }
-            `}</style>
-
             <section className="max-w-full mx-auto">
-                <div className="bg-teal-50 rounded-sm shadow border-gray-200 overflow-hidden">
+                <div className="rounded-sm shadow border-gray-200 overflow-hidden">
 
                     {/* ── Header ── */}
                     <div className="border-b border-gray-200 p-5">

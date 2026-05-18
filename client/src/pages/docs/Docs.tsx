@@ -59,7 +59,6 @@ export default function Docs() {
     return (
         <div className="min-h-screen bg-gray-50 py-10 -mt-16 px-4 md:px-8">
             <div className="max-w-7xl mx-auto">
-
                 {/* Hero Section */}
 
                 <div className="bg-teal-50 rounded-lg mt-20 p-3 md:p-6">
@@ -109,17 +108,17 @@ export default function Docs() {
                             Tailwind CSS
                         </span>
                     </div>
-                    <p className="font-bold text-gray-700 pb-1 md:text-lg mt-5">Use this account for demo</p>
-                    <div className="bg-gray-900 border border-gray-200 bg-gray-50 p-4 rounded-md">
-                        <div className="text-gray-700 text-sm">
-                            <p className="text-gray-400 font-italic font-semibold">
-                                Email: [admin@gmail.com]
-                            </p>
-                            <p className="text-gray-400 font-italic font-semibold">
-                                Password: [admin123]
-                            </p>
-                        </div>
-                    </div>
+                    {/* <p className="font-bold text-gray-700 pb-1 md:text-lg mt-5">Use this account for demo</p>
+                            <div className="bg-gray-900 border border-gray-200 bg-gray-50 p-4 rounded-md">
+                                <div className="text-gray-700 text-sm">
+                                    <p className="text-gray-400 font-italic font-semibold">
+                                        Email: [admin@gmail.com]
+                                    </p>
+                                    <p className="text-gray-400 font-italic font-semibold">
+                                        Password: [admin123]
+                                    </p>
+                                </div>
+                            </div> */}
                 </div>
 
                 {/* Features */}
@@ -137,12 +136,12 @@ export default function Docs() {
                         </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
                         {features.map((feature, index) => (
                             <div
                                 key={index}
-                                className=" rounded-lg border border-gray-100 shadow-sm p-4 hover:bg-teal-50 hover:shadow-md transition"
+                                className=" rounded-lg border border-gray-100 hover:scale-105 shadow-sm p-4 hover:bg-teal-50 hover:shadow-md transition"
                             >
                                 <div className="flex items-center gap-3 mb-4">
                                     <div className="bg-teal-100 p-3 rounded-xl">

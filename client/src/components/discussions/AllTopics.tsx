@@ -158,7 +158,7 @@ export default function AllTopics() {
                                     : "text-gray-600 hover:text-teal-600 cursor-pointer font-semibold"
                                     }`}
                             >
-                                <ThumbsUp size={18} className={discussion.likes.length > 0 ? "fill-teal-500 text-white" : "text-teal-600"} />
+                                <ThumbsUp size={18} className={discussion.likes.length > 0 ? "text-teal-800" : "text-teal-600"} />
 
                                 {likeLoading === discussion._id ? (
                                     <span className="animate-pulse font-semibold">
@@ -185,7 +185,7 @@ export default function AllTopics() {
             )}
             {/* Pagination */}
             {!loading && discussions.length > 0 && (
-                <div className="flex items-center justify-center gap-2 mt-5 flex-wrap">
+                <div className="flex items-center justify-start gap-2 mt-5 flex-wrap">
 
                     {/* Prev */}
                     <button

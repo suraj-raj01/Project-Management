@@ -61,16 +61,6 @@ export default function Profile() {
         );
     }
 
-    if (!user) {
-        return (
-            <div className="min-h-140 flex items-center justify-center">
-                <div className="bg-red-50 border border-red-200 text-red-600 px-6 py-4 rounded-xl">
-                    User profile not found
-                </div>
-            </div>
-        );
-    }
-
     return (
         <section className="min-h-screen">
             <div className="max-w-full mx-auto">
@@ -95,7 +85,7 @@ export default function Profile() {
                         <div className="flex-1">
                             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                 <div>
-                                    <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight uppercase">
+                                    <h1 className="text-3xl md:text-4xl font-extrabold text-teal-800 tracking-tight uppercase">
                                         {user?.name}
                                     </h1>
 

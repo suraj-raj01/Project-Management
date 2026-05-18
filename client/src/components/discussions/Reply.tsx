@@ -53,7 +53,7 @@ export default function Reply() {
 
     return (
         <section>
-            <div className="flex flex-col gap-4 max-w-5xl md:p-3 rounded-md">
+            <div className="flex flex-col gap-4 max-w-4xl md:p-3 rounded-md">
                 <h2 className="font-semibold text-md text-gray-500">Posted By-</h2>
                 <div className="flex items-center justify-between w-fit flex-wrap gap-2">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">

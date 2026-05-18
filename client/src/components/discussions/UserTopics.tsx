@@ -121,6 +121,17 @@ export default function UserTopics() {
 
             {loading ? (
                 <div className="space-y-4">
+                    <div className="fixed w-90 rounded-md right-5 top-50 flex items-center flex-col p-5 border border-gray-200 h-fit">
+                        <div className="h-25 w-25 bg-gray-200 rounded-full animate-pulse mb-4"/>
+                        <div className="h-13 w-48 bg-gray-100 rounded animate-pulse mb-4"></div>
+                        <div className="h-22 w-full bg-gray-200 rounded animate-pulse mb-4" />
+                        <div className="w-full">
+                            <div className="h-4 w-45 bg-gray-200 rounded animate-pulse mb-4" />
+                            <div className="h-8 w-70 bg-gray-100 rounded animate-pulse mb-4" />
+                            <div className="h-8 w-60 bg-gray-200 rounded animate-pulse mb-4" />
+                            <div className="h-8 w-70 bg-gray-100 rounded animate-pulse mb-4" />
+                        </div>
+                    </div>
                     {Array.from({ length: 4 }).map((_, index) => (
                         <div
                             key={index}

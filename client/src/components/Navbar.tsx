@@ -60,6 +60,17 @@ export default function Navbar() {
                         </NavLink>
 
                         <NavLink
+                            to="/pricing"
+                            className={({ isActive }) =>
+                                `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+                                ${isActive
+                                    ? "bg-teal-100 text-teal-700"
+                                    : "text-gray-600 hover:bg-gray-100"}`
+                            }>
+                            Pricing
+                        </NavLink>
+
+                        <NavLink
                             to="/docs"
                             className={({ isActive }) =>
                                 `px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
@@ -118,46 +129,37 @@ export default function Navbar() {
                         <NavLink
                             to="/"
                             className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-teal-100 transition"
-                            onClick={() =>
-                                setMobileMenu(false)
-                            }
-                        >
+                            onClick={() => setMobileMenu(false)}>
                             Home
+                        </NavLink>
+
+                        <NavLink
+                            to="/pricing"
+                            className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-teal-100 transition"
+                            onClick={() => setMobileMenu(false)}>
+                            Pricing
                         </NavLink>
 
                         <NavLink
                             to="/docs"
                             className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-teal-100 transition"
-                            onClick={() =>
-                                setMobileMenu(false)
-                            }
-                        >
+                            onClick={() => setMobileMenu(false)}>
                             Docs
                         </NavLink>
 
                         {user?._id ? (
                             <Link
                                 to="/dashboard"
-                                onClick={() =>
-                                    setMobileMenu(false)
-                                }
-                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold"
-                            >
-                                <LayoutDashboard size={18} />
-
-                                Dashboard
+                                onClick={() => setMobileMenu(false)}
+                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold">
+                                <LayoutDashboard size={18} /> Dashboard
                             </Link>
                         ) : (
                             <Link
                                 to="/login"
-                                onClick={() =>
-                                    setMobileMenu(false)
-                                }
-                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold"
-                            >
-                                <LogIn size={18} />
-
-                                Sign In
+                                onClick={() => setMobileMenu(false)}
+                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold">
+                                <LogIn size={18} /> Sign In
                             </Link>
                         )}
                     </div>

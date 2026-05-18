@@ -42,7 +42,7 @@ const Home = () => {
     if (loading) {
         return <HeroSectionSkeleton />
     }
-    const imageUrl = `../src/assets/S.png`
+    // const imageUrl = `../src/assets/S.png`
 
     return (
         <section className="relative overflow-hidden min-h-screen pt-45 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-gradient-to-br from-teal-50 -mt-15 via-white to-emerald-100 px-4 transition-all duration-1000">
@@ -54,7 +54,7 @@ const Home = () => {
                     backgroundSize: "contain",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
-                    backgroundImage: `url(${imageUrl})`,
+                    backgroundImage: `url('/src/assets/S.png')`,
                 }}
             />
             {/* Main Content */}

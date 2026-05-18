@@ -64,26 +64,26 @@ export default function DashboardLayout() {
                     {/* Right */}
                     <div
                         title="Profile"
-                        className="flex items-center gap-3 cursor-pointer"
+                        className="flex items-center gap-2 cursor-pointer"
                         onClick={() => navigate(`/dashboard/users/${user?._id}/view`)}
                     >
-                        <div className="hidden sm:flex flex-col text-right">
-                            <p className="text-sm font-semibold text-gray-800 uppercase">
-                                {userName}
-                            </p>
-                            <p className="text-xs text-gray-500 lowercase">
-                                {user?.email}
-                            </p>
-                        </div>
-
                         <button
-                            className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-300 
+                            className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-emerald-300 
                             text-white text-xl font-bold uppercase flex items-center justify-center 
                             shadow-md shadow-teal-100 hover:scale-105 transition-all"
                             title={userName}
                         >
                             {userInitial}
                         </button>
+                        <div className="h-8 w-0.5 bg-gray-100"/>
+                        <div className="hidden sm:flex flex-col text-left">
+                            <p className="text-sm font-semibold text-gray-800 uppercase">
+                                {userName}
+                            </p>
+                            <p className="text-xs text-gray-500 font-bold">
+                                {"Profile"}
+                            </p>
+                        </div>
                     </div>
                 </header>
 

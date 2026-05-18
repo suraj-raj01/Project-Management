@@ -7,8 +7,9 @@ import {
     AlertCircle,
     FolderKanban,
     CheckCircle2,
-    Clock3,
     Eye,
+    UserCheck2,
+    Clock,
 } from "lucide-react";
 import UserViewSkeleton from "../skeleton/UserViewSkeleton";
 
@@ -17,6 +18,7 @@ const ITEMS_PER_PAGE = 5;
 type UserType = {
     name: string;
     email: string;
+    role: string;
 };
 
 type TaskType = {
@@ -48,6 +50,7 @@ export default function UserView() {
     const [user, setUser] = useState<UserType>({
         name: "",
         email: "",
+        role: ""
     });
     const [currentPage, setCurrentPage] = useState(1);
     const [statusFilter, setStatusFilter] = useState("All");
@@ -162,14 +165,14 @@ export default function UserView() {
                         <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
                             User Details
                         </h1>
-                        <p className="text-gray-500 mt-1">
-                            Manage user information and assigned tasks
+                        <p className="text-gray-500">
+                            Manage and track your assigned tasks
                         </p>
                     </div>
                 </div>
                 <>
                     {/* User Card */}
-                    <div className="to-gray-50 border-2 border-teal-100 rounded-sm p-3">
+                    <div className="border-2 border-teal-50 rounded-sm p-3">
                         <div className="flex sm:flex-row sm:items-center gap-3 md:gap-8">
                             {/* Avatar */}
                             <div className="h-23 w-23 rounded-full border-3 bg-teal-100 flex items-center justify-center text-5xl font-bold text-teal-800">
@@ -177,83 +180,48 @@ export default function UserView() {
                             </div>
 
                             {/* User Info */}
-                            <div className="">
+                            <div className="space-y-1">
                                 <h2 className="text-2xl uppercase font-bold text-teal-800">
                                     {user.name}
                                 </h2>
 
                                 <div className="flex items-center gap-2 text-gray-600">
-                                    <Mail className="h-4 w-4" />
-                                    <span>{user.email}</span>
+                                    <div className="flex items-center gap-2 text-gray-600">
+                                        <Mail className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                        <span>{user.email}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-gray-600">
+                                        <UserCheck2 className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                        <span>{user.role}</span>
+                                    </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 text-gray-600">
-                                    <FolderKanban className="h-4 w-4" />
-                                    <span>
-                                        {tasks.length} Assigned Tasks
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Task Stats */}
-                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div className="bg-teal-50/40 hover:bg-teal-100 border-t-4 border-teal-500 shadow-md rounded-md p-5">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <p className="text-gray-500 text-sm">
-                                        Total Tasks
-                                    </p>
-                                    <h2 className="text-3xl font-bold mt-1">
-                                        {tasks.length}
-                                    </h2>
-                                </div>
-
-                                <div className="bg-teal-100 p-3 rounded-sm">
-                                    <FolderKanban className="text-teal-600" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-teal-50/40 hover:bg-teal-100 border-t-4 border-teal-500 shadow-md rounded-md p-5">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <p className="text-gray-500 text-sm">
-                                        Completed
-                                    </p>
-                                    <h2 className="text-3xl font-bold mt-1">
-                                        {tasks.filter((t) => t.status === "Completed").length}
-                                    </h2>
-                                </div>
-
-                                <div className="bg-teal-100 p-3 rounded-sm">
-                                    <CheckCircle2 className="text-teal-600" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-teal-50/40 hover:bg-teal-100 border-t-4 border-teal-500 shadow-md rounded-md p-5">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <p className="text-gray-500 text-sm">
-                                        Pending
-                                    </p>
-                                    <h2 className="text-3xl font-bold mt-1">
-                                        {tasks.filter((t) => t.status !== "Completed").length}
-                                    </h2>
-                                </div>
-
-                                <div className="bg-teal-100 p-3 rounded-sm">
-                                    <Clock3 className="text-teal-600" />
+                                <div className="flex items-center gap-3 text-gray-600">
+                                    <div className="flex items-center gap-2 text-gray-600">
+                                        <FolderKanban className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                        <span>
+                                            {tasks.length} Assigned Tasks
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-gray-600">
+                                        <Clock className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                        <span>
+                                            {tasks.filter((t) => t.status !== "Completed").length} Pending Tasks
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-gray-600">
+                                        <CheckCircle2 className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                        <span>
+                                            {tasks.filter((t) => t.status === "Completed").length} Completed Tasks
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     {/* Tasks Section */}
                     <div className=" rounded-sm">
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-2">
                             <h2 className="text-xl font-bold text-teal-800">
                                 Assigned Tasks
                             </h2>
@@ -293,6 +261,9 @@ export default function UserView() {
                                     <thead className="bg-teal-600 text-white uppercase border-b border-teal-100">
                                         <tr>
                                             <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                S.No.
+                                            </th>
+                                            <th className="text-start px-2 py-4 text-sm font-semibold">
                                                 Task
                                             </th>
 
@@ -327,9 +298,17 @@ export default function UserView() {
                                                     : "bg-gray-50/40"
                                                     }`}
                                             >
+                                                {/* Sno */}
+                                                <td className="px-2 bg-teal-100">
+                                                    <div className="flex items-center justify-center gap-2">
+                                                        <h3 className="font-semibold text-gray-800 line-clamp-1">
+                                                            {index + 1}
+                                                        </h3>
+                                                    </div>
+                                                </td>
                                                 {/* Task */}
                                                 <td className="px-2">
-                                                    <div className="space-y-1">
+                                                    <div className="">
                                                         <h3 className="font-semibold text-gray-800 line-clamp-1">
                                                             {task.title}
                                                         </h3>
@@ -342,7 +321,7 @@ export default function UserView() {
 
                                                 {/* Project */}
                                                 <td className="">
-                                                    <div className="border-teal-100 bg-teal-100 p-3 max-w-xs">
+                                                    <div className="border-teal-100 bg-teal-100 p-2 max-w-xs">
                                                         <p className="font-medium text-gray-700 line-clamp-1">
                                                             {task.project?.name}
                                                         </p>
