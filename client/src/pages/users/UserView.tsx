@@ -54,9 +54,7 @@ export default function UserView() {
     });
     const [currentPage, setCurrentPage] = useState(1);
     const [statusFilter, setStatusFilter] = useState("All");
-
     const [tasks, setTasks] = useState<TaskType[]>([]);
-
     const { id } = useParams();
 
     const fetchUser = async () => {
@@ -64,6 +62,7 @@ export default function UserView() {
             setLoading(true);
             const { data } = await API.get(`/dashboard/users/${id}`);
             setUser(data?.user);
+            // console.log(data.user)
         } catch (error) {
             console.log(error);
         } finally {
@@ -172,47 +171,75 @@ export default function UserView() {
                 </div>
                 <>
                     {/* User Card */}
-                    <div className="border-2 border-teal-50 rounded-sm p-3">
-                        <div className="flex sm:flex-row sm:items-center gap-3 md:gap-8">
+                    <div className="border-2 border-teal-50 rounded-sm p-4 md:p-6 bg-white shadow-sm">
+                        <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+
                             {/* Avatar */}
-                            <div className="h-23 w-23 rounded-full border-3 bg-teal-100 flex items-center justify-center text-5xl font-bold text-teal-800">
-                                {user?.name?.charAt(0)?.toUpperCase()}
+                            <div className="flex justify-center md:justify-start">
+                                <div className="h-20 w-20 md:h-24 md:w-24 rounded-full border-4 border-teal-200 bg-teal-100 flex items-center justify-center text-4xl md:text-5xl font-bold text-teal-800 shrink-0">
+                                    {user?.name?.charAt(0)?.toUpperCase()}
+                                </div>
                             </div>
 
                             {/* User Info */}
-                            <div className="space-y-1">
-                                <h2 className="text-2xl uppercase font-bold text-teal-800">
-                                    {user.name}
-                                </h2>
+                            <div className="flex-1 space-y-4 text-center md:text-left">
 
-                                <div className="flex items-center gap-2 text-gray-600">
-                                    <div className="flex items-center gap-2 text-gray-600">
-                                        <Mail className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
-                                        <span>{user.email}</span>
+                                {/* Name */}
+                                <div>
+                                    <h2 className="text-xl md:text-3xl uppercase font-bold text-teal-800 break-words">
+                                        {user.name}
+                                    </h2>
+                                </div>
+
+                                {/* Email & Role */}
+                                <div className="flex sm:flex-row -mt-3 sm:flex-wrap items-center md:items-start justify-center md:justify-start gap-3 text-gray-600">
+
+                                    <div className="flex items-center gap-2">
+                                        <Mail className="h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                        <span className="text-sm md:text-base break-all">
+                                            {user.email}
+                                        </span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-gray-600">
-                                        <UserCheck2 className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
-                                        <span>{user.role}</span>
+
+                                    <div className="flex items-center gap-2">
+                                        <UserCheck2 className="h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                        <span className="text-sm md:text-base capitalize">
+                                            {user.role}
+                                        </span>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-3 text-gray-600">
-                                    <div className="flex items-center gap-2 text-gray-600">
-                                        <FolderKanban className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
-                                        <span>
+                                {/* Task Stats */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+
+                                    <div className="flex items-center gap-2 bg-teal-50 rounded-sm px-3 py-2">
+                                        <FolderKanban className="h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                        <span className="text-sm md:text-base text-gray-700">
                                             {tasks.length} Assigned Tasks
                                         </span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-gray-600">
-                                        <Clock className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
-                                        <span>
-                                            {tasks.filter((t) => t.status !== "Completed").length} Pending Tasks
+
+                                    <div className="flex items-center gap-2 bg-yellow-100 rounded-lg px-3 py-2">
+                                        <Clock className="h-6 w-6 p-1 rounded-full bg-yellow-500 text-white" />
+                                        <span className="text-sm md:text-base text-gray-700">
+                                            {
+                                                tasks.filter(
+                                                    (t) => t.status !== "Completed"
+                                                ).length
+                                            }{" "}
+                                            Pending Tasks
                                         </span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-gray-600">
-                                        <CheckCircle2 className="h-4 w-4 border h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
-                                        <span>
-                                            {tasks.filter((t) => t.status === "Completed").length} Completed Tasks
+
+                                    <div className="flex items-center gap-2 bg-green-200 rounded-lg px-3 py-2">
+                                        <CheckCircle2 className="h-6 w-6 p-1 rounded-full bg-green-600 text-white" />
+                                        <span className="text-sm md:text-base text-gray-700">
+                                            {
+                                                tasks.filter(
+                                                    (t) => t.status === "Completed"
+                                                ).length
+                                            }{" "}
+                                            Completed Tasks
                                         </span>
                                     </div>
                                 </div>

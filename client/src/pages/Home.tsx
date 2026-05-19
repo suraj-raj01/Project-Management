@@ -7,43 +7,8 @@ import {
     ListChecks,
     Users,
 } from "lucide-react";
-import API from "../services/api";
-
-import { useEffect, useState } from "react";
-import HeroSectionSkeleton from "./skeleton/HeroSkeleton";
-
-interface Stats {
-    totalTasks: number;
-    completedTasks: number;
-    overdueTasks: number;
-    totalUsers: number;
-    totalProjects: number;
-}
 
 const Home = () => {
-    const [loading, setLoading] = useState(false);
-    const [stats, setStats] = useState<Stats | null>(null);
-    const fetchStats = async () => {
-        try {
-            setLoading(true)
-            const { data } = await API.get("/dashboard");
-            setStats(data);
-        } catch (error) {
-            console.error("Error fetching stats:", error);
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    useEffect(() => {
-        fetchStats();
-    }, [])
-
-    if (loading) {
-        return <HeroSectionSkeleton />
-    }
-    // const imageUrl = `../src/assets/S.png`
-
     return (
         <section className="relative overflow-hidden min-h-screen pt-45 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-gradient-to-br from-teal-50 -mt-15 via-white to-emerald-100 px-4 transition-all duration-1000">
             {/* Background Blur Effects */}
@@ -174,7 +139,7 @@ const Home = () => {
                                 </div>
 
                                 <h3 className="text-3xl font-black mt-5">
-                                    {stats?.totalUsers}+
+                                    200+
                                 </h3>
 
                                 <p className="text-sm text-gray-500 mt-1">
@@ -195,7 +160,7 @@ const Home = () => {
                                 </div>
 
                                 <h3 className="text-3xl font-black mt-5">
-                                    {stats?.totalProjects}+
+                                    300+
                                 </h3>
 
                                 <p className="text-sm text-gray-500 mt-1">
@@ -212,7 +177,7 @@ const Home = () => {
                                         </p>
 
                                         <h3 className="text-4xl font-black mt-2">
-                                            {stats?.totalUsers}+
+                                            500+
                                         </h3>
                                     </div>
 

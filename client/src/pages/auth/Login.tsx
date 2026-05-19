@@ -367,7 +367,7 @@ export default function Login() {
 
                             {/* Register */}
 
-                            <p className="text-center text-gray-500 pt-3">
+                            {/* <p className="text-center text-gray-500 pt-3">
 
                                 Don't have an account?
 
@@ -377,7 +377,7 @@ export default function Login() {
                                 >
                                     Register
                                 </Link>
-                            </p>
+                            </p> */}
                         </form>
                     </div>
                 </div>

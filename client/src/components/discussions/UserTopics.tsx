@@ -121,7 +121,7 @@ export default function UserTopics() {
 
             {loading ? (
                 <div className="space-y-4">
-                    <div className="fixed w-90 rounded-md right-5 top-50 flex items-center flex-col p-5 border border-gray-200 h-fit">
+                    <div className="md:fixed w-full md:w-90 rounded-md right-5 top-50 flex items-center flex-col p-5 border border-gray-200 h-fit">
                         <div className="h-25 w-25 bg-gray-200 rounded-full animate-pulse mb-4"/>
                         <div className="h-13 w-48 bg-gray-100 rounded animate-pulse mb-4"></div>
                         <div className="h-22 w-full bg-gray-200 rounded animate-pulse mb-4" />
@@ -262,8 +262,8 @@ export default function UserTopics() {
                             ))}
                         </div>
                         {/* profile */}
-                        <div className="md:w-100 pb-5 w-full flex flex-col rounded-md text-gray-600 shadow-md border border-teal-100 sticky top-38 h-fit">
-                            <div className="sticky top-20 self-start z-20 w-full">
+                        <div className="md:w-100 pb-5 w-full flex flex-col rounded-md text-gray-600 shadow-md border border-teal-100 relative md:sticky md:top-38 top-10 mb-8 h-fit">
+                            <div className="md:sticky relative md:top-20 self-start z-20 w-full">
                                 <div className="w-full rounded-b-none rounded-md py-5 px-3 bg-gradient-to-r from-teal-100 to-teal-50">
                                     <div className="flex flex-col items-center justify-center">
                                         <div className="w-25 h-25 mb-3 rounded-full bg-white text-teal-500 flex items-center justify-center shadow-md border-2 font-bold text-6xl">

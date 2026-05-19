@@ -97,10 +97,7 @@ export default function CreateDiscussion() {
             if (id) {
                 res = await API.put(`/discussion/${id}`, formData);
             } else {
-                res = await API.post("/discussion", {
-                    ...formData,
-                    postedBy: user._id
-                });
+                res = await API.post("/discussion", { ...formData, postedBy: user._id });
             }
             toast.success(
                 res.data.message || "Discussion created successfully"

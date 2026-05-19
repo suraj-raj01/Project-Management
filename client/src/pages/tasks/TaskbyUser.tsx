@@ -214,7 +214,7 @@ export default function TaskbyUser() {
                                     </td>
 
                                     {/* Project */}
-                                    <td className="px-5 py-4 min-w-40 text-gray-600">
+                                    <td className="px-5 py-4 min-w-48 text-gray-600">
                                         {task.project?.name || <span className="text-gray-400">—</span>}
                                     </td>
 

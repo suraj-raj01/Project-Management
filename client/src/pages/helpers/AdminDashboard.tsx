@@ -45,7 +45,8 @@ export default function AdminDashboard() {
     const fetchStats = async () => {
         try {
             setLoading(true);
-            const { data } = await API.get("/dashboard");
+            const { data } = await API.get("/dashboard", user?._id);
+            // console.log(data, 'data')
             setStats(data);
         } catch (error) {
             console.log(error);

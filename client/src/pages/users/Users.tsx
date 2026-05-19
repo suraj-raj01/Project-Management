@@ -50,6 +50,11 @@ export default function Users() {
 
     // ── Delete 
     const deleteUser = async (userId: string) => {
+        const user = getUserFromStorage();
+        if (user._id === userId) {
+            toast.error("You cannot delete yourself");
+            return;
+        }
         toast((t) => (
             <div className="flex flex-col gap-4">
                 <div>
@@ -74,19 +79,12 @@ export default function Users() {
                         onClick={async () => {
                             try {
                                 setDeletingId(userId);
-
                                 await API.delete(`/dashboard/users/${userId}`);
-
-                                setUsers((prev) =>
-                                    prev.filter((u) => u._id !== userId)
-                                );
-
+                                setUsers((prev) => prev.filter((u) => u._id !== userId));
                                 toast.dismiss(t.id);
-
                                 toast.success("User deleted successfully");
                             } catch (error) {
                                 console.log(error);
-
                                 toast.error("Failed to delete user");
                             } finally {
                                 setDeletingId(null);

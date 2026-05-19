@@ -12,7 +12,6 @@ export default function Projects() {
     const [projectloading, projectsetLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
 
-
     const user = getUserFromStorage();
 
     // Fetch Projects
@@ -186,16 +185,10 @@ export default function Projects() {
                             paginatedProjects.length > 0 ? (
                             paginatedProjects.map(
                                 (project: any, index: number) => (
-                                    <tr
-                                        key={project._id}
-                                        className="border-b border-gray-100 hover:bg-teal-50/40 transition"
-                                    >
+                                    <tr key={project._id} className="border-b border-gray-100 hover:bg-teal-50/40 transition">
                                         {/* Serial Number */}
-                                        <td className="px-3 py-2 text-gray-500 hidden md:block">
-                                            {(currentPage - 1) *
-                                                ITEMS_PER_PAGE +
-                                                index +
-                                                1}
+                                        <td className="px-3 py-2 flex items-center justify-center font-medium text-gray-500 hidden md:block">
+                                            {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
                                         </td>
 
                                         {/* Project Name */}
@@ -245,11 +238,7 @@ export default function Projects() {
                                                     {/* Delete */}
                                                     <button
                                                         title="Delete"
-                                                        onClick={() =>
-                                                            handleDelete(
-                                                                project._id
-                                                            )
-                                                        }
+                                                        onClick={() => handleDelete(project._id)}
                                                         className="p-2 rounded-sm text-red-500 hover:bg-red-50 transition"
                                                     >
                                                         <Trash2 size={16} className="text-red-500" />
@@ -273,16 +262,10 @@ export default function Projects() {
                         ) : (
                             <tr>
                                 <td
-                                    colSpan={
-                                        user?.role === "Admin"
-                                            ? 5
-                                            : 4
-                                    }
-                                    className="text-center py-10 text-gray-500"
+                                    colSpan={user?.role === "Admin" ? 5 : 4}
+                                    className="text-center py-10 font-bold   text-gray-500"
                                 >
-                                    {projectloading
-                                        ? "Loading Projects..."
-                                        : "Projects not found"}
+                                    {projectloading? "Loading Projects...": "Projects not found"}
                                 </td>
                             </tr>
                         )}

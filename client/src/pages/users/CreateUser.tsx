@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import API from "../../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import { getUserFromStorage } from "../helpers/GetUserInfo";
 
 export default function CreateUser() {
     const navigate = useNavigate();
-
+    const user = getUserFromStorage();
+    const [showUpgradeModal, setShowUpgradeModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
@@ -49,23 +51,27 @@ export default function CreateUser() {
                 await API.put(`/dashboard/users/${id}`, formData);
                 toast.success("User updated successfully");
             } else {
-                await API.post("/auth/register", formData);
+                await API.post("/dashboard/users", { ...formData, createdBy: user._id });
                 toast.success("User Created Successfully");
             }
             navigate("/dashboard/users");
         } catch (error: any) {
-            // console.log(error);
-            toast.error(error?.response?.data?.message);
+            if (error.response.data.rollback === "upgrade") {
+                setShowUpgradeModal(true);
+            } else {
+                toast.error(error.response.data.message);
+                console.error(error);
+            }
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="min-h-160 flex bg-linear-to-r from-gray-50 to-gray-200 items-center justify-center">
+        <div className="md:min-h-145 min-h-140 flex items-center justify-center">
             <form
                 onSubmit={handleSubmit}
-                className=" p-8 border border-gray-200 rounded-sm shadow-md w-full max-w-2xl"
+                className="md:p-6 p-4 border border-gray-200 rounded-sm shadow-md w-full max-w-2xl"
             >
                 <h1 className="text-3xl font-bold mb-6 text-teal-800 text-center">
                     {id ? ("Update Member") : ("Create Member")}
@@ -95,10 +101,7 @@ export default function CreateUser() {
                         type="password"
                         placeholder="Password"
                         className="w-full border border-gray-300 p-3 rounded-sm mb-4"
-                        onChange={
-                            (e) =>
-                                setFormData({ ...formData, password: e.target.value })
-                        }
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     />
                 )}
 
@@ -113,7 +116,7 @@ export default function CreateUser() {
                 >
                     <option value="">Select Role</option>
                     <option value="Member">Member</option>
-                    <option value="Admin">Admin</option>
+                    <option value="Admin" disabled>Admin</option>
                 </select>
 
                 <button
@@ -124,6 +127,37 @@ export default function CreateUser() {
                     {loading ? "Creating..." : (id ? "Update Member" : "Create Member")}
                 </button>
             </form>
+
+
+            {showUpgradeModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+                        <h2 className="text-xl font-semibold mb-3">
+                            Upgrade Required
+                        </h2>
+
+                        <p className="text-gray-600 mb-5">
+                            You have reached your limit of users. Please upgrade to add more users.
+                        </p>
+
+                        <div className="flex justify-end gap-3">
+                            <button
+                                onClick={() => setShowUpgradeModal(false)}
+                                className="px-4 py-2 border rounded"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                onClick={() => navigate("/pricing")}
+                                className="px-4 py-2 bg-green-600 text-white rounded"
+                            >
+                                Upgrade
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

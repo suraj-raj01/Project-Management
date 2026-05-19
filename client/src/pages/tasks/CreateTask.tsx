@@ -34,6 +34,8 @@ export default function CreateTask() {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
     const [fetching, setFetching] = useState(false);
+    const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+    const user = getUserFromStorage();
 
     const [formData, setFormData] = useState<FormData>({
         title: "",
@@ -69,7 +71,7 @@ export default function CreateTask() {
 
     const fetchUsers = async () => {
         try {
-            const { data } = await API.get("/users");
+            const { data } = await API.get("/dashboard/users");
             setUsers(data.users || []);
         } catch {
             toast.error("Failed to load users");
@@ -115,19 +117,22 @@ export default function CreateTask() {
                 await API.put(`/tasks/${id}`, formData);
                 toast.success("Task updated successfully");
             } else {
-                await API.post("/tasks", formData);
+                await API.post("/tasks", { ...formData, createdBy: user._id });
                 toast.success("Task created successfully");
             }
             navigate("/dashboard/tasks");
         } catch (error: any) {
-            toast.error(error.response.data.message);
-            console.error(error);
+            if (error.response.data.rollback === "upgrade") {
+                setShowUpgradeModal(true);
+            } else {
+                toast.error(error.response.data.message);
+                console.error(error);
+            }
         } finally {
             setLoading(false);
         }
     };
 
-    const user = getUserFromStorage();
     if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 text-red-500">
             <AlertCircle size={24} />
@@ -284,6 +289,35 @@ export default function CreateTask() {
                 </button>
 
             </form>
+            {showUpgradeModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+                        <h2 className="text-xl font-semibold mb-3">
+                            Upgrade Required
+                        </h2>
+
+                        <p className="text-gray-600 mb-5">
+                            You have reached your limit of tasks. Please upgrade to add more tasks.
+                        </p>
+
+                        <div className="flex justify-end gap-3">
+                            <button
+                                onClick={() => setShowUpgradeModal(false)}
+                                className="px-4 py-2 border rounded"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                onClick={() => navigate("/pricing")}
+                                className="px-4 py-2 bg-green-600 text-white rounded"
+                            >
+                                Upgrade
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

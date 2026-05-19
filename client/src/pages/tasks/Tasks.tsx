@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import API from "../../services/api";
-import { AlertCircle, EditIcon, Eye, Search, Trash2 } from "lucide-react";
+import { AlertCircle, EditIcon, Eye, Search, Trash2} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { getUserFromStorage } from "../helpers/GetUserInfo";
@@ -363,9 +363,16 @@ export default function Tasks() {
                         }
                     </tbody>
                 </table>
+                <div className="flex items-center justify-center p-3 text-red-500 font-bold">
+                    {tasks.length === 0 && (
+                        <div className="flex items-center justify-center">
+                            <p className="text-gray-500">No tasks found</p>
+                        </div>
+                    )}
+                </div>
             </div>
             {!loading && paginatedTasks.length > 0 && (
-                <div className="px-2 py-3 border border-gray-300 bg-teal-100 text-xs text-gray-800 flex items-center justify-between">
+                <div className="px-2 py-3 -mt-6 border border-gray-300 bg-teal-100 text-xs text-gray-800 flex items-center justify-between">
                     <span>
                         Showing{" "}
                         {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, filteredTasks.length)}

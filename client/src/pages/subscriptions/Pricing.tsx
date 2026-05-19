@@ -9,7 +9,7 @@ const plans = [
             "Perfect for individuals and small teams getting started.",
         features: [
             "5 Projects",
-            "100 Tasks",
+            "20 Tasks",
             "Basic Reporting",
             "Community Support",
         ],
@@ -22,8 +22,8 @@ const plans = [
         description:
             "Best for growing teams managing multiple projects efficiently.",
         features: [
-            "Unlimited Projects",
-            "1000 Tasks",
+            "20 Projects",
+            "100 Tasks",
             "Advanced Reporting",
             "Team Collaboration",
             "Priority Support",

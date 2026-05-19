@@ -7,6 +7,8 @@ import { AlertCircle } from "lucide-react";
 
 export default function ProjectForm() {
     const navigate = useNavigate();
+    const user = getUserFromStorage();
+    const [showUpgradeModal, setShowUpgradeModal] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
         description: "",
@@ -50,7 +52,7 @@ export default function ProjectForm() {
                 toast.success("Project Updated");
             } else {
                 // Create
-                await API.post("/projects", formData);
+                await API.post("/projects", { ...formData, createdBy: user._id });
                 toast.success("Project Created");
             }
             // Reset form
@@ -59,14 +61,20 @@ export default function ProjectForm() {
                 description: "",
             });
             navigate("/dashboard/projects");
-        } catch (error) {
-            console.log(error);
+        } catch (error: any) {
+            if (error.response.data.success === false) {
+                console.log(error);
+                if (error.response.data.rollback === "upgrade") {
+                    setShowUpgradeModal(true);
+                }
+            } else {
+                toast.error("Failed to create project");
+            }
         } finally {
             setLoading(false);
         }
     };
 
-    const user = getUserFromStorage();
     if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 text-red-500">
             <AlertCircle size={24} />
@@ -128,6 +136,36 @@ export default function ProjectForm() {
                     </button>
                 </form>
             </div>
+
+            {showUpgradeModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+                        <h2 className="text-xl font-semibold mb-3">
+                            Upgrade Required
+                        </h2>
+
+                        <p className="text-gray-600 mb-5">
+                            You have reached your project limit. Please upgrade to create more projects.
+                        </p>
+
+                        <div className="flex justify-end gap-3">
+                            <button
+                                onClick={() => setShowUpgradeModal(false)}
+                                className="px-4 py-2 border rounded"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                onClick={() => navigate("/pricing")}
+                                className="px-4 py-2 bg-green-600 text-white rounded"
+                            >
+                                Upgrade
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }

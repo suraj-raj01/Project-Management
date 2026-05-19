@@ -20,6 +20,20 @@ const userSchema = new mongoose.Schema(
             enum: ["Admin", "Member"],
             default: "Member",
         },
+        subscription: {
+            type: String,
+            enum: ["Free", "Basic", "Pro"],
+            default: "Free",
+        },
+        subscriptionEndDate: {
+            type: Date,
+            default: null,
+        },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            default: null,
+        },
     },
     {
         timestamps: true,

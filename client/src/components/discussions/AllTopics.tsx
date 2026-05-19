@@ -3,7 +3,7 @@ import API from "../../services/api";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { getUserFromStorage } from "../../pages/helpers/GetUserInfo";
-import { MessageCircle, ThumbsUp, Reply } from "lucide-react";
+import { MessageCircle, ThumbsUp, Reply, Plus } from "lucide-react";
 
 export default function AllTopics() {
     const [discussions, setDiscussions] = useState<any[]>([]);
@@ -71,8 +71,11 @@ export default function AllTopics() {
 
     if (!loading && discussions.length === 0) {
         return (
-            <div className="p-10 bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 flex items-center justify-center rounded-2xl text-gray-600 shadow-sm">
-                No discussions yet. Start the conversation 🚀
+            <div className="p-10 max-w-full flex flex-col gap-3 bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 flex items-center justify-center text-gray-600 shadow-sm">
+                <p className="text-lg font-bold">No discussions yet. Create a new topic 🚀</p>
+                <Link className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 text-sm font-medium rounded-sm transition-colors flex items-center justify-center gap-2" to="/dashboard/create-discussion">
+                    <Plus size={16} /> Create New Topic
+                </Link>
             </div>
         );
     }

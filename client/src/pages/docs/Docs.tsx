@@ -11,6 +11,7 @@ import {
     ListCheckIcon,
     SquareX,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Docs() {
     const features = [
@@ -108,17 +109,79 @@ export default function Docs() {
                             Tailwind CSS
                         </span>
                     </div>
-                    {/* <p className="font-bold text-gray-700 pb-1 md:text-lg mt-5">Use this account for demo</p>
-                            <div className="bg-gray-900 border border-gray-200 bg-gray-50 p-4 rounded-md">
-                                <div className="text-gray-700 text-sm">
-                                    <p className="text-gray-400 font-italic font-semibold">
-                                        Email: [admin@gmail.com]
+
+                    {/* demo account */}
+                    <div className="mt-8 max-w-md">
+
+                        <div className="flex items-center gap-2 mb-3">
+                            <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                            <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+                            <div className="h-3 w-3 rounded-full bg-green-500"></div>
+
+                            <p className="ml-2 font-semibold text-gray-700 text-sm md:text-base">
+                                Demo Admin Account
+                            </p>
+                        </div>
+
+                        <div className="relative overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl">
+
+                            {/* Glow Effect */}
+                            <div className="absolute top-0 right-0 h-32 w-32 bg-teal-500/20 blur-3xl rounded-full"></div>
+
+                            <div className="relative p-5 space-y-4">
+
+                                {/* Header */}
+                                <div className="flex items-center justify-between border-b border-gray-700 pb-3">
+                                    <div>
+                                        <h3 className="text-white font-bold text-lg">
+                                            Login Credentials
+                                        </h3>
+
+                                        <p className="text-gray-400 text-sm">
+                                            Use this account for testing
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-teal-500/20 text-teal-400 text-xs px-3 py-1 rounded-full font-medium">
+                                        Admin
+                                    </div>
+                                </div>
+
+                                {/* Email */}
+                                <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-4">
+                                    <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">
+                                        Email
                                     </p>
-                                    <p className="text-gray-400 font-italic font-semibold">
-                                        Password: [admin123]
+
+                                    <p className="text-teal-400 font-semibold break-all">
+                                        admin@gmail.com
                                     </p>
                                 </div>
-                            </div> */}
+
+                                {/* Password */}
+                                <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-4">
+                                    <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">
+                                        Password
+                                    </p>
+
+                                    <p className="text-yellow-400 font-semibold">
+                                        123456
+                                    </p>
+                                </div>
+
+                                {/* Footer */}
+                                <div className="flex items-center justify-between pt-2">
+                                    <p className="text-gray-500 text-xs">
+                                        Team Management Demo Access
+                                    </p>
+
+                                    <button className="bg-teal-600 hover:bg-teal-700 transition px-4 py-2 rounded-lg text-white text-sm font-medium">
+                                        <Link to='/login'>Quick Login</Link>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Features */}

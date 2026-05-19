@@ -1,4 +1,5 @@
 import Discussion from "../models/discussionModel.js";
+import User from "../models/userModel.js";
 
 export const createDiscussion = async (req, res) => {
     try {
@@ -33,29 +34,57 @@ export const createDiscussion = async (req, res) => {
 export const getAllDiscussions = async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
-        // items per page
         const limit = parseInt(req.query.limit) || 10;
-        // skip documents
         const skip = (page - 1) * limit;
 
-        const discussions = await Discussion.find()
-            .populate("createdBy", "name email")
+        let adminId;
+
+        // If logged-in user is admin
+        if (req.user.role === "admin") {
+            adminId = req.user._id;
+        } else {
+            // If logged-in user is normal user
+            // createdBy contains admin id
+            adminId = req.user.createdBy;
+        }
+
+        // Get all users under this admin
+        const users = await User.find({
+            $or: [
+                { _id: adminId }, // admin himself
+                { createdBy: adminId }, // admin's users
+            ],
+        }).select("_id");
+
+        // Extract all ids
+        const userIds = users.map((user) => user._id);
+
+        // Get all discussions
+        const discussions = await Discussion.find({
+            createdBy: { $in: userIds },
+        })
+            .populate("createdBy", "name email role")
+            .populate("replies.user", "name email")
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit);
 
-        const totalDiscussions = await Discussion.countDocuments();
-        const totalPages = Math.ceil(totalDiscussions / limit);
+        // Total count
+        const totalDiscussions = await Discussion.countDocuments({
+            createdBy: { $in: userIds },
+        });
+
         res.status(200).json({
             success: true,
             discussions,
-            totalPages,
-            page,
+            totalPages: Math.ceil(totalDiscussions / limit),
+            currentPage: page,
         });
+
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: error.message
+            message: error.message,
         });
     }
 };
@@ -64,7 +93,6 @@ export const updateDiscussion = async (req, res) => {
     try {
         const { id } = req.params;
         const data = req.body;
-        // console.log(data,'data')
         const discussion = await Discussion.findByIdAndUpdate(id, { $set: data }, { new: true });
 
         res.status(200).json({
