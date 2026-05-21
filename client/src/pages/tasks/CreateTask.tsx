@@ -158,7 +158,7 @@ export default function CreateTask() {
             <div className="flex flex-col md:flex-row md:justify-between justify-start gap-3 md:gap-0 items-center mb-10">
                 <div className="w-full md:w-fit">
                     <h1 className="text-2xl font-bold text-gray-900">
-                        {isEditMode ? "Edit Task" : "Create Task"}
+                        {isEditMode ? "Edit Task" : "Assign Task"}
                     </h1>
                     <p className="text-sm text-gray-500 mt-0.5">
                         {isEditMode
@@ -240,39 +240,57 @@ export default function CreateTask() {
                 {/* Assigned To */}
                 <div className="col-span-2 md:col-span-1 flex flex-col gap-1">
                     <label className="text-sm font-medium text-gray-700">Assigned To</label>
-                    <select
-                        title="Select user to assign"
-                        name="assignedTo"
-                        value={formData.assignedTo}
-                        onChange={handleChange}
-                        className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
-                    >
-                        <option value="">Select User</option>
-                        {users.map((user) => (
-                            <option key={user._id} value={user._id}>
-                                {user.name} ({user.email})
-                            </option>
-                        ))}
-                    </select>
+                    {users && users.length === 0 ? (
+                        <Link to="/dashboard/create-user" className="border border-gray-200 rounded-sm p-2 bg-teal-50/40">
+                            Create User
+                        </Link>
+                    ) : (
+                        <select
+                            title="Select user to assign"
+                            name="assignedTo"
+                            value={formData.assignedTo}
+                            onChange={handleChange}
+                            className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
+                        >
+                            <option value="">Select User</option>
+                            {user && user.length == 0 ? (
+                                <Link to='dashboard/create-user'>
+                                    Create User
+                                </Link>
+                            ) : (
+                                users.map((user) => (
+                                    <option key={user._id} value={user._id}>
+                                        {user.name} ({user.email})
+                                    </option>
+                                ))
+                            )}
+                        </select>
+                    )}
                 </div>
 
                 {/* Project */}
                 <div className="col-span-2 md:col-span-1 flex flex-col gap-1">
                     <label className="text-sm font-medium text-gray-700">Project</label>
-                    <select
-                        title="Select associated project"
-                        name="project"
-                        value={formData.project}
-                        onChange={handleChange}
-                        className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
-                    >
-                        <option value="">Select Project</option>
-                        {projects.map((project) => (
-                            <option key={project._id} value={project._id}>
-                                {project.name}
-                            </option>
-                        ))}
-                    </select>
+                    {projects && projects.length === 0 ? (
+                        <Link to="/dashboard/projects/create" className="border border-gray-200 rounded-sm p-2 bg-teal-50/40">
+                            Create Project
+                        </Link>
+                    ) : (
+                        <select
+                            title="Select associated project"
+                            name="project"
+                            value={formData.project}
+                            onChange={handleChange}
+                            className="w-full border border-gray-200 bg-teal-50/40 p-3 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
+                        >
+                            <option value="">Select Project</option>
+                            {projects.map((project) => (
+                                <option key={project._id} value={project._id}>
+                                    {project.name}
+                                </option>
+                            ))}
+                        </select>
+                    )}
                 </div>
 
                 {/* Submit */}
@@ -288,7 +306,7 @@ export default function CreateTask() {
                     }
                 </button>
 
-            </form>
+            </form >
             {showUpgradeModal && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
                     <div className="bg-white p-6 rounded-lg shadow-lg w-96">
@@ -317,7 +335,8 @@ export default function CreateTask() {
                         </div>
                     </div>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }

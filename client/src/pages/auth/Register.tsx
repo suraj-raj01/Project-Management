@@ -97,7 +97,6 @@ export default function Register() {
             await API.post("/auth/register",
                 formData
             );
-
             toast.success("Registered Successfully");
             navigate("/login");
         } catch (error) {

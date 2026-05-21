@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Menu } from "lucide-react";
+import { BadgeDollarSignIcon, Menu } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import { getUserFromStorage } from "../pages/helpers/GetUserInfo";
 
@@ -62,21 +62,26 @@ export default function DashboardLayout() {
                     </div>
 
                     {/* Right */}
-                    <div
-                        title="Profile"
-                        className="flex items-center gap-2 cursor-pointer"
-                        onClick={() => navigate(`/dashboard/users/${user?._id}/view`)}
-                    >
-                        <button
-                            className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-emerald-300 
+                    <div className="flex items-center gap-2 cursor-pointer">
+                        <div className="hidden md:block">
+                            {user && user.role === "Admin" ? (
+                                <div title="Upgrade" className="text-xs md:text-sm flex items-center gap-1 rounded-full bg-linear-to-br from-teal-600 to-orange-300 py-1.5 px-4 mr-2 text-gray-50 border-2 border-white font-semibold" onClick={() => navigate(`/pricing`)}>
+                                    Upgrade
+                                    <BadgeDollarSignIcon size={16} className="" />
+                                </div>
+                            ) : ("")}
+                        </div>
+                        <button 
+                            onClick={() => navigate(`/dashboard/users/${user?._id}/view`)}
+                            className="w-9 h-9 rounded-full bg-linear-to-br from-teal-200 to-emerald-600 
                             text-white text-xl font-bold uppercase flex items-center justify-center 
                             shadow-md shadow-teal-100 hover:scale-105 transition-all"
                             title={userName}
                         >
                             {userInitial}
                         </button>
-                        <div className="h-8 w-0.5 bg-gray-100"/>
-                        <div className="hidden sm:flex flex-col text-left">
+                        <div className="h-8 w-0.5 bg-gray-100" />
+                        <div title="Profile" className="hidden sm:flex flex-col text-left" onClick={() => navigate(`/dashboard/users/${user?._id}/view`)}>
                             <p className="text-sm font-semibold text-gray-800 uppercase">
                                 {userName}
                             </p>

@@ -8,7 +8,7 @@ export function CompletionRate({
     title: string;
 }) {
     return (
-        <div className="bg-linear-to-b from-gray-100 to-emerald-0 rounded-md p-5 shadow-md hover:shadow-lg transition-all flex flex-col items-center text-center">
+        <div className="rounded-xl p-5 border border-teal-500 border-t-5 hover:shadow-lg transition-all flex flex-col items-center text-center">
 
             {/* Circular Progress */}
             <div

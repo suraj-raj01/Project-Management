@@ -153,10 +153,10 @@ export default function AdminDashboard() {
                             <p className="text-gray-500 text-sm">Track your team's task completion rate and progress over time</p>
                         </div>
                         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                            <CompletionRate completionRate={completionPct} title={"Completion Rate"} />
-                            <CompletionRate completionRate={pendingPct} title={"Pending Rate"} />
-                            <CompletionRate completionRate={progressPct} title={"Progress Rate"} />
-                            <CompletionRate completionRate={overDuePct} title={"Overdue Rate"} />
+                            <CompletionRate completionRate={completionPct || 0} title={"Completion Rate"} />
+                            <CompletionRate completionRate={pendingPct || 0} title={"Pending Rate"} />
+                            <CompletionRate completionRate={progressPct || 0} title={"Progress Rate"} />
+                            <CompletionRate completionRate={overDuePct || 0} title={"Overdue Rate"} />
                         </div>
                     </>
                 )}

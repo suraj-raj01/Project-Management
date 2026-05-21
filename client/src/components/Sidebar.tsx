@@ -2,14 +2,14 @@ import {
     LayoutDashboard,
     FolderKanban,
     CheckSquare,
-    PlusSquare,
     LogOut,
     X,
     Users,
-    MessageCircle
+    MessageCircle,
+    BadgeDollarSignIcon
 } from "lucide-react";
 import toast from "react-hot-toast";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 interface SidebarProps {
     isOpen: boolean;
@@ -18,11 +18,12 @@ interface SidebarProps {
 
 const navItems1 = [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard", end: true },
-    { to: "/dashboard/tasks", icon: CheckSquare, label: "Tasks", end: false },
-    { to: "/dashboard/projects", icon: FolderKanban, label: "Projects", end: false },
-    { to: "/dashboard/create-task", icon: PlusSquare, label: "Create Task", end: false },
     { to: "/dashboard/users", icon: Users, label: "Members", end: false },
+    { to: "/dashboard/projects", icon: FolderKanban, label: "Projects", end: false },
+    { to: "/dashboard/tasks", icon: CheckSquare, label: "Tasks", end: false },
+    // { to: "/dashboard/create-task", icon: PlusSquare, label: "Create Task", end: false },
     { to: "/dashboard/discussions", icon: MessageCircle, label: "Team Discussion", end: false },
+    { to: "/dashboard/subscription", icon: BadgeDollarSignIcon, label: "Subscription", end: false },
 ];
 const navItems2 = [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard", end: true },
@@ -120,7 +121,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 {/* Header */}
                 <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                        <div className="w-10 h-10 rounded-full bg-linear-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg">
                             <span className="font-bold text-white">{user.role === "Admin" ? "A" : "W"}</span>
                         </div>
 
@@ -155,7 +156,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                     `group flex items-center gap-3 px-4 py-3 rounded-sm text-sm font-medium 
                                         transition-all duration-200 relative overflow-hidden
                                         ${isActive
-                                        ? "bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-sm shadow-teal-900/30"
+                                        ? "bg-linear-to-r from-teal-500 to-emerald-600 text-white shadow-sm shadow-teal-900/30"
                                         : "text-gray-400 hover:bg-white/5 hover:text-white"
                                     }`
                                 }
@@ -176,7 +177,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                                     `group flex items-center gap-3 px-4 py-3 rounded-sm text-sm font-medium 
                                         transition-all duration-200 relative overflow-hidden
                                         ${isActive
-                                        ? "bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-sm shadow-teal-900/30"
+                                        ? "bg-linear-to-r from-teal-500 to-emerald-600 text-white shadow-sm shadow-teal-900/30"
                                         : "text-gray-400 hover:bg-white/5 hover:text-white"
                                     }`
                                 }
@@ -190,6 +191,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 </nav>
 
                 {/* User info + Logout */}
+                <Link to='/pricing' className="border border-teal-800 md:hidden block w-fit px-4 py-2 rounded-full bg-linear-to-br from-teal-600/60 to-orange-300/40">Upgrade Plan</Link>
                 <div className="border-t border-white/10 pt-4 mt-4 flex flex-col gap-3">
                     {user?.name && (
                         <div className="flex items-center gap-2 justify-between cursor-pointer">
@@ -204,13 +206,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                             </div>
                             <button
                                 onClick={logoutHandler}
-                                className="flex items-center cursor-pointer justify-center gap-2 px-4 py-2 rounded-sm 
-                        text-sm font-medium text-gray-50 bg-red-500/60 
-                        hover:bg-red-500 hover:text-white
-                        transition-all duration-200 w-fit"
+                                className="flex items-center cursor-pointer justify-center gap-2 px-3 py-3 rounded-full 
+                                text-gray-50 bg-red-500/60 hover:bg-red-500 hover:text-white
+                                transition-all duration-200"
+                                title="Logout"
                             >
-                                <LogOut size={18} strokeWidth={1.8} />
-                                Logout
+                                <LogOut size={20} strokeWidth={1.5} />
                             </button>
                         </div>
                     )}

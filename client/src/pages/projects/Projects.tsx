@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import API from "../../services/api";
-import { AlertCircle, Edit, Eye, Trash2 } from "lucide-react";
+import { AlertCircle, Edit, Eye, Plus, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import TableSkeleton from "../skeleton/TableSkeleton";
@@ -145,8 +145,8 @@ export default function Projects() {
                     <p className="text-gray-500 text-sm">Manage and track your projects</p>
                 </div>
                 <div>
-                    <Link to="/dashboard/projects/create" className="bg-teal-500 text-white px-4 py-2 rounded-sm hover:bg-teal-600 transition">
-                        Add Project
+                    <Link to="/dashboard/projects/create" className="bg-teal-500 text-white px-4 py-2 rounded-sm hover:bg-teal-600 transition flex">
+                      <Plus/>  Add Project
                     </Link>
                 </div>
             </div>

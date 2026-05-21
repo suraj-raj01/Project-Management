@@ -15,9 +15,10 @@ interface ProjectType {
     createdAt: string;
     updatedAt: string;
 
-    admin: {
+    createdBy: {
         _id: string;
         name: string;
+        email: string;
     };
 
     members: string[];
@@ -33,9 +34,8 @@ export default function ProjectView() {
         const fetchProject = async () => {
             try {
                 setLoading(true);
-
                 const { data } = await API.get(`/projects/${id}`);
-
+                // console.log(data)
                 setProject(data?.project);
             } catch (error) {
                 console.log(error);
@@ -117,7 +117,10 @@ export default function ProjectView() {
                                     </p>
 
                                     <h3 className="text-lg font-bold text-gray-800 uppercase">
-                                        {project.admin?.name}
+                                        {project.createdBy?.name}
+                                    <p className="text-xs font-normal -mt-2 lowercase">
+                                        {project.createdBy?.email}
+                                    </p>
                                     </h3>
                                 </div>
                             </div>

@@ -65,7 +65,7 @@ export default function Profile() {
         <section className="min-h-screen">
             <div className="max-w-full mx-auto">
                 {/* Profile Header */}
-                <div className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-emerald-50 border border-teal-100 border-b-0 p-4 md:p-8 max-w-5xl mx-auto">
+                <div className="relative rounded-md overflow-hidden bg-gradient-to-br from-teal-50 via-white to-emerald-50 border border-teal-100 border-b-0 p-4 md:p-8 max-w-5xl mx-auto">
                     {/* Background Glow */}
                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-teal-200/30 blur-3xl rounded-full" />
                     <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-200/20 blur-3xl rounded-full" />
@@ -146,7 +146,7 @@ export default function Profile() {
                                         key={discussion?._id}
                                         className="md:w-5xl mx-auto bg-white border border-gray-100 p-2 rounded-md md:p-5 hover:shadow-md transition-all"
                                     >
-                                        <h3 className="text-xl font-semibold text-teal-900 line-clamp-2">
+                                        <h3 className="text-xl font-semibold text-teal-800 line-clamp-2">
                                             ({index + 1}.) {discussion?.title}
                                         </h3>
 

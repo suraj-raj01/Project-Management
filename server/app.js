@@ -9,6 +9,7 @@ import taskRoutes from "./routes/taskRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import discussionRoutes from "./routes/discussionRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -33,6 +34,7 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/discussion", discussionRoutes);
+app.use("/api/payment", paymentRoutes);
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {

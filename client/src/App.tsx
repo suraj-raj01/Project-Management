@@ -13,6 +13,10 @@ import Comments from "./components/discussions/Comments";
 import Profile from "./components/Profile";
 import ProjectView from "./pages/projects/ProjectView";
 import Pricing from "./pages/subscriptions/Pricing";
+import Payment from "./pages/subscriptions/Payment";
+import Subscription from "./pages/subscriptions/Subscription";
+import PaymentSuccess from "./components/PymentSuccess";
+import PaymentFailed from "./components/PaymentFailed";
 
 // Layouts
 const Layout = lazy(() => import("./layouts/Layout"));
@@ -62,6 +66,9 @@ export default function App() {
             <Route path="register" element={<Register />} />
             <Route path="docs" element={<Docs />} />
             <Route path="pricing" element={<Pricing />} />
+            <Route path="payment/:plan" element={<Payment/>} />
+            <Route path="success" element={<PaymentSuccess/>} />
+            <Route path="failed" element={<PaymentFailed/>} />
           </Route>
 
           {/* Dashboard Layout */}
@@ -93,6 +100,9 @@ export default function App() {
             <Route path="discussion/reply/:id" element={<Reply />} />
             <Route path="discussion/comments/:id" element={<Comments />} />
             <Route path="discussion/profile/:id" element={<Profile />} />
+
+            {/* subscription */}
+            <Route path="subscription" element={<Subscription />} />
 
             {/* Dashboard 404 */}
             <Route path="*" element={<PageNotFound />} />

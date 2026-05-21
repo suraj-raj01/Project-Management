@@ -28,7 +28,7 @@ export const registerUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            role: "Member",
+            role: "Admin",
         });
 
         res.status(201).json({
@@ -43,18 +43,14 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
-
         const user = await User.findOne({ email });
-
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
         const isMatch = await bcrypt.compare(password, user.password);
-
         if (!isMatch) {
             return res.status(401).json({ message: "Invalid Password" });
         }
-
         res.json({
             token: generateToken(user._id),
             user,

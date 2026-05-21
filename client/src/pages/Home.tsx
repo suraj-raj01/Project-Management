@@ -61,7 +61,7 @@ const Home = () => {
                         </Link>
 
                         <Link
-                            to="/login"
+                            to="/pricing"
                             className="group md:px-10 px-2 py-3 w-full md:w-auto flex justify-center items-center gap-3 rounded-full border border-gray-300 bg-white text-gray-700 font-semibold hover:bg-gray-100 transition-all duration-300">
                             Get Started
                             <ArrowRight

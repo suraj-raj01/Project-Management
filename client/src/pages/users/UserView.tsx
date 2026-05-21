@@ -126,7 +126,6 @@ export default function UserView() {
         });
     };
 
-
     const getPriorityColor = (priority: string) => {
         switch (priority) {
             case "High":
@@ -162,10 +161,10 @@ export default function UserView() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
                         <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-                            User Details
+                            {user.role==="Admin"?("Admin"):("User")} Details
                         </h1>
                         <p className="text-gray-500">
-                            Manage and track your assigned tasks
+                            Manage and track assigned tasks
                         </p>
                     </div>
                 </div>

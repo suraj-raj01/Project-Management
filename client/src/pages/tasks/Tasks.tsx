@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import API from "../../services/api";
-import { AlertCircle, EditIcon, Eye, Search, Trash2} from "lucide-react";
+import { AlertCircle, EditIcon, Eye, Plus, Search, Trash2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { getUserFromStorage } from "../helpers/GetUserInfo";
@@ -173,9 +173,7 @@ export default function Tasks() {
     };
 
     // Status Badge
-    const statusColor = (
-        status: string
-    ) => {
+    const statusColor = (status: string) => {
         switch (status) {
             case "Pending":
                 return "bg-yellow-400";
@@ -216,7 +214,7 @@ export default function Tasks() {
                     </span>
                 </div>
                 <button className='text-md w-full md:w-fit rounded-sm bg-teal-500 px-4 py-2 text-white'>
-                    <Link to="/dashboard/create-task">Create Task</Link>
+                    <Link to="/dashboard/create-task" className="flex gap-1"><Plus/> Assign Task</Link>
                 </button>
             </div>
 
@@ -235,6 +233,7 @@ export default function Tasks() {
                 {/* filter by status */}
                 <div className="w-full md:w-auto">
                     <select
+                        title="update status"
                         value={statusFilter}
                         onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
                         className={`border border-gray-200 px-3 py-2 md:w-auto w-full rounded-sm text-sm outline-none ${statusColor(statusFilter)}`}>
