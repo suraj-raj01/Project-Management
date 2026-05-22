@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import TableSkeleton from "../skeleton/TableSkeleton";
 import { getUserFromStorage } from "../helpers/GetUserInfo";
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 7;
 
 export default function Projects() {
     const [projects, setProjects] = useState([]);
@@ -122,7 +122,7 @@ export default function Projects() {
         });
     };
 
-    if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
+    if (user.role === "Member") return <div className="min-h-140 flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 text-red-500">
             <AlertCircle size={24} />
             <h1 className="text-3xl font-bold">Unauthorized</h1>
@@ -137,16 +137,16 @@ export default function Projects() {
     return (
         <section>
             {/* Projects Header */}
-            <div className="flex justify-between items-center mb-3">
+            <div className="flex md:flex-row flex-col w-full justify-between items-start gap-4 mb-3">
                 <div>
                     <h1 className="text-2xl font-bold">
                         Projects
                     </h1>
                     <p className="text-gray-500 text-sm">Manage and track your projects</p>
                 </div>
-                <div>
-                    <Link to="/dashboard/projects/create" className="bg-teal-500 text-white px-4 py-2 rounded-sm hover:bg-teal-600 transition flex">
-                      <Plus/>  Add Project
+                <div className="flex items-center w-full md:w-fit justify-end">
+                    <Link to="/dashboard/projects/create" className="bg-teal-500 text-white px-4 py-2 rounded-sm hover:bg-teal-600 transition flex items-center justify-end">
+                      <Plus size={18}/>  Add Project
                     </Link>
                 </div>
             </div>

@@ -24,6 +24,10 @@ export const createTask = async (req, res) => {
             Basic: {
                 projects: 20,
                 tasks: 100
+            },
+            Pro:{
+                projects: 1000,
+                tasks: 10000
             }
         };
 

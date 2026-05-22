@@ -75,7 +75,7 @@ export default function ProjectForm() {
         }
     };
 
-    if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
+    if (user.role === "Member") return <div className="min-h-140 flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 text-red-500">
             <AlertCircle size={24} />
             <h1 className="text-3xl font-bold">Unauthorized</h1>

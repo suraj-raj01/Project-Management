@@ -20,7 +20,9 @@ export default function Dashboard() {
         <div className="">
             {user?.role === "Admin" ? (
                 <AdminDashboard />
-            ) : (
+            ):user.role==="Superadmin"? (
+                <h3>SUPERADMIN DASHBOARD</h3>
+            ): (
                 <UserDashboard />
             )}
         </div>

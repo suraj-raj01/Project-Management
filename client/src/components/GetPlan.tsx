@@ -1,7 +1,7 @@
 import { CheckCircle2Icon } from "lucide-react";
 import toast from "react-hot-toast";
 import API from "../services/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const plans = [
@@ -11,9 +11,9 @@ const plans = [
         description:
             "Perfect for individuals and small teams getting started.",
         features: [
-            "5 Projects",
-            "5 Users",
-            "20 Tasks",
+            "Able to add only 5 Projects",
+            "Able to add only 5 Users",
+            "Able to add only 20 Tasks",
             "Basic Reporting",
             "Community Support",
         ],
@@ -27,9 +27,9 @@ const plans = [
         description:
             "Best for growing teams managing multiple projects efficiently.",
         features: [
-            "20 Projects",
-            "20 Users",
-            "100 Tasks",
+            "Able to add 20 Projects",
+            "Able to add 20 Users",
+            "Able to add 100 Tasks",
             "Advanced Reporting",
             "Team Collaboration",
             "Priority Support",
@@ -44,10 +44,10 @@ const plans = [
         description:
             "For enterprises needing advanced analytics and unlimited access.",
         features: [
-            "Unlimited Projects",
-            "Unlimited Users",
-            "Unlimited Tasks",
-            "AI Insights",
+            "Able to add Unlimited Projects",
+            "Able to add Unlimited Users",
+            "Able to add Unlimited Tasks",
+            "Able to add AI Insights",
             "Dedicated Support",
             "Custom Integrations",
         ],
@@ -99,21 +99,12 @@ export function GetPlan({ plan_name, userInfo, status }: GetPlanProps) {
             }
 
             const script = document.createElement("script");
-
-            script.src =
-                "https://checkout.razorpay.com/v1/checkout.js";
-
+            script.src = "https://checkout.razorpay.com/v1/checkout.js";
             script.onload = () => resolve(true);
-
             script.onerror = () => resolve(false);
-
             document.body.appendChild(script);
         });
     };
-
-    useEffect(() => {
-        loadRazorpay();
-    }, []);
 
     const initPay = (order: any) => {
 

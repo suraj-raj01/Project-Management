@@ -137,6 +137,9 @@ export const createMember = async (req, res) => {
             },
             Basic: {
                 users: 20
+            },
+            Pro:{
+                users: 1000
             }
         };
 
@@ -165,6 +168,19 @@ export const createMember = async (req, res) => {
             success:true,
             message:"User created successfully"
         });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// get admins
+export const getAdmins = async (req, res) => {
+    try {
+        const admins = await User.find({
+            role: "Admin",
+        }).select("-password").sort({ createdAt: -1 })
+        // console.log(users)
+        res.status(200).json({ admins, success: true });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

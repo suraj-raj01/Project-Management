@@ -189,7 +189,7 @@ export default function Tasks() {
         }
     };
 
-    if (user.role !== "Admin") return <div className="min-h-140 flex items-center justify-center">
+    if (user.role === "Member") return <div className="min-h-140 flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 text-red-500">
             <AlertCircle size={24} />
             <h1 className="text-3xl font-bold">Unauthorized</h1>
@@ -213,9 +213,11 @@ export default function Tasks() {
                         track and manage all your team's tasks in one place
                     </span>
                 </div>
-                <button className='text-md w-full md:w-fit rounded-sm bg-teal-500 px-4 py-2 text-white'>
-                    <Link to="/dashboard/create-task" className="flex gap-1"><Plus/> Assign Task</Link>
-                </button>
+                <div className="flex items-center justify-end w-full md:w-fit">
+                    <button className='text-md w-fit md:w-fit rounded-sm bg-teal-500 px-4 py-2 text-white'>
+                        <Link to="/dashboard/create-task" className="flex gap-1 items-center justify-center"><Plus /> Assign Task</Link>
+                    </button>
+                </div>
             </div>
 
             <div className="flex flex-col md:flex-row py-2 items-center justify-between gap-2">

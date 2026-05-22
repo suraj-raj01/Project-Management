@@ -1,11 +1,12 @@
 import express from "express";
 import protect from "../middlewares/authMiddleware.js";
-import { getDashboardStats, getUsers, getUserById, updateUser, deleteUser, createMember } from "../controllers/dashboardController.js";
+import { getDashboardStats, getUsers, getUserById, updateUser, deleteUser, createMember, getAdmins } from "../controllers/dashboardController.js";
 
 const router = express.Router();
 
 router.get("/", protect, getDashboardStats);
 router.get("/users", protect, getUsers);
+router.get("/admins", protect, getAdmins);
 router.post("/users", protect, createMember);
 router.get("/users/:id", getUserById);
 router.put("/users/:id", protect, updateUser);

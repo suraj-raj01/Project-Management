@@ -15,7 +15,7 @@ export const savePlans = async (req, res) => {
         const amount =
             Number(
                 newplan.price.replace("$", "")
-            ) * 100*93;
+            ) * 100 * 93;
 
         const options = {
             amount,
@@ -172,3 +172,17 @@ export const verifyPayment = async (
         });
     }
 };
+
+// get plans
+
+export const getPlans = async (req, res) => {
+    try {
+        const plans = await Plan.find().populate("userId", "name email").sort({ createdAt: -1 })
+        if (!plans) {
+            return res.status(404).json({ message: "Plans not found", success: false })
+        }
+        res.status(200).json({ plans, success: true });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

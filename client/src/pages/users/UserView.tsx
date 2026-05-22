@@ -254,6 +254,7 @@ export default function UserView() {
                             {/* filter by status */}
                             <div>
                                 <select
+                                    title="update status"
                                     value={statusFilter}
                                     onChange={(e) => {
                                         setStatusFilter(e.target.value);
