@@ -8,10 +8,8 @@ import { MessageCircle, ThumbsUp, Reply, Edit, Trash, Plus } from "lucide-react"
 export default function UserTopics() {
     const [discussions, setDiscussions] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
-
     // track loading per discussion
     const [likeLoading, setLikeLoading] = useState<string | null>(null);
-
     const user = getUserFromStorage();
 
     const fetchDiscussions = async () => {
@@ -22,7 +20,7 @@ export default function UserTopics() {
             setDiscussions(response.data?.discussion || []);
         } catch (error) {
             console.log(error);
-            toast.error("Failed to fetch discussions");
+            // toast.error("Failed to fetch discussions");
         } finally {
             setLoading(false);
         }
@@ -31,28 +29,23 @@ export default function UserTopics() {
     const handleLike = async (id: string) => {
         try {
             setLikeLoading(id);
-
-            const response = await API.post(
-                `/discussion/${id}/like`,
+            const response = await API.post(`/discussion/${id}/like`,
                 { userId: user._id }
             );
 
             setDiscussions((prev) =>
-                prev.map((discussion) =>
-                    discussion._id === id
-                        ? {
-                            ...discussion,
-                            likes: response.data.likes,
-                        }
-                        : discussion
+                prev.map((discussion) => discussion._id === id ? { ...discussion,
+                        likes: response.data.likes,
+                        } : discussion
                 )
             );
 
         } catch (error: any) {
-            toast.error(
-                error.response?.data?.message ||
-                "Something went wrong"
-            );
+            // toast.error(
+            //     error.response?.data?.message ||
+            //     "Something went wrong"
+            // );
+            console.log(error.response.data.message)
         } finally {
             setLikeLoading(null);
         }
@@ -151,7 +144,7 @@ export default function UserTopics() {
                 </div>
             ) : (
                 discussions.length === 0 ? (
-                    <div className="p-10 max-w-4xl flex flex-col gap-3 bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 flex items-center justify-center text-gray-600 shadow-sm">
+                    <div className="p-10 max-w-4xl flex flex-col gap-3 bg-linear-to-r from-teal-50 to-emerald-50 border border-teal-100 items-center justify-center text-gray-600 shadow-sm">
                         <p className="text-lg font-bold">No discussions yet. Create a new topic 🚀</p>
                         <Link className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 text-sm font-medium rounded-sm transition-colors flex items-center justify-center gap-2" to="/dashboard/create-discussion">
                             <Plus size={16} /> Create New Topic
@@ -167,7 +160,7 @@ export default function UserTopics() {
                                 >
                                     <section className="flex gap-4 max-w-full items-center justify-between">
                                         <div className="flex items-center justify-between flex-wrap w-fit gap-2">
-                                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                                            <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-white font-bold text-lg shrink-0">
                                                 {discussion?.createdBy?.name
                                                     ?.charAt(0)
                                                     ?.toUpperCase()}
@@ -198,7 +191,7 @@ export default function UserTopics() {
                                     {/* Top */}
                                     <div className="md:max-w-4xl mt-1 flex flex-col md:flex-row md:items-start md:justify-between gap-3">
                                         <div className="space-y-2">
-                                            <h3 className="text-2xl font-semibold text-gray-900 text-teal-900 transition-colors">
+                                            <h3 className="text-2xl font-semibold  text-teal-900 transition-colors">
                                                 {discussion.title}
                                             </h3>
 
@@ -206,16 +199,10 @@ export default function UserTopics() {
                                                 {discussion.description}
                                             </p>
                                         </div>
-
-                                        {/* <div className="flex flex-col items-start md:items-end md:min-w-50 gap-2">
-                                <span className="px-3 py-1 bg-teal-100 text-teal-700 text-xs font-medium rounded-sm">
-                                    Active Discussion
-                                </span>
-                            </div> */}
                                     </div>
 
                                     {/* Actions */}
-                                    <div className="flex max-w-4xl bg-teal-50/50 rounded-sm flex-wrap items-center md:justify-end gap-6 mt-5 px-2 py-4">
+                                    <div className="flex flex-wrap bg-teal-50/50 pb-5 items-center md:justify-end justify-center md:gap-6 gap-3 md:px-2 mt-5 pt-4">
                                         {/* Comments */}
                                         <Link
                                             to={`/dashboard/discussion/comments/${discussion._id}`}
@@ -264,9 +251,9 @@ export default function UserTopics() {
                         {/* profile */}
                         <div className="md:w-100 pb-5 w-full flex flex-col rounded-md text-gray-600 shadow-md border border-teal-100 relative md:sticky md:top-38 top-10 mb-8 h-fit">
                             <div className="md:sticky relative md:top-20 self-start z-20 w-full">
-                                <div className="w-full rounded-b-none rounded-md py-5 px-3 bg-gradient-to-r from-teal-100 to-teal-50">
+                                <div className="w-full rounded-b-none rounded-md py-5 px-3 bg-linear-to-r from-teal-100 to-teal-50">
                                     <div className="flex flex-col items-center justify-center">
-                                        <div className="w-25 h-25 mb-3 rounded-full bg-white text-teal-500 flex items-center justify-center shadow-md border-2 font-bold text-6xl">
+                                                <div className="w-25 h-25 mb-3 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white flex items-center justify-center shadow-md border-2 font-bold text-6xl">
                                             {user?.name?.charAt(0)?.toUpperCase()}
                                         </div>
 

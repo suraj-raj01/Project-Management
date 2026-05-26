@@ -39,6 +39,7 @@ export default function Users() {
         try {
             const { data } = await API.get("/dashboard/users");
             setUsers(data.users || []);
+            // console.log(data.users,'users')
         } catch (error) {
             console.error(error);
         } finally {
@@ -108,7 +109,6 @@ export default function Users() {
     };
 
     const navigate = useNavigate();
-
     const updateUser = async (userId: string) => {
         navigate(`/dashboard/create-user/${userId}`);
     };
@@ -143,10 +143,6 @@ export default function Users() {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    // ── Summary counts 
-    const adminCount = users.filter((u) => u.role === "Admin").length;
-    const memberCount = users.filter((u) => u.role === "Member").length;
-
     const user = getUserFromStorage();
     if (user.role === "Member") return <div className="min-h-140 flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 text-red-500">
@@ -172,13 +168,12 @@ export default function Users() {
                         Users
                     </h1>
                     <p className="text-sm text-gray-500 mt-0.5">
-                        {users.length} total &mdash; {adminCount} admin{adminCount !== 1 ? "s" : ""},{" "}
-                        {memberCount} member{memberCount !== 1 ? "s" : ""}
+                        track and manage your team members.
                     </p>
                 </div>
                 <Link
                     to="/dashboard/create-user"
-                    className="bg-teal-600 hover:bg-teal-700 text-center transition-colors text-white px-4 py-2 rounded-sm text-sm font-semibold"
+                    className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-center transition-colors text-white px-4 py-2 rounded-sm text-sm font-semibold"
                 >
                     + Create Member
                 </Link>
@@ -212,26 +207,17 @@ export default function Users() {
             <div className="bg-white rounded-sm border border-gray-200 shadow-sm overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm">
-                        <thead className="bg-teal-600 text-white text-xs uppercase tracking-wide">
+                        <thead className="bg-linear-to-r from-teal-400 to-emerald-600 text-white text-xs uppercase tracking-wide">
                             <tr>
                                 <th className="px-5 py-4 text-left font-semibold">User</th>
                                 <th className="px-5 py-4 text-left font-semibold">Email</th>
                                 <th className="px-5 py-4 text-left font-semibold">Role</th>
-                                <th className="px-5 py-4 text-left font-semibold hidden md:table-cell">Joined</th>
+                                <th className="px-5 py-4 text-left font-semibold md:table-cell">Joined</th>
                                 <th className="px-5 py-4 text-center font-semibold">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100">
-                            {loading ? (
-                                <tr>
-                                    <td colSpan={5} className="py-16 text-center text-gray-400">
-                                        <div className="flex flex-col items-center gap-2">
-                                            <Loader2 size={28} className="animate-spin text-teal-400" />
-                                            <span className="text-sm">Loading users...</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ) : filtered.length === 0 ? (
+                            {filtered.length === 0 ? (
                                 <tr>
                                     <td colSpan={5} className="py-16 text-center text-gray-400">
                                         <div className="flex flex-col items-center gap-1">
@@ -334,11 +320,6 @@ export default function Users() {
 
             {/* Pagination */}
             <div className="mt-5 flex items-center justify-between gap-2">
-                {/* <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
-                    <span className="text-sm font-medium text-gray-600">
-                        Page {currentPage} of {totalPages}
-                    </span>
-                </div> */}
                 {totalPages >= 1 && (
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                         {/* Previous */}

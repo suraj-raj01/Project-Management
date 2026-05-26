@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getUserFromStorage } from "./helpers/GetUserInfo";
 import AdminDashboard from "./helpers/AdminDashboard";
 import UserDashboard from "./helpers/UserDashboard";
+import SuperadminDashboard from "./helpers/SuperadminDashboard";
 // ─── Dashboard 
 
 export default function Dashboard() {
@@ -20,9 +21,9 @@ export default function Dashboard() {
         <div className="">
             {user?.role === "Admin" ? (
                 <AdminDashboard />
-            ):user.role==="Superadmin"? (
-                <h3>SUPERADMIN DASHBOARD</h3>
-            ): (
+            ) : user.role === "Superadmin" ? (
+                <SuperadminDashboard />
+            ) : (
                 <UserDashboard />
             )}
         </div>

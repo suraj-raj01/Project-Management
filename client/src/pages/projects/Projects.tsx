@@ -145,7 +145,7 @@ export default function Projects() {
                     <p className="text-gray-500 text-sm">Manage and track your projects</p>
                 </div>
                 <div className="flex items-center w-full md:w-fit justify-end">
-                    <Link to="/dashboard/projects/create" className="bg-teal-500 text-white px-4 py-2 rounded-sm hover:bg-teal-600 transition flex items-center justify-end">
+                    <Link to="/dashboard/projects/create" className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white px-4 py-2 rounded-sm transition flex items-center justify-end">
                       <Plus size={18}/>  Add Project
                     </Link>
                 </div>
@@ -156,10 +156,6 @@ export default function Projects() {
                 <table className="w-full text-sm text-left border-collapse">
                     <thead className="bg-teal-500 text-white">
                         <tr>
-                            <th className="px-3 py-4 font-semibold hidden md:block">
-                                Index
-                            </th>
-
                             <th className="px-3 py-4 font-semibold">
                                 Project Name
                             </th>
@@ -172,7 +168,7 @@ export default function Projects() {
                                 Created At
                             </th>
 
-                            {user?.role === "Admin" && (
+                            {user?.role !== "Member" && (
                                 <th className="px-3 py-4 font-semibold text-center">
                                     Actions
                                 </th>
@@ -184,12 +180,8 @@ export default function Projects() {
                         {paginatedProjects &&
                             paginatedProjects.length > 0 ? (
                             paginatedProjects.map(
-                                (project: any, index: number) => (
+                                (project: any) => (
                                     <tr key={project._id} className="border-b border-gray-100 hover:bg-teal-50/40 transition">
-                                        {/* Serial Number */}
-                                        <td className="px-3 py-2 flex items-center justify-center font-medium text-gray-500 hidden md:block">
-                                            {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
-                                        </td>
 
                                         {/* Project Name */}
                                         <td className="px-3 py-2 bg-teal-100 min-w-40">
@@ -219,7 +211,7 @@ export default function Projects() {
                                         </td>
 
                                         {/* Actions */}
-                                        {user?.role === "Admin" && (
+                                        {user?.role !== "Member" && (
                                             <td className="px-3 py-2 bg-teal-100">
                                                 <div className="flex items-center justify-center">
                                                     {/* Edit */}

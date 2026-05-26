@@ -12,6 +12,7 @@ import {
     Clock,
 } from "lucide-react";
 import UserViewSkeleton from "../skeleton/UserViewSkeleton";
+import AdminProfile from "./AdminProfile";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -156,12 +157,16 @@ export default function UserView() {
 
     return (
         <div className="min-h-screen">
-            <div className="max-w-full mx-auto space-y-4">
+            <div className="max-w-full mx-auto space-y-3">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
-                        <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-                            {user.role==="Admin"?("Admin"):("User")} Details
+                        <h1 className="text-2xl md:text-3xl font-bold text-teal-800">
+                            {user.role === "Admin"
+                                ? "Admin"
+                                : user.role === "Superadmin"
+                                    ? "Superadmin"
+                                    : "User"} Profile
                         </h1>
                         <p className="text-gray-500">
                             Manage and track assigned tasks
@@ -170,12 +175,12 @@ export default function UserView() {
                 </div>
                 <>
                     {/* User Card */}
-                    <div className="border-2 border-teal-50 rounded-sm p-4 md:p-6 bg-white shadow-sm">
+                    <div className="border-2 border-teal-50 rounded-sm p-4 bg-white shadow-sm">
                         <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
 
                             {/* Avatar */}
                             <div className="flex justify-center md:justify-start">
-                                <div className="h-20 w-20 md:h-24 md:w-24 rounded-full border-4 border-teal-200 bg-teal-100 flex items-center justify-center text-4xl md:text-5xl font-bold text-teal-800 shrink-0">
+                                <div className="h-20 w-20 md:h-24 md:w-24 rounded-full border-4 border-teal-100 border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-4xl md:text-5xl font-bold text-white shrink-0">
                                     {user?.name?.charAt(0)?.toUpperCase()}
                                 </div>
                             </div>
@@ -185,7 +190,7 @@ export default function UserView() {
 
                                 {/* Name */}
                                 <div>
-                                    <h2 className="text-xl md:text-3xl uppercase font-bold text-teal-800 break-words">
+                                    <h2 className="text-xl md:text-3xl uppercase font-bold text-teal-800 wrap-break-word">
                                         {user.name}
                                     </h2>
                                 </div>
@@ -209,206 +214,209 @@ export default function UserView() {
                                 </div>
 
                                 {/* Task Stats */}
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                {user.role === "Member" && (
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
 
-                                    <div className="flex items-center gap-2 bg-teal-50 rounded-sm px-3 py-2">
-                                        <FolderKanban className="h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
-                                        <span className="text-sm md:text-base text-gray-700">
-                                            {tasks.length} Assigned Tasks
-                                        </span>
-                                    </div>
+                                        <div className="flex items-center gap-2 bg-teal-50 rounded-sm px-3 py-2">
+                                            <FolderKanban className="h-6 w-6 p-1 rounded-full bg-teal-600 text-white" />
+                                            <span className="text-sm md:text-base text-gray-700">
+                                                {tasks.length} Assigned Tasks
+                                            </span>
+                                        </div>
 
-                                    <div className="flex items-center gap-2 bg-yellow-100 rounded-lg px-3 py-2">
-                                        <Clock className="h-6 w-6 p-1 rounded-full bg-yellow-500 text-white" />
-                                        <span className="text-sm md:text-base text-gray-700">
-                                            {
-                                                tasks.filter(
-                                                    (t) => t.status !== "Completed"
-                                                ).length
-                                            }{" "}
-                                            Pending Tasks
-                                        </span>
-                                    </div>
+                                        <div className="flex items-center gap-2 bg-yellow-100 rounded-lg px-3 py-2">
+                                            <Clock className="h-6 w-6 p-1 rounded-full bg-yellow-500 text-white" />
+                                            <span className="text-sm md:text-base text-gray-700">
+                                                {
+                                                    tasks.filter(
+                                                        (t) => t.status !== "Completed"
+                                                    ).length
+                                                }{" "}
+                                                Pending Tasks
+                                            </span>
+                                        </div>
 
-                                    <div className="flex items-center gap-2 bg-green-200 rounded-lg px-3 py-2">
-                                        <CheckCircle2 className="h-6 w-6 p-1 rounded-full bg-green-600 text-white" />
-                                        <span className="text-sm md:text-base text-gray-700">
-                                            {
-                                                tasks.filter(
-                                                    (t) => t.status === "Completed"
-                                                ).length
-                                            }{" "}
-                                            Completed Tasks
-                                        </span>
+                                        <div className="flex items-center gap-2 bg-green-200 rounded-lg px-3 py-2">
+                                            <CheckCircle2 className="h-6 w-6 p-1 rounded-full bg-green-600 text-white" />
+                                            <span className="text-sm md:text-base text-gray-700">
+                                                {
+                                                    tasks.filter(
+                                                        (t) => t.status === "Completed"
+                                                    ).length
+                                                }{" "}
+                                                Completed Tasks
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
                         </div>
                     </div>
                     {/* Tasks Section */}
-                    <div className=" rounded-sm">
-                        <div className="flex items-center justify-between mb-2">
-                            <h2 className="text-xl font-bold text-teal-800">
-                                Assigned Tasks
-                            </h2>
-                            {/* filter by status */}
-                            <div>
-                                <select
-                                    title="update status"
-                                    value={statusFilter}
-                                    onChange={(e) => {
-                                        setStatusFilter(e.target.value);
-                                        setCurrentPage(1);
-                                    }}
-                                    className={`border border-gray-200 px-3 py-2 rounded-sm text-sm outline-none ${STATUS_STYLES[statusFilter]}`}
-                                >
-                                    <option value="All">All Tasks</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="In Progress">In Progress</option>
-                                    <option value="Completed">Completed</option>
-                                </select>
+                    {user.role === "Member" ? (
+                        <div className=" rounded-sm">
+                            <div className="flex items-center justify-between mb-2">
+                                <h2 className="text-xl font-bold text-teal-800">
+                                    Assigned Tasks
+                                </h2>
+                                {/* filter by status */}
+                                <div>
+                                    <select
+                                        title="update status"
+                                        value={statusFilter}
+                                        onChange={(e) => {
+                                            setStatusFilter(e.target.value);
+                                            setCurrentPage(1);
+                                        }}
+                                        className={`border border-gray-200 px-3 py-2 rounded-sm text-sm outline-none ${STATUS_STYLES[statusFilter]}`}
+                                    >
+                                        <option value="All">All Tasks</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
 
-                        {tasks.length === 0 ? (
-                            <div className="text-center py-16">
-                                <AlertCircle className="mx-auto h-12 w-12 text-gray-300" />
-                                <h3 className="mt-4 text-lg font-medium text-gray-700">
-                                    No Tasks Found
-                                </h3>
-                                <p className="text-gray-500 mt-1">
-                                    This user has no assigned tasks yet.
-                                </p>
-                            </div>
-                        ) : (
-                            <div className="overflow-x-auto rounded-sm bg-white">
-                                <table className="w-full min-w-[900px]">
-                                    {/* Table Header */}
-                                    <thead className="bg-teal-600 text-white uppercase border-b border-teal-100">
-                                        <tr>
-                                            <th className="text-start px-2 py-4 text-sm font-semibold">
-                                                S.No.
-                                            </th>
-                                            <th className="text-start px-2 py-4 text-sm font-semibold">
-                                                Task
-                                            </th>
+                            {filteredTasks.length === 0 ? (
+                                <div className="text-center py-16">
+                                    <AlertCircle className="mx-auto h-12 w-12 text-gray-300" />
+                                    <h3 className="mt-4 text-lg font-medium text-gray-700">
+                                        No Tasks Found
+                                    </h3>
+                                </div>
+                            ) : (
+                                <div className="overflow-x-auto rounded-sm bg-white">
+                                    <table className="w-full min-w-225">
+                                        {/* Table Header */}
+                                        <thead className="bg-linear-to-r from-teal-400 to-emerald-600 text-white uppercase border-b border-teal-100">
+                                            <tr>
+                                                <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                    S.No.
+                                                </th>
+                                                <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                    Task
+                                                </th>
 
-                                            <th className="text-start px-2 py-4 text-sm font-semibold">
-                                                Project
-                                            </th>
+                                                <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                    Project
+                                                </th>
 
-                                            <th className="text-start px-2 py-4 text-sm font-semibold">
-                                                Priority
-                                            </th>
+                                                <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                    Priority
+                                                </th>
 
-                                            <th className="text-start px-2 py-4 text-sm font-semibold">
-                                                Due Date
-                                            </th>
+                                                <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                    Due Date
+                                                </th>
 
-                                            <th className="text-start px-2 min-w-35 py-4 text-sm font-semibold">
-                                                Status
-                                            </th>
-                                            <th className="text-start px-2 py-4 text-sm font-semibold">
-                                                Actions
-                                            </th>
-                                        </tr>
-                                    </thead>
-
-                                    {/* Table Body */}
-                                    <tbody>
-                                        {paginatedTasks.map((task, index) => (
-                                            <tr
-                                                key={task._id}
-                                                className={`border-b border-gray-100 hover:bg-teal-50/50 transition-all duration-200 ${index % 2 === 0
-                                                    ? "bg-white"
-                                                    : "bg-gray-50/40"
-                                                    }`}
-                                            >
-                                                {/* Sno */}
-                                                <td className="px-2 bg-teal-100">
-                                                    <div className="flex items-center justify-center gap-2">
-                                                        <h3 className="font-semibold text-gray-800 line-clamp-1">
-                                                            {index + 1}
-                                                        </h3>
-                                                    </div>
-                                                </td>
-                                                {/* Task */}
-                                                <td className="px-2">
-                                                    <div className="">
-                                                        <h3 className="font-semibold text-gray-800 line-clamp-1">
-                                                            {task.title}
-                                                        </h3>
-
-                                                        <p className="text-sm text-gray-500 line-clamp-2 max-w-sm">
-                                                            {task.description}
-                                                        </p>
-                                                    </div>
-                                                </td>
-
-                                                {/* Project */}
-                                                <td className="">
-                                                    <div className="border-teal-100 bg-teal-100 p-2 max-w-xs">
-                                                        <p className="font-medium text-gray-700 line-clamp-1">
-                                                            {task.project?.name}
-                                                        </p>
-
-                                                        <p className="text-xs text-gray-500 mt-1 line-clamp-2">
-                                                            {task.project?.description}
-                                                        </p>
-                                                    </div>
-                                                </td>
-
-                                                {/* Priority */}
-                                                <td className="px-2">
-                                                    <span
-                                                        className={`text-xs px-3 py-1 rounded-sm font-medium ${getPriorityColor(
-                                                            task.priority
-                                                        )}`}
-                                                    >
-                                                        {task.priority}
-                                                    </span>
-                                                </td>
-
-                                                {/* Due Date */}
-                                                <td className="px-2 min-w-35">
-                                                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                                                        <Calendar className="h-4 w-4 text-teal-600" />
-
-                                                        <span>
-                                                            {new Date(
-                                                                task.dueDate
-                                                            ).toLocaleDateString("en-GB", {
-                                                                day: "2-digit",
-                                                                month: "short",
-                                                                year: "numeric",
-                                                            })}
-                                                        </span>
-                                                    </div>
-                                                </td>
-
-                                                {/* Status */}
-                                                <td className="px-2 ">
-                                                    <span
-                                                        className={`text-xs px-2 py-1 rounded-sm font-medium ${getStatusColor(
-                                                            task.status
-                                                        )}`}
-                                                    >
-                                                        {task.status}
-                                                    </span>
-                                                </td>
-                                                <td className="px-2 bg-teal-100 ">
-                                                    <Link title="view" to={`/dashboard/task-view/${task._id}`} className="text-teal-600 flex items-center justify-center hover:text-teal-800">
-                                                        <Eye size={25} className="bg-white w-10 rounded-sm p-1" />
-                                                    </Link>
-                                                </td>
+                                                <th className="text-start px-2 min-w-35 py-4 text-sm font-semibold">
+                                                    Status
+                                                </th>
+                                                <th className="text-start px-2 py-4 text-sm font-semibold">
+                                                    Actions
+                                                </th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        )}
-                    </div>
+                                        </thead>
+
+                                        {/* Table Body */}
+                                        <tbody>
+                                            {paginatedTasks.map((task, index) => (
+                                                <tr
+                                                    key={task._id}
+                                                    className={`border-b border-gray-100 hover:bg-teal-50/50 transition-all duration-200 ${index % 2 === 0
+                                                        ? "bg-white"
+                                                        : "bg-gray-50/40"
+                                                        }`}
+                                                >
+                                                    {/* Sno */}
+                                                    <td className="px-2 bg-teal-100">
+                                                        <div className="flex items-center justify-center gap-2">
+                                                            <h3 className="font-semibold text-gray-800 line-clamp-1">
+                                                                {index + 1}
+                                                            </h3>
+                                                        </div>
+                                                    </td>
+                                                    {/* Task */}
+                                                    <td className="px-2">
+                                                        <div className="">
+                                                            <h3 className="font-semibold text-gray-800 line-clamp-1">
+                                                                {task.title}
+                                                            </h3>
+
+                                                            <p className="text-sm text-gray-500 line-clamp-2 max-w-sm">
+                                                                {task.description}
+                                                            </p>
+                                                        </div>
+                                                    </td>
+
+                                                    {/* Project */}
+                                                    <td className="">
+                                                        <div className="border-teal-100 bg-teal-100 p-2 max-w-xs">
+                                                            <p className="font-medium text-gray-700 line-clamp-1">
+                                                                {task.project?.name}
+                                                            </p>
+
+                                                            <p className="text-xs text-gray-500 mt-1 line-clamp-2">
+                                                                {task.project?.description}
+                                                            </p>
+                                                        </div>
+                                                    </td>
+
+                                                    {/* Priority */}
+                                                    <td className="px-2">
+                                                        <span
+                                                            className={`text-xs px-3 py-1 rounded-sm font-medium ${getPriorityColor(
+                                                                task.priority
+                                                            )}`}
+                                                        >
+                                                            {task.priority}
+                                                        </span>
+                                                    </td>
+
+                                                    {/* Due Date */}
+                                                    <td className="px-2 min-w-35">
+                                                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                                                            <Calendar className="h-4 w-4 text-teal-600" />
+
+                                                            <span>
+                                                                {new Date(
+                                                                    task.dueDate
+                                                                ).toLocaleDateString("en-GB", {
+                                                                    day: "2-digit",
+                                                                    month: "short",
+                                                                    year: "numeric",
+                                                                })}
+                                                            </span>
+                                                        </div>
+                                                    </td>
+
+                                                    {/* Status */}
+                                                    <td className="px-2 ">
+                                                        <span
+                                                            className={`text-xs px-2 py-1 rounded-sm font-medium ${getStatusColor(
+                                                                task.status
+                                                            )}`}
+                                                        >
+                                                            {task.status}
+                                                        </span>
+                                                    </td>
+                                                    <td className="px-2 bg-teal-100 ">
+                                                        <Link title="view" to={`/dashboard/task-view/${task._id}`} className="text-teal-600 flex items-center justify-center hover:text-teal-800">
+                                                            <Eye size={25} className="bg-white w-10 rounded-sm p-1" />
+                                                        </Link>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <AdminProfile id={id} />
+                    )}
                 </>
             </div>
 

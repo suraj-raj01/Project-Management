@@ -168,7 +168,7 @@ export default function CreateTask() {
                 </div>
                 <Link
                     to="/dashboard/tasks"
-                    className="flex w-full md:w-fit justify-center items-center gap-1.5 text-md rounded-sm bg-teal-600 px-4 py-2 text-white hover:bg-teal-700 transition-colors"
+                    className="flex w-full md:w-fit justify-center items-center gap-1.5 text-md rounded-sm border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 px-4 py-2 text-white transition-colors"
                 >
                     See All Tasks
                 </Link>
@@ -297,12 +297,12 @@ export default function CreateTask() {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="col-span-2 flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 disabled:opacity-60 transition-colors text-white px-6 py-3 mt-3 rounded-sm font-medium text-sm cursor-pointer"
+                    className="col-span-2 flex items-center justify-center gap-2 border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 w-fit disabled:opacity-60 transition-colors text-white px-6 py-3 mt-3 rounded-sm font-medium text-sm cursor-pointer"
                 >
                     {loading && <Loader2 size={16} className="animate-spin" />}
                     {loading
                         ? isEditMode ? "Saving…" : "Creating…"
-                        : isEditMode ? "Save Changes" : "Create Task"
+                        : isEditMode ? "Save Changes" : "✅ Assign Task "
                     }
                 </button>
 

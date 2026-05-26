@@ -20,15 +20,15 @@ export function StatCard({
 }: StatCardProps) {
     const navigate = useNavigate();
     return (
-        <div className={`px-2 rounded-md text-white bg-teal-900 md:px-6 py-3 hover:shadow-lg transition-all`}>
+        <div className={`px-2 rounded-md text-white bg-gray-100 md:px-6 py-3 hover:shadow-lg transition-all`}>
             <div className="cursor-pointer" onClick={() => { navigate(`/dashboard/${navigation}`) }}>
                 <div>
-                    <p className="text-sm text-gray-400 font-medium">
+                    <p className="text-sm text-gray-600 font-medium">
                         {label}
                     </p>
 
                     <div className="flex items-center justify-between">
-                        <h2 className="text-3xl font-bold text-gray-300 mt-2">
+                        <h2 className="text-3xl font-bold text-gray-800 mt-2">
                             {value}
                         </h2>
 
@@ -39,7 +39,7 @@ export function StatCard({
                         </div>
                     </div>
                     {trend && (
-                        <p className="text-xs text-gray-400 mt-2 flex items-center gap-1">
+                        <p className="text-xs text-gray-600 mt-2 flex items-center gap-1">
                             <TrendingUp size={12} />
                             {trend}
                         </p>

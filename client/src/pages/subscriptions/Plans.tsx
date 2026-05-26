@@ -8,8 +8,10 @@ import {
     Search,
     ShieldCheck,
     User,
+    UsersIcon,
 } from "lucide-react";
 import TableSkeleton from "../skeleton/TableSkeleton";
+import { useNavigate } from "react-router-dom";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -46,6 +48,7 @@ export default function Plans() {
             setLoading(true);
             const { data } = await API.get(`/payment/plans`);
             setPlans(data.plans || []);
+            // console.log(data.plans,'plans')
         } catch (error) {
             console.log(error);
         } finally {
@@ -63,7 +66,9 @@ export default function Plans() {
 
             const matchSearch =
                 plan?.planName.toLowerCase().includes(q) ||
-                plan?.status.toLowerCase().includes(q)
+                plan?.status.toLowerCase().includes(q) ||
+                plan?.userId?.name.toLowerCase().includes(q) ||
+                plan?.userId?.email.toLowerCase().includes(q);
 
             const matchStatus =
                 statusFilter === "All" ||
@@ -111,6 +116,8 @@ export default function Plans() {
         }
     };
 
+    const navigate = useNavigate();
+
     if (loading) return <TableSkeleton />
 
     return (
@@ -133,7 +140,7 @@ export default function Plans() {
                     <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
                         type="text"
-                        placeholder="Search by name or email..."
+                        placeholder="Search by plan, name, email or status..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-sm bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-400"
@@ -154,14 +161,13 @@ export default function Plans() {
             </div>
 
             {/* Table Container */}
-            <div className="bg-white rounded-sm border border-gray-200 overflow-hidden shadow-sm">
+            <div className="bg-white rounded-xs border border-gray-200 overflow-hidden shadow-sm">
 
                 <div className="overflow-x-auto">
 
                     <table className="w-full">
-
                         {/* Table Head */}
-                        <thead className="bg-teal-600 border-b border-gray-200">
+                        <thead className="bg-linear-to-r from-teal-400 to-emerald-600 border-b border-gray-200">
                             <tr className="text-left">
                                 <th className="px-5 py-4 text-sm font-semibold text-white">
                                     User
@@ -187,70 +193,81 @@ export default function Plans() {
                                 <th className="px-5 py-4 text-sm font-semibold text-white">
                                     Start Date
                                 </th>
+                                <th className="px-5 py-4 text-sm font-semibold text-white">
+                                    Actions
+                                </th>
                             </tr>
                         </thead>
 
                         {/* Table Body */}
                         <tbody>
                             {/* Plans */}
-                            {!loading &&
-                                paginatedTasks.map((plan) => (
+                            {paginatedTasks.length === 0 ? (
+                                <tr className="">
+                                    <td colSpan={9} className="py-16 text-center text-gray-400">
+                                        <div className="flex flex-col items-center gap-1">
+                                            <UsersIcon size={32} className="text-gray-300" />
+                                            <span className="text-sm font-medium">No data founds</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ) : (paginatedTasks.map((plan) => (
 
-                                    <tr key={plan._id}
-                                        className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                                    >
+                                <tr key={plan._id}
+                                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+                                >
 
-                                        {/* User */}
-                                        <td className="px-3 py-2">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-11 h-11 rounded-full bg-teal-100 flex items-center justify-center shrink-0">
-                                                    <User size={20} className="text-teal-700" />
-                                                </div>
-
-                                                <div>
-                                                    <h3 className="font-semibold text-gray-900 uppercase">
-                                                        {plan.userId.name}
-                                                    </h3>
-                                                    <p className="text-sm text-gray-500">
-                                                        {plan.userId.email}
-                                                    </p>
-                                                </div>
+                                    {/* User */}
+                                    <td className="px-3 py-2">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-11 h-11 rounded-full bg-teal-100 flex items-center justify-center shrink-0">
+                                                <User size={20} className="text-teal-700" />
                                             </div>
-                                        </td>
-
-                                        {/* Plan */}
-                                        <td className="px-3 py-2 bg-teal-100">
 
                                             <div>
-                                                <h3 className="font-bold text-gray-900">
-                                                    {plan.planName}
+                                                <h3 className="font-semibold text-gray-900 uppercase">
+                                                    {plan.userId.name}
                                                 </h3>
-
-                                                <p className="text-xs text-gray-500 mt-1">
-                                                    Subscription Plan
+                                                <p className="text-sm text-gray-500">
+                                                    {plan.userId.email}
                                                 </p>
                                             </div>
-                                        </td>
+                                        </div>
+                                    </td>
 
-                                        {/* Price */}
-                                        <td className="px-3 py-2">
+                                    {/* Plan */}
+                                    <td className="px-3 py-2 bg-teal-100">
 
-                                            <div className="flex items-center gap-1 font-bold text-gray-900">
-                                                <IndianRupee size={18} />
-                                                {plan.price}
-                                            </div>
-                                        </td>
+                                        <div>
+                                            <h3 className="font-bold text-gray-900">
+                                                {plan.planName}
+                                            </h3>
 
-                                        {/* Duration */}
-                                        <td className="px-3 py-2">
+                                            <p className="text-xs text-gray-500 mt-1">
+                                                Subscription Plan
+                                            </p>
+                                        </div>
+                                    </td>
 
-                                            <span className="px-3 py-1 rounded-sm bg-blue-50 text-blue-700 text-xs font-semibold">
-                                                {plan.duration}
-                                            </span>
-                                        </td>
+                                    {/* Price */}
+                                    <td className="px-3 py-2">
 
-                                        {/* Features */}
-                                        {/* <td className="px-3 py-2">
+                                        <div className="flex items-center gap-1 font-bold text-gray-900">
+                                            <IndianRupee size={18} />
+                                            {plan.price}
+                                        </div>
+                                    </td>
+
+                                    {/* Duration */}
+                                    <td className="px-3 py-2">
+
+                                        <span className="px-3 py-1 rounded-sm bg-blue-50 text-blue-700 text-xs font-semibold">
+                                            {plan.duration}
+                                        </span>
+                                    </td>
+
+                                    {/* Features */}
+                                    {/* <td className="px-3 py-2">
 
                                             <div className="space-y-2">
 
@@ -282,63 +299,71 @@ export default function Plans() {
                                             </div>
                                         </td> */}
 
-                                        {/* Status */}
-                                        <td className="px-3 py-2">
+                                    {/* Status */}
+                                    <td className="px-3 py-2">
 
-                                            <div
-                                                className={`
+                                        <div
+                                            className={`
                                                     inline-flex items-center gap-2
                                                     px-3 py-1 rounded-sm text-xs font-semibold capitalize
                                                     ${plan.status === "active"
-                                                        ? "bg-green-100 text-green-700"
-                                                        : "bg-red-100 text-red-700"
-                                                    }
+                                                    ? "bg-green-100 text-green-700"
+                                                    : "bg-red-100 text-red-700"
+                                                }
                                                 `}
-                                            >
+                                        >
 
-                                                <ShieldCheck size={14} />
+                                            <ShieldCheck size={14} />
 
-                                                {plan.status}
+                                            {plan.status}
+                                        </div>
+                                    </td>
+
+                                    {/* Payment Info */}
+                                    <td className="px-3 py-2">
+
+                                        <div className="space-y-2 text-sm">
+
+                                            <div className="flex items-center gap-2 text-gray-700">
+                                                <CreditCard size={15} />
+                                                <span className="font-medium">
+                                                    {plan.razorpay_payment_id.slice(0, 15)}...
+                                                </span>
                                             </div>
-                                        </td>
 
-                                        {/* Payment Info */}
-                                        <td className="px-3 py-2">
+                                            <p className="text-xs text-gray-500 break-all">
+                                                {plan.razorpay_order_id}
+                                            </p>
+                                        </div>
+                                    </td>
 
-                                            <div className="space-y-2 text-sm">
+                                    {/* Start Date */}
+                                    <td className="px-3 py-2 bg-teal-100">
 
-                                                <div className="flex items-center gap-2 text-gray-700">
-                                                    <CreditCard size={15} />
-                                                    <span className="font-medium">
-                                                        {plan.razorpay_payment_id.slice(0, 15)}...
-                                                    </span>
-                                                </div>
+                                        <div className="flex items-center gap-2 text-sm text-gray-700">
 
-                                                <p className="text-xs text-gray-500 break-all">
-                                                    {plan.razorpay_order_id}
-                                                </p>
-                                            </div>
-                                        </td>
+                                            <CalendarDays size={16} />
 
-                                        {/* Start Date */}
-                                        <td className="px-3 py-2 bg-teal-100">
-
-                                            <div className="flex items-center gap-2 text-sm text-gray-700">
-
-                                                <CalendarDays size={16} />
-
-                                                {new Date(
-                                                    plan.startDate
-                                                ).toLocaleDateString()}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
+                                            {new Date(
+                                                plan.startDate
+                                            ).toLocaleDateString()}
+                                        </div>
+                                    </td>
+                                    <td className="px-3 py-2 bg-teal-100">
+                                        <button onClick={() => { navigate(`/dashboard/Subscribers/${plan._id}/view`) }}>
+                                            <span className="px-3 py-1 rounded-sm bg-white text-teal-800 cursor-pointer text-xs font-semibold">
+                                                View Details
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            )))}
                         </tbody>
                     </table>
 
                 </div>
             </div>
+
             {!loading && paginatedTasks.length > 0 && (
                 <div className="px-2 py-3 border border-gray-300 bg-teal-100 text-xs text-gray-800 flex items-center justify-between">
                     <span>
@@ -355,11 +380,6 @@ export default function Plans() {
             )}
             {/* // paination */}
             <div className="mt-5 flex items-center justify-between gap-2">
-                {/* <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
-                    <span className="text-sm font-medium text-gray-600">
-                        Page {currentPage} of {totalPages}
-                    </span>
-                </div> */}
                 {totalPages >= 1 && (
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                         {/* Previous */}

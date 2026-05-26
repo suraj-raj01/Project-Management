@@ -186,3 +186,16 @@ export const getPlans = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+export const getPlansById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const plans = await Plan.findById(id).populate("userId", "name email subscriptionEndDate").sort({ createdAt: -1 });
+        if (!plans) {
+            return res.status(404).json({ message: "Plans not found", success: false })
+        }
+        res.status(200).json({ plans, success: true });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

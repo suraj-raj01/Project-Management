@@ -214,8 +214,8 @@ export default function Tasks() {
                     </span>
                 </div>
                 <div className="flex items-center justify-end w-full md:w-fit">
-                    <button className='text-md w-fit md:w-fit rounded-sm bg-teal-500 px-4 py-2 text-white'>
-                        <Link to="/dashboard/create-task" className="flex gap-1 items-center justify-center"><Plus /> Assign Task</Link>
+                    <button className='text-md w-fit md:w-fit rounded-sm border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 px-4 py-2 text-white'>
+                        <Link to="/dashboard/create-task" className="flex gap-1 items-center justify-center"><Plus size={18}/> Assign Task</Link>
                     </button>
                 </div>
             </div>
@@ -233,12 +233,12 @@ export default function Tasks() {
                     />
                 </div>
                 {/* filter by status */}
-                <div className="w-full md:w-auto">
+                <div className="w-full md:w-auto flex items-center justify-end gap-2">
                     <select
                         title="update status"
                         value={statusFilter}
                         onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
-                        className={`border border-gray-200 px-3 py-2 md:w-auto w-full rounded-sm text-sm outline-none ${statusColor(statusFilter)}`}>
+                        className={`border border-gray-200 px-3 py-2 md:w-auto w-fit rounded-sm text-sm outline-none ${statusColor(statusFilter)}`}>
                         <option value="All">All</option>
                         <option value="Pending">Pending</option>
                         <option value="In Progress">In Progress</option>
@@ -250,7 +250,7 @@ export default function Tasks() {
             {/* Table */}
             <div className="overflow-x-auto bg-white">
                 <table className="min-w-full text-sm text-left">
-                    <thead className="bg-teal-500 text-white">
+                    <thead className="bg-linear-to-r from-teal-400 to-emerald-600 text-white">
                         <tr className='uppercase'>
                             <th className="px-5 py-4 min-w-50 font-semibold"> Title </th>
                             <th className="px-5 py-4 min-w-50 font-semibold">Projects </th>
@@ -365,7 +365,7 @@ export default function Tasks() {
                     </tbody>
                 </table>
                 <div className="flex items-center justify-center p-3 text-red-500 font-bold">
-                    {tasks.length === 0 && (
+                    {paginatedTasks.length === 0 && (
                         <div className="flex items-center justify-center">
                             <p className="text-gray-500">No tasks found</p>
                         </div>

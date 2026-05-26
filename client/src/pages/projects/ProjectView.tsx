@@ -95,7 +95,7 @@ export default function ProjectView() {
                                     </div>
                                 </div>
 
-                                <p className="text-teal-50 leading-relaxed max-w-3xl line-clamp-2">
+                                <p className="text-teal-50 leading-relaxed max-w-3xl line-clamp-1">
                                     {project.description}
                                 </p>
                             </div>
@@ -154,7 +154,7 @@ export default function ProjectView() {
                             Project Description
                         </h2>
 
-                        <p className="text-gray-600 leading-8">
+                        <p className="text-gray-600 leading-5">
                             {project.description}
                         </p>
                     </div>

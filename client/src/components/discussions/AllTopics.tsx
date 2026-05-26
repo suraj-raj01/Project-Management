@@ -23,7 +23,7 @@ export default function AllTopics() {
             setTotalPages(response.data?.totalPages);
         } catch (error) {
             console.log(error);
-            toast.error("Failed to fetch discussions");
+            // toast.error("Failed to fetch discussions");
         } finally {
             setLoading(false);
         }
@@ -71,9 +71,9 @@ export default function AllTopics() {
 
     if (!loading && discussions.length === 0) {
         return (
-            <div className="p-10 max-w-full flex flex-col gap-3 bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 flex items-center justify-center text-gray-600 shadow-sm">
+            <div className="p-10 max-w-full flex flex-col gap-3 bg-linear-to-r from-teal-50 to-emerald-50 border border-teal-100 items-center justify-center text-gray-600 shadow-sm">
                 <p className="text-lg font-bold">No discussions yet. Create a new topic 🚀</p>
-                <Link className="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 text-sm font-medium rounded-sm transition-colors flex items-center justify-center gap-2" to="/dashboard/create-discussion">
+                <Link className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white px-4 py-2 text-sm font-medium rounded-sm transition-colors flex items-center justify-center gap-2" to="/dashboard/create-discussion">
                     <Plus size={16} /> Create New Topic
                 </Link>
             </div>
@@ -108,7 +108,7 @@ export default function AllTopics() {
                         className="group md:max-w-4xl rounded-md bg-white hover:border-gray-200 hover:shadow-lg transition-all duration-300 md:p-5 p-2 border border-gray-100"
                     >
                         <div className="flex items-center justify-between flex-wrap w-fit gap-2">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                            <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-white font-bold text-lg shrink-0">
                                 {discussion?.createdBy?.name
                                     ?.charAt(0)
                                     ?.toUpperCase()}

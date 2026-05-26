@@ -40,7 +40,7 @@ export const getAllDiscussions = async (req, res) => {
         let adminId;
 
         // If logged-in user is admin
-        if (req.user.role === "admin") {
+        if (req.user.role === "Admin") {
             adminId = req.user._id;
         } else {
             // If logged-in user is normal user

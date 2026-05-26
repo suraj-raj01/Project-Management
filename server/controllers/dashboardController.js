@@ -54,11 +54,86 @@ export const getDashboardStats = async (req, res) => {
     }
 };
 
+export const getSuperAdminDashboardStats = async (req, res) => {
+    try {
+        console.log(req.body)
+        const totalTasks = await Task.find().countDocuments();
+        const todoTasks = await Task.find().countDocuments({
+            status: "Pending",
+        });
+        const inProgressTasks = await Task.find().countDocuments({
+            status: "In Progress",
+        });
+        const doneTasks = await Task.find().countDocuments({
+            status: "Completed",
+        });
+        const overdueTasks = await Task.find().countDocuments({
+            dueDate: { $lt: new Date() },
+            status: { $ne: "Completed" || "Pending" },
+        });
+        const tasksPerUser = await Task.aggregate([
+            {
+                $match: {
+                    createdBy: req.user._id,
+                },
+            },
+            {
+                $group: {
+                    _id: "$assignedTo",
+                    totalTasks: {
+                        $sum: 1,
+                    },
+                },
+            },
+        ])
+
+        const totalUsers = await User.find().countDocuments();
+        const totalMembers = await User.find({role: "Member"}).countDocuments();
+        const totalAdmins = await User.find({role: "Admin"}).countDocuments();
+        const totalProjects = await Project.find().countDocuments();
+
+        res.json({
+            totalTasks,
+            todoTasks,
+            inProgressTasks,
+            doneTasks,
+            overdueTasks,
+            tasksPerUser,
+            totalUsers,
+            totalMembers,
+            totalAdmins,
+            totalProjects,
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 export const getUsers = async (req, res) => {
     try {
         const users = await User.find({ createdBy: req.user._id }).select("-password");
         // console.log(users)
         res.status(200).json({ users, success: true });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const getUsersByAdmin = async (req, res) => {
+    try {
+        const users = await User.find({ createdBy: req.params.id }).select("-password");
+        // console.log(users)
+        res.status(200).json({ users, success: true });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const getTasksByAdmin = async (req, res) => {
+    try {
+        const tasks = await Task.find({ createdBy: req.params.id });
+        // console.log(tasks)
+        res.status(200).json({ tasks, success: true });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

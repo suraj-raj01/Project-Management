@@ -93,7 +93,7 @@ export default function ProjectForm() {
                     <p className="text-gray-500 text-sm">Manage and track your projects</p>
                 </div>
                 <div>
-                    <Link to="/dashboard/projects" className="bg-teal-500 text-white px-4 py-2 rounded-sm hover:bg-teal-600 transition">
+                    <Link to="/dashboard/projects" className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white px-4 py-2 rounded-sm hover:bg-teal-600 transition">
                         All Project
                     </Link>
                 </div>
@@ -122,7 +122,7 @@ export default function ProjectForm() {
                     <button
                         disabled={loading}
                         type="submit"
-                        className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-sm transition"
+                        className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white px-5 py-2 rounded-sm transition"
                     >
                         {loading ? "Submitting..." : id ? "Update Project" : "Create Project"}
                     </button>
@@ -158,7 +158,7 @@ export default function ProjectForm() {
 
                             <button
                                 onClick={() => navigate("/pricing")}
-                                className="px-4 py-2 bg-green-600 text-white rounded"
+                                className="px-4 py-2 border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white rounded"
                             >
                                 Upgrade
                             </button>

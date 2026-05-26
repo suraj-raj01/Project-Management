@@ -44,7 +44,7 @@ export default function Subscription() {
     )
 
     return (
-        <section className="px-4">
+        <section className="">
             <div className="max-w-full mx-auto">
                 {/* HEADER */}
                 <div className="border-b border-gray-200 py-2 mb-5">

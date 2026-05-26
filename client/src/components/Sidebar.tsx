@@ -7,7 +7,6 @@ import {
     Users,
     MessageCircle,
     BadgeDollarSignIcon,
-    UserCheck2Icon,
     CircleDollarSign,
     CircleDollarSignIcon,
 } from "lucide-react";
@@ -29,20 +28,18 @@ interface NavItem {
 
 type UserRole = "Superadmin" | "Admin" | "Member";
 
-/* =========================================
-   NAVIGATION ITEMS
-========================================= */
+// NAVIGATION ITEMS
 
 // Superadmin
 const superAdminNavItems: NavItem[] = [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard", end: true },
     { to: "/dashboard/users", icon: Users, label: "Members", end: false },
-    { to: "/dashboard/admins", icon: UserCheck2Icon, label: "Admins", end: false },
+    // { to: "/dashboard/admins", icon: UserCheck2Icon, label: "Admins", end: false },
     { to: "/dashboard/projects", icon: FolderKanban, label: "Projects", end: false },
     { to: "/dashboard/tasks", icon: CheckSquare, label: "Tasks", end: false },
     { to: "/dashboard/discussions", icon: MessageCircle, label: "Team Discussion", end: false },
     // { to: "/dashboard/subscription", icon: BadgeDollarSignIcon, label: "Subscription", end: false },
-    { to: "/dashboard/plans", icon: CircleDollarSign, label: "Payments", end: false },
+    { to: "/dashboard/Subscribers", icon: CircleDollarSign, label: "Subscribers", end: false },
 ];
 
 // Admin
@@ -52,7 +49,7 @@ const adminNavItems: NavItem[] = [
     { to: "/dashboard/projects", icon: FolderKanban, label: "Projects", end: false },
     { to: "/dashboard/tasks", icon: CheckSquare, label: "Tasks", end: false },
     { to: "/dashboard/discussions", icon: MessageCircle, label: "Team Discussion", end: false },
-    { to: "/dashboard/subscription", icon: BadgeDollarSignIcon, label: "Subscription", end: false },
+    { to: "/dashboard/subscription", icon: BadgeDollarSignIcon, label: "Subscription Plan", end: false },
 ];
 
 // Member
@@ -223,7 +220,7 @@ export default function Sidebar({
 
                     <div className="flex items-center gap-3">
 
-                        <div className="w-10 h-10 rounded-full bg-linear-to-br from-teal-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                        <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center shadow-lg">
                             <span className="font-bold text-white">
                                 {getPanelIcon()}
                             </span>
@@ -303,7 +300,7 @@ export default function Sidebar({
                                 }}
                             >
 
-                                <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-xl font-bold uppercase shrink-0">
+                                <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-xl font-bold uppercase shrink-0">
                                     {user?.name?.charAt(0)}
                                 </div>
 
