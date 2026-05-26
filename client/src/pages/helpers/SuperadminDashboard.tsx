@@ -16,16 +16,13 @@ import AdminDashboardSkeleton from "../skeleton/DashboardSkeleton";
 
 export default function SuperadminDashboard() {
     const user = getUserFromStorage();
-
     const [stats, setStats] = useState<any>({});
     const [loading, setLoading] = useState(false);
 
     const fetchStats = async () => {
         try {
             setLoading(true);
-
             const { data } = await API.get("/dashboard/superadmin");
-
             setStats(data);
         } catch (error: any) {
             console.log(error);
@@ -89,6 +86,10 @@ export default function SuperadminDashboard() {
             trend: "Registered admins",
         },
     ];
+
+    if (stats.length == 0) return <div>
+        <p className="font-bold text-red-400 text-center">Data not found</p>
+    </div>
 
     return (
         <section className="space-y-6">

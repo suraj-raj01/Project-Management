@@ -19,6 +19,7 @@ import PaymentSuccess from "./components/PymentSuccess";
 import PaymentFailed from "./components/PaymentFailed";
 import Plans from "./pages/subscriptions/Plans";
 import PaymentView from "./pages/subscriptions/PaymentView";
+import Admins from "./pages/users/Admins";
 
 // Layouts
 const Layout = lazy(() => import("./layouts/Layout"));
@@ -105,6 +106,7 @@ export default function App() {
 
             {/* subscription */}
             <Route path="subscription" element={<Subscription />} />
+            <Route path="admins" element={<Admins />} />
             <Route path="Subscribers" element={<Plans />} />
             <Route path="Subscribers/:id/view" element={<PaymentView />} />
 

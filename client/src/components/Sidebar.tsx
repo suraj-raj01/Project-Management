@@ -9,6 +9,7 @@ import {
     BadgeDollarSignIcon,
     CircleDollarSign,
     CircleDollarSignIcon,
+    UserCheck2Icon,
 } from "lucide-react";
 
 import toast from "react-hot-toast";
@@ -34,7 +35,7 @@ type UserRole = "Superadmin" | "Admin" | "Member";
 const superAdminNavItems: NavItem[] = [
     { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard", end: true },
     { to: "/dashboard/users", icon: Users, label: "Members", end: false },
-    // { to: "/dashboard/admins", icon: UserCheck2Icon, label: "Admins", end: false },
+    { to: "/dashboard/admins", icon: UserCheck2Icon, label: "Admins", end: false },
     { to: "/dashboard/projects", icon: FolderKanban, label: "Projects", end: false },
     { to: "/dashboard/tasks", icon: CheckSquare, label: "Tasks", end: false },
     { to: "/dashboard/discussions", icon: MessageCircle, label: "Team Discussion", end: false },
