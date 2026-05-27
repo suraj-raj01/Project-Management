@@ -10,11 +10,11 @@ import {
 
 const Home = () => {
     return (
-        <section className="relative overflow-hidden min-h-screen pt-45 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-gradient-to-br from-teal-50 -mt-15 via-white to-emerald-100 px-4 transition-all duration-1000">
+        <section className="relative overflow-hidden min-h-screen pt-45 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-linear-to-br from-teal-50 -mt-15 via-white to-emerald-100 px-4 transition-all duration-1000">
             {/* Background Blur Effects */}
             <div className="absolute top-0 left-0 w-72 md:h-72 h-50 bg-teal-300/30 blur-3xl rounded-full" />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-300/30 blur-3xl rounded-full" />
-            <div className="absolute hidden md:block rotate-[270deg] top-30 left-[-290px] w-full h-135"
+            <div className="absolute hidden md:block rotate-270 top-30 -left-72.5 w-full h-135"
                 style={{
                     backgroundSize: "contain",
                     backgroundPosition: "center",
@@ -36,7 +36,7 @@ const Home = () => {
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl text-center md:text-start font-black leading-tight tracking-tight text-gray-900">
 
                         Organize Team
-                        <span className="block bg-gradient-to-r from-teal-600 to-emerald-500 text-transparent bg-clip-text">
+                        <span className="block bg-linear-to-r from-teal-600 to-emerald-500 text-transparent bg-clip-text">
                             Tasks Efficiently
                         </span>
                     </h1>
@@ -52,7 +52,7 @@ const Home = () => {
                     <div className="flex flex-col md:flex-row items-center gap-4 md:gap-4 mt-13">
                         <Link
                             to="/docs"
-                            className="group flex w-full md:w-auto justify-center items-center gap-2 bg-gradient-to-r from-teal-500 to-emerald-600 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                            className="group flex w-full md:w-auto justify-center items-center gap-2 bg-linear-to-r from-teal-500 to-emerald-600 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >
                             Documentation
                             <ArrowRight size={18}
@@ -73,7 +73,7 @@ const Home = () => {
 
                     {/* Stats */}
 
-                    <div className="flex flex-wrap gap-10 md:mt-8 mt-25 md:mt-8">
+                    <div className="flex flex-wrap gap-10 mt-25 md:mt-8">
 
                         <div className="md:w-auto flex flex-col text-center w-full">
                             <h3 className="text-4xl font-black text-teal-900">
@@ -121,13 +121,13 @@ const Home = () => {
                                     Team Task Overview
                                 </p>
                             </div>
-                            <div className="w-13 h-13 flex items-center justify-center text-white rounded-full bg-gradient-to-r from-teal-500 to-emerald-600">
+                            <div className="w-13 h-13 flex items-center justify-center text-white rounded-full bg-linear-to-r from-teal-500 to-emerald-600">
                                 <LayoutDashboardIcon />
                             </div>
                         </div>
                         {/* Cards */}
                         <div className="grid grid-cols-2 gap-2 md:gap-4">
-                            <div className="bg-gradient-to-br from-teal-50 to-white border border-teal-100 rounded-md p-5">
+                            <div className="bg-linear-to-br from-teal-50 to-white border border-teal-100 rounded-md p-5">
                                 <div className="flex items-center justify-between">
                                     <ListChecks
                                         className="text-teal-600"
@@ -147,7 +147,7 @@ const Home = () => {
                                 </p>
                             </div>
 
-                            <div className="bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 rounded-md p-5">
+                            <div className="bg-linear-to-br from-emerald-50 to-white border border-emerald-100 rounded-md p-5">
                                 <div className="flex items-center justify-between">
                                     <FolderKanban
                                         className="text-emerald-600"
@@ -168,7 +168,7 @@ const Home = () => {
                                 </p>
                             </div>
 
-                            <div className="col-span-2 mt-3 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-lg p-6 text-white shadow-xl">
+                            <div className="col-span-2 mt-3 bg-linear-to-r from-teal-500 to-emerald-600 rounded-lg p-6 text-white shadow-xl">
                                 <div className="flex items-center justify-between">
 
                                     <div>

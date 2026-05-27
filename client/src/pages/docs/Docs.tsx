@@ -111,7 +111,7 @@ export default function Docs() {
                     </div>
 
                     {/* demo account */}
-                    <div className="mt-8 max-w-md">
+                    <div className="mt-8 max-w-2xl">
 
                         <div className="flex items-center gap-2 mb-3">
                             <div className="h-3 w-3 rounded-full bg-red-500"></div>
@@ -123,7 +123,7 @@ export default function Docs() {
                             </p>
                         </div>
 
-                        <div className="relative overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl">
+                        <div className="relative overflow-hidden rounded-sm border border-gray-800 bg-linear-to-br from-gray-900 via-gray-800 to-black shadow-2xl">
 
                             {/* Glow Effect */}
                             <div className="absolute top-0 right-0 h-32 w-32 bg-teal-500/20 blur-3xl rounded-full"></div>
@@ -142,13 +142,13 @@ export default function Docs() {
                                         </p>
                                     </div>
 
-                                    <div className="bg-teal-500/20 text-teal-400 text-xs px-3 py-1 rounded-full font-medium">
+                                    <div className="bg-teal-500/20 text-teal-400 text-xs px-3 py-1 rounded-md font-medium">
                                         Admin
                                     </div>
                                 </div>
 
                                 {/* Email */}
-                                <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-4">
+                                <div className="bg-gray-800/70 border border-gray-700 rounded-md p-4">
                                     <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">
                                         Email
                                     </p>
@@ -159,7 +159,7 @@ export default function Docs() {
                                 </div>
 
                                 {/* Password */}
-                                <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-4">
+                                <div className="bg-gray-800/70 border border-gray-700 rounded-md p-4">
                                     <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">
                                         Password
                                     </p>
@@ -170,12 +170,12 @@ export default function Docs() {
                                 </div>
 
                                 {/* Footer */}
-                                <div className="flex items-center justify-between pt-2">
+                                <div className="flex flex-col gap-2 md:flex-row items-center justify-between pt-2">
                                     <p className="text-gray-500 text-xs">
                                         Team Management Demo Access
                                     </p>
 
-                                    <button className="bg-teal-600 hover:bg-teal-700 transition px-4 py-2 rounded-lg text-white text-sm font-medium">
+                                    <button className="bg-teal-600 hover:bg-teal-700 transition px-4 py-2 rounded-md text-white text-sm font-medium">
                                         <Link to='/login'>Quick Login</Link>
                                     </button>
                                 </div>

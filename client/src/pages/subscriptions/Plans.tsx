@@ -219,7 +219,7 @@ export default function Plans() {
 
                                     {/* User */}
                                     <td className="px-3 py-2">
-                                        <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-2">
                                             <div className="w-11 h-11 rounded-full bg-teal-100 flex items-center justify-center shrink-0">
                                                 <User size={20} className="text-teal-700" />
                                             </div>
@@ -228,7 +228,7 @@ export default function Plans() {
                                                 <h3 className="font-semibold text-gray-900 uppercase">
                                                     {plan.userId.name}
                                                 </h3>
-                                                <p className="text-sm text-gray-500">
+                                                <p className="text-sm -mt-1 text-gray-500">
                                                     {plan.userId.email}
                                                 </p>
                                             </div>

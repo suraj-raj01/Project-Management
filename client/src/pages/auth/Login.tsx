@@ -250,7 +250,7 @@ export default function Login() {
                             {/* API Error */}
 
                             {apiError && (
-                                <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-2xl px-4 py-3">
+                                <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-sm px-4 py-1">
                                     {apiError}
                                 </div>
                             )}

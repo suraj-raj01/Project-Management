@@ -175,12 +175,12 @@ export default function UserView() {
                 </div>
                 <>
                     {/* User Card */}
-                    <div className="border-2 border-teal-50 rounded-sm p-4 bg-white shadow-sm">
+                    <div className="border border-gray-100 rounded-sm p-4 bg-white">
                         <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
 
                             {/* Avatar */}
                             <div className="flex justify-center md:justify-start">
-                                <div className="h-20 w-20 md:h-24 md:w-24 rounded-full border-4 border-teal-100 border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-4xl md:text-5xl font-bold text-white shrink-0">
+                                <div className="h-20 w-20 md:h-24 md:w-24 rounded-full border-teal-500 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-4xl md:text-5xl font-bold text-white shrink-0">
                                     {user?.name?.charAt(0)?.toUpperCase()}
                                 </div>
                             </div>

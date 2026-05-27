@@ -76,26 +76,26 @@ export default function ProjectView() {
             {project ? (
                 <div className="space-y-6">
                     {/* Header Card */}
-                    <div className="bg-gradient-to-r from-teal-500 to-emerald-400 rounded-sm p-6 md:p-8 text-white shadow-xl">
+                    <div className="">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                             <div>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-14 h-14 rounded-sm bg-white/20 backdrop-blur-md flex items-center justify-center">
-                                        <FolderKanban size={28} />
+                                <div className="flex items-center gap-3 mb-2">
+                                    <div className="w-14 h-14 bg-red-100 rounded-sm backdrop-blur-md flex items-center justify-center">
+                                        <FolderKanban size={28} color="red"/>
                                     </div>
 
                                     <div>
-                                        <p className="text-sm text-teal-100 uppercase tracking-widest">
+                                        <p className="text-sm text-teal-500 font-bold uppercase tracking-widest">
                                             Project Details
                                         </p>
 
-                                        <h1 className="text-2xl md:text-3xl font-bold">
+                                        <h1 className="text-2xl md:text-3xl text-teal-800 uppercase font-bold">
                                             {project.name}
                                         </h1>
                                     </div>
                                 </div>
 
-                                <p className="text-teal-50 leading-relaxed max-w-3xl line-clamp-1">
+                                <p className="text-teal-500 leading-relaxed max-w-3xl line-clamp-1">
                                     {project.description}
                                 </p>
                             </div>

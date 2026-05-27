@@ -2,7 +2,7 @@
 function Skeleton({ className = "" }: { className?: string }) {
     return (
         <div
-            className={`animate-pulse bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:400%_100%] rounded-sm ${className}`}
+            className={`animate-pulse bg-linear-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:400%_100%] rounded-sm ${className}`}
             style={{
                 animation: "shimmer 1.6s ease-in-out infinite",
             }}
@@ -13,7 +13,7 @@ function Skeleton({ className = "" }: { className?: string }) {
 /** Matches the shape of a single <StatCard /> */
 function StatCardSkeleton() {
     return (
-        <div className="bg-white border border-teal-50 rounded-sm p-4 shadow-sm space-y-3">
+        <div className="bg-white border animate-pulse border-teal-50 rounded-sm p-4 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
                 <Skeleton className="h-3 md:w-24 w-20" />
                 <Skeleton className="h-9 w-9 rounded-full" />
@@ -28,14 +28,14 @@ function StatCardSkeleton() {
 function CompletionRateSkeleton() {
     return (
         <section className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
-            <div className="bg-white border border-teal-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
+            <div className="bg-white animate-pulse border border-teal-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
                 <div className="flex items-center gap-2 justify-between">
                     <Skeleton className="h-4 w-40" />
                     <Skeleton className="h-4 w-10" />
                 </div>
                 <Skeleton className="h-3 w-full rounded-full" />
             </div>
-            <div className="bg-white border border-teal-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
+            <div className="bg-white animate-pulse border border-teal-50 rounded-sm shadow-sm px-6 py-4 space-y-3">
                 <div className="flex items-center gap-2 justify-between">
                     <Skeleton className="h-4 w-40" />
                     <Skeleton className="h-4 w-10" />
@@ -49,7 +49,7 @@ function CompletionRateSkeleton() {
 /** Matches the shape of a single recent-task card */
 function TaskCardSkeleton() {
     return (
-        <div className="bg-teal-50/50 border border-teal-50 rounded-sm p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="bg-teal-50/50 animate-pulse border border-teal-50 rounded-sm p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="space-y-2 flex-1">
                 <Skeleton className="h-4 w-3/4" />
                 <Skeleton className="h-3 w-1/3" />
@@ -66,11 +66,11 @@ function TaskCardSkeleton() {
 
 export default function AdminDashboardSkeleton() {
     return (
-        <section className="space-y-5">
+        <section className="space-y-5 ">
             {/* 5 stat cards */}
             <div>
-                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
-                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+                <Skeleton className="h-6 w-14 mb-2 rounded-sm animate-pulse" />
+                <Skeleton className="h-2 w-80 mb-4 rounded-sm animate-pulse" />
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -80,15 +80,15 @@ export default function AdminDashboardSkeleton() {
 
             {/* Completion bar */}
             <div>
-                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
-                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+                <Skeleton className="h-6 w-14 mb-2 animate-pulse rounded-sm " />
+                <Skeleton className="h-2 w-80 mb-4 animate-pulse rounded-sm " />
             </div>
             <CompletionRateSkeleton />
 
             {/* 2 extra stat cards */}
             <div>
-                <Skeleton className="h-6 w-14 mb-2 rounded-sm" />
-                <Skeleton className="h-2 w-80 mb-4 rounded-sm" />
+                <Skeleton className="h-6 w-14 mb-2 animate-pulse rounded-sm" />
+                <Skeleton className="h-2 w-80 mb-4 animate-pulse rounded-sm" />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Array.from({ length: 2 }).map((_, i) => (

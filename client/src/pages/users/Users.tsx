@@ -207,7 +207,7 @@ export default function Users() {
             <div className="bg-white rounded-sm border border-gray-200 shadow-sm overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm">
-                        <thead className="bg-linear-to-r from-teal-400 to-emerald-600 text-white text-xs uppercase tracking-wide">
+                        <thead className="bg-linear-to-l from-teal-600 to-teal-300 text-white text-xs uppercase tracking-wide">
                             <tr>
                                 <th className="px-5 py-4 text-left font-semibold">User</th>
                                 <th className="px-5 py-4 text-left font-semibold">Email</th>
@@ -256,10 +256,10 @@ export default function Users() {
                                             </span>
                                         </td>
                                         {/* Joined */}
-                                        <td className="px-5 py-2 text-gray-500 whitespace-nowrap hidden md:table-cell">
+                                        <td className="px-5 py-2 text-gray-500 whitespace-nowrap font-semibold hidden md:table-cell">
                                             {new Date(user.createdAt).toLocaleDateString("en-IN", {
                                                 day: "2-digit", month: "short", year: "numeric",
-                                            })}
+                                            }) || "-"}
                                         </td>
                                         {/* Delete */}
                                         <td className="px-2 bg-teal-100 py-2 flex items-center justify-center gap-1 text-center">

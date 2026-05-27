@@ -217,9 +217,9 @@ export default function Sidebar({
             >
 
                 {/* Header */}
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center justify-between mb-5 border-b pb-3 border-white/10">
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 ">
 
                         <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center shadow-lg">
                             <span className="font-bold text-white">
@@ -280,9 +280,9 @@ export default function Sidebar({
                 {role !== "Member" && (
                     <Link
                         to="/pricing"
-                        className="border border-teal-800 md:hidden block w-fit px-4 py-2 rounded-full bg-linear-to-br from-teal-600/60 to-orange-300/40 flex gap-2"
+                        className="border md:hidden block w-fit px-4 py-2 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600/50 to-orange-300/50 flex items-center gap-2"
                     >
-                        Upgrade Plan <CircleDollarSignIcon/>
+                        Upgrade Plan <CircleDollarSignIcon size={20}/>
                     </Link>
                 )}
 
@@ -321,7 +321,7 @@ export default function Sidebar({
                                 onClick={logoutHandler}
                                 className="
                                     flex items-center justify-center
-                                    px-3 py-3 rounded-full
+                                    px-2.5 py-2.5 rounded-full
                                     text-gray-50 bg-red-500/60
                                     hover:bg-red-500 hover:text-white
                                     transition-all duration-200
@@ -329,7 +329,7 @@ export default function Sidebar({
                                 "
                                 title="Logout"
                             >
-                                <LogOut size={20} strokeWidth={1.5} />
+                                <LogOut size={20} strokeWidth={2} />
                             </button>
                         </div>
                     )}

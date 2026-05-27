@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import TableSkeleton from "../skeleton/TableSkeleton";
 import { useNavigate } from "react-router-dom";
+import { getUserFromStorage } from "../helpers/GetUserInfo";
+import toast from "react-hot-toast";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -30,7 +32,7 @@ export default function Admins() {
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState("")
 
-    const fetchPlans = async () => {
+    const fetchAdmins = async () => {
         try {
             setLoading(true);
             const { data } = await API.get(`/dashboard/admins`);
@@ -43,7 +45,7 @@ export default function Admins() {
     };
 
     useEffect(() => {
-        fetchPlans();
+        fetchAdmins();
     }, []);
 
     const filteredTasks = useMemo(() => {
@@ -78,6 +80,61 @@ export default function Admins() {
         window.scrollTo({
             top: 0,
             behavior: "smooth",
+        });
+    };
+
+    const user = getUserFromStorage();
+    const deleteUser = async (userId: string) => {
+        if (user._id === userId) {
+            toast.error("You cannot delete yourself");
+            return;
+        }
+        toast((t) => (
+            <div className="flex flex-col gap-4">
+                <div>
+                    <h3 className="text-sm font-semibold text-gray-800">
+                        Delete User
+                    </h3>
+
+                    <p className="text-sm text-gray-500 mt-1">
+                        Delete this user? This action cannot be undone.
+                    </p>
+                </div>
+
+                <div className="flex items-center justify-end gap-2">
+                    <button
+                        onClick={() => toast.dismiss(t.id)}
+                        className="px-4 py-2 text-sm border border-gray-300 rounded-sm hover:bg-gray-100 transition"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        onClick={async () => {
+                            try {
+                                await API.delete(`/dashboard/users/${userId}`);
+                                toast.dismiss(t.id);
+                                toast.success("User deleted successfully");
+                                fetchAdmins();
+                            } catch (error) {
+                                console.log(error);
+                                toast.error("Failed to delete user");
+                            }
+                        }}
+                        className="px-4 py-2 text-sm bg-red-500 text-white rounded-sm hover:bg-red-600 transition"
+                    >
+                        Delete
+                    </button>
+                </div>
+            </div>
+        ), {
+            duration: 10000,
+            style: {
+                borderRadius: "4px",
+                background: "#fff",
+                color: "#111827",
+                padding: "12px",
+            },
         });
     };
 
@@ -120,7 +177,7 @@ export default function Admins() {
                     <table className="w-full">
 
                         {/* Table Head */}
-                        <thead className="bg-teal-600 border-b border-gray-200">
+                        <thead className="bg-linear-to-l from-teal-600 to-teal-300 border-b border-gray-200">
                             <tr className="text-left">
                                 <th className="px-5 py-4 text-sm font-semibold text-white">
                                     Name
@@ -129,7 +186,7 @@ export default function Admins() {
                                     Email
                                 </th>
                                 <th className="px-5 py-4 text-sm font-semibold text-white">
-                                    Plan
+                                    Plan Name
                                 </th>
                                 <th className="px-5 py-4 text-sm font-semibold text-white">
                                     Plan Expiry
@@ -202,14 +259,14 @@ export default function Admins() {
                                         </td>
                                         <td className="px-3 py-2 bg-teal-100">
                                             <section className="flex gap-1">
-                                                <div onClick={()=>{navigate(`/dashboard/users/${admin?._id}/view`)}} className="p-1 hover:bg-gray-100 text-teal-500">
-                                                    <Eye size={16}/>
+                                                <div className="p-1 hover:bg-red-100 text-red-500" onClick={() => { deleteUser(admin._id) }}>
+                                                    <Trash size={16} />
                                                 </div>
                                                 <div className="p-1 hover:bg-gray-100 text-teal-500">
-                                                    <Edit size={16}/>
+                                                    <Edit size={16} />
                                                 </div>
-                                                <div className="p-1 hover:bg-red-100 text-red-500">
-                                                    <Trash size={16}/>
+                                                <div onClick={() => { navigate(`/dashboard/users/${admin?._id}/view`) }} className="p-1 hover:bg-gray-100 text-teal-500">
+                                                    <Eye size={16} />
                                                 </div>
                                             </section>
                                         </td>
