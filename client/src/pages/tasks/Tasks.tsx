@@ -214,7 +214,7 @@ export default function Tasks() {
                     </span>
                 </div>
                 <div className="flex items-center justify-end w-full md:w-fit">
-                    <button className='text-md w-fit md:w-fit rounded-sm border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 px-4 py-2 text-white'>
+                    <button className='text-md w-fit md:w-fit rounded-sm border-teal-500 border border-b-2 bg-linear-to-br from-teal-600 to-orange-300 px-4 py-2 text-white'>
                         <Link to="/dashboard/create-task" className="flex gap-1 items-center justify-center"><Plus size={18}/> Assign Task</Link>
                     </button>
                 </div>
@@ -257,7 +257,7 @@ export default function Tasks() {
                             <th className="px-5 py-4 font-semibold">  Assigned To </th>
                             <th className="px-5 py-4 min-w-30 font-semibold"> Due Date </th>
                             <th className="px-5 py-4 font-semibold"> Priority </th>
-                            <th className="px-5 py-4 font-semibold"> Status </th>
+                            <th className="px-5 py-4 font-semibold"> Task Status </th>
                             <th className="px-5 py-4 font-semibold"> Actions </th>
                         </tr>
                     </thead>
@@ -394,7 +394,7 @@ export default function Tasks() {
                     </span>
                 </div> */}
                 {totalPages >= 1 && (
-                    <div className="flex items-center justify-center gap-2 flex-wrap">
+                    <div className="flex items-center justify-center gap-2 line-clamp-1">
                         {/* Previous */}
                         <button
                             disabled={currentPage === 1}
@@ -416,7 +416,7 @@ export default function Tasks() {
                                 <button
                                     key={page}
                                     onClick={() => handlePageChange(page)}
-                                    className={`w-10 h-7 rounded-sm text-sm font-semibold transition
+                                    className={`w-10 h-7 line-clamp-1 rounded-sm text-sm font-semibold transition
                                         ${currentPage === page
                                             ? "bg-teal-600 text-white"
                                             : "bg-white border hover:bg-gray-50"

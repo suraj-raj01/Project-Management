@@ -112,7 +112,7 @@ export default function Register() {
     };
 
     return (
-        <section className="relative overflow-hidden -mt-15 pt-18 min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 via-white to-emerald-100 px-4 py-5">
+        <section className="relative overflow-hidden -mt-15 pt-18 min-h-screen flex items-center justify-center bg-linear-to-br from-teal-50 via-white to-emerald-100 px-4 py-5">
 
             {/* Background Effects */}
             <div className="absolute top-0 left-0 w-72 h-72 bg-teal-300/30 blur-3xl rounded-full" />
@@ -121,7 +121,7 @@ export default function Register() {
 
             <div className="relative z-10 w-full max-w-6xl grid lg:grid-cols-2 rounded-lg overflow-hidden shadow-2xl border border-white/30 bg-white/70 backdrop-blur-xl">
                 {/* Left Side */}
-                <div className="hidden lg:flex flex-col justify-center px-10 bg-gradient-to-br from-teal-500 to-emerald-700 text-white relative overflow-hidden">
+                <div className="hidden lg:flex flex-col justify-center px-10 bg-linear-to-br from-teal-400 to-orange-300 text-white relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
                     <div className="absolute bottom-0 left-0 w-72 h-72 bg-black/10 rounded-full blur-3xl" />
                     <div className="relative z-10">
@@ -340,7 +340,7 @@ export default function Register() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="group w-full flex items-center justify-center gap-2 bg-gradient-to-r from-teal-500 to-emerald-600 text-white py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 disabled:opacity-50"
+                                className="group w-full flex items-center justify-center gap-2 bg-linear-to-r from-teal-500 to-emerald-600 text-white py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 disabled:opacity-50"
                             >
                                 {loading
                                     ? "Registering..."

@@ -95,9 +95,9 @@ export default function ProjectView() {
                                     </div>
                                 </div>
 
-                                <p className="text-teal-500 leading-relaxed max-w-3xl line-clamp-1">
+                                {/* <p className="text-teal-500 leading-relaxed max-w-3xl line-clamp-1">
                                     {project.description}
-                                </p>
+                                </p> */}
                             </div>
                         </div>
                     </div>
@@ -150,11 +150,11 @@ export default function ProjectView() {
 
                     {/* Project Description */}
                     <div className="bg-white border border-gray-100 rounded-sm p-5 shadow-sm">
-                        <h2 className="text-xl font-bold text-gray-800">
+                        <h2 className="text-2xl font-bold text-gray-800">
                             Project Description
                         </h2>
 
-                        <p className="text-gray-600 leading-5">
+                        <p className="text-gray-500 text-xl leading-6">
                             {project.description}
                         </p>
                     </div>

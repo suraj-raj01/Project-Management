@@ -67,7 +67,9 @@ export default function Subscription() {
                                 billing details, and premium
                                 features from one place.
                             </p>
-                            <p className="font-semibold text-red-800">Plan will expire on {user?.subscriptionEndDate.split("T")[0]}</p>
+                            {user && user.subscriptionEndDate && (
+                                <p className="font-semibold text-red-800">Plan will expire on {user?.subscriptionEndDate.split("T")[0]}</p>
+                           )}
                         </div>
 
                         {/* ACTIVE PLAN BADGE */}
@@ -146,7 +148,7 @@ export default function Subscription() {
                                                 month: "short",
                                                 day: "numeric",
                                             })
-                                            : "No Plan"}
+                                            : "FREE PLAN"}
                                     </h3>
                                 </div>
                             </div>

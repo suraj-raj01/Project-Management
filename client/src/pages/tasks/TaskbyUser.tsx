@@ -164,10 +164,10 @@ export default function TaskbyUser() {
                             <th className="px-3 py-4 font-semibold">Index</th>
                             <th className="px-3 py-4 font-semibold">Task Title</th>
                             <th className="px-3 py-4 font-semibold">Project</th>
-                            <th className="px-3 py-4 font-semibold">Assigned To</th>
+                            {/* <th className="px-3 py-4 font-semibold">Assigned To</th> */}
                             <th className="px-3 py-4 font-semibold">Due Date</th>
                             <th className="px-3 py-4 font-semibold">Priority</th>
-                            <th className="px-3 py-4 font-semibold">Status</th>
+                            <th className="px-3 py-4 font-semibold">Task Status</th>
                             <th className="px-3 py-4 font-semibold text-center">Actions</th>
                         </tr>
                     </thead>
@@ -196,7 +196,7 @@ export default function TaskbyUser() {
                             paginatedTasks.map((task, index: number) => (
                                 <tr key={task._id} className="hover:bg-teal-50 transition-colors" >
                                     {/* Title */}
-                                    <td className="px-3 py-2 bg-teal-100">
+                                    <td className="px-3 py-2 text-center bg-teal-100">
                                         <p className="font-semibold text-gray-900">{index + 1}</p>
                                     </td>
                                     <td className="px-3 py-2 min-w-55">
@@ -210,7 +210,7 @@ export default function TaskbyUser() {
                                     </td>
 
                                     {/* Assigned To */}
-                                    <td className="px-3 py-2">
+                                    {/* <td className="px-3 py-2">
                                         <div className="flex items-center gap-3">
                                             <div className="h-8 w-8 rounded-full bg-teal-600 text-white flex items-center justify-center uppercase font-bold text-xs shrink-0">
                                                 {task.assignedTo?.name?.[0] || "U"}
@@ -220,10 +220,10 @@ export default function TaskbyUser() {
                                                 <p className="text-xs text-gray-400">{task.assignedTo?.email}</p>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> */}
 
                                     {/* Due Date */}
-                                    <td className="px-3 py-2 text-gray-600 bg-teal-100 whitespace-nowrap">
+                                    <td className="px-3 py-2 min-w-30 text-gray-600 bg-teal-100 ">
                                         {new Date(task.dueDate).toLocaleDateString("en-IN", {
                                             day: "2-digit",
                                             month: "short",

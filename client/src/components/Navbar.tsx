@@ -24,7 +24,7 @@ export default function Navbar() {
                     <Link
                         to="/"
                         className="flex items-center gap-3" >
-                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-teal-500 to-emerald-700 flex items-center justify-center shadow-md">
+                        <div className="w-11 h-11 rounded-full bg-linear-to-tl from-orange-300 to-teal-500 flex items-center justify-center shadow-md">
                             <FileText
                                 className="text-white"
                                 size={22}
@@ -32,11 +32,11 @@ export default function Navbar() {
                         </div>
 
                         <div>
-                            <h1 className="text-lg uppercase hidden md:block font-extrabold md:text-xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-500 text-transparent bg-clip-text">
-                                Team Management
+                            <h1 className="text-lg uppercase hidden md:block font-extrabold md:text-xl tracking-tight bg-linear-to-bl from-teal-700 to-orange-200 text-transparent bg-clip-text">
+                                TASK Management
                             </h1>
-                            <h1 className="text-lg uppercase md:hidden -mb-1 md:text-2xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-500 text-transparent bg-clip-text">
-                                Team Management
+                            <h1 className="text-lg uppercase md:hidden -mb-1 md:text-2xl font-black tracking-tight bg-linear-to-r from-teal-700 to-emerald-500 text-transparent bg-clip-text">
+                                TASK Management
                             </h1>
 
                             <p className="text-xs text-gray-500">
@@ -87,7 +87,7 @@ export default function Navbar() {
                         {user?._id ? (
                             <Link
                                 to="/dashboard"
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-tl from-orange-300 to-teal-500 text-white font-semibold border-b-2 border-teal-400 shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
                             >
                                 <LayoutDashboard size={18} />
 
@@ -96,7 +96,7 @@ export default function Navbar() {
                         ) : (
                             <Link
                                 to="/login"
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+                                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-tl from-orange-300 to-teal-500 text-white font-semibold border-b-2 border-teal-400 hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
                             >
                                 <LogIn size={18} />
 
@@ -151,14 +151,14 @@ export default function Navbar() {
                             <Link
                                 to="/dashboard"
                                 onClick={() => setMobileMenu(false)}
-                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold">
+                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-sm bg-linear-to-tl from-orange-300 to-teal-500  text-white font-semibold">
                                 <LayoutDashboard size={18} /> Dashboard
                             </Link>
                         ) : (
                             <Link
                                 to="/login"
                                 onClick={() => setMobileMenu(false)}
-                                className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-full bg-gradient-to-r from-teal-500 to-emerald-600 text-white font-semibold">
+                                    className="flex items-center mt-5 justify-center gap-2 w-full px-5 py-3 rounded-sm bg-linear-to-tl from-orange-300 to-teal-500  text-white font-semibold">
                                 <LogIn size={18} /> Sign In
                             </Link>
                         )}

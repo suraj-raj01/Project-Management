@@ -11,6 +11,13 @@ export const savePlans = async (req, res) => {
             key_secret: process.env.KEY_SECRET,
         });
 
+        // const user = await User.findOne({email:userInfo.email})
+        // if(!user){
+        //     return res.status(404).json({
+        //         success:false,
+        //         message:"Please create account first"
+        //     })
+        // }
         // REMOVE $ SYMBOL
         const amount =
             Number(
@@ -32,16 +39,10 @@ export const savePlans = async (req, res) => {
 
         const plan = await Plan.create({
             planName: newplan.name,
-
             price: amount / 100,
-
             features: newplan.features,
-
-            razorpay_order_id:
-                razorpayOrder.id,
-
+            razorpay_order_id: razorpayOrder.id,
             paymentStatus: "pending",
-
             userId: userInfo._id,
         });
 
@@ -52,9 +53,7 @@ export const savePlans = async (req, res) => {
         });
 
     } catch (error) {
-
         console.log(error);
-
         res.status(500).json({
             success: false,
             message: error.message,
