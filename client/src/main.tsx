@@ -12,9 +12,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </AuthProvider>
     <Toaster
       position="top-center"
-      reverseOrder={false}
       toastOptions={{
         className: "rounded-sm",
+        duration: 2000,
       }}
     />
   </React.StrictMode>,

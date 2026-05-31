@@ -11,13 +11,14 @@ export const savePlans = async (req, res) => {
             key_secret: process.env.KEY_SECRET,
         });
 
-        // const user = await User.findOne({email:userInfo.email})
-        // if(!user){
-        //     return res.status(404).json({
-        //         success:false,
-        //         message:"Please create account first"
-        //     })
-        // }
+        const user = await User.findOne({email:userInfo.email})
+        if(!user){
+            return res.status(404).json({
+                success:false,
+                message:"Please create account first"
+            })
+        }
+        
         // REMOVE $ SYMBOL
         const amount =
             Number(

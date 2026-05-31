@@ -226,7 +226,7 @@ export default function Docs() {
 
                 {/* How To Use */}
 
-                <div className="mt-12 rounded-lg border border-gray-100 shadow-sm p-8">
+                <div className="mt-12 rounded-lg border border-gray-100 shadow-sm p-4 md:p-8">
 
                     <div className="flex items-center gap-3 mb-6">
                         <CalendarClock
@@ -271,7 +271,7 @@ export default function Docs() {
 
                     {/* Admin */}
 
-                    <div className="hover:bg-teal-50 rounded-lg border border-gray-100 shadow-sm p-8">
+                    <div className="hover:bg-teal-50 rounded-lg border border-gray-100 shadow-sm p-4 md:p-8">
 
                         <h2 className="text-2xl font-bold text-indigo-600 mb-5">
                             Admin Access
@@ -290,7 +290,7 @@ export default function Docs() {
 
                     {/* Member */}
 
-                    <div className="hover:bg-teal-50 rounded-lg border border-gray-100 shadow-sm p-8">
+                    <div className="hover:bg-teal-50 rounded-lg border border-gray-100 shadow-sm p-4 md:p-8">
 
                         <h2 className="text-2xl font-bold text-emerald-600 mb-5">
                             Member Access

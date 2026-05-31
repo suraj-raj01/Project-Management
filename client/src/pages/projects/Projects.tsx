@@ -156,6 +156,9 @@ export default function Projects() {
                 <table className="w-full text-sm text-left border-collapse">
                     <thead className="bg-teal-500 text-white">
                         <tr>
+                            <th className="px-3 py-4 text-center font-semibold">
+                                Index
+                            </th>
                             <th className="px-3 py-4 font-semibold">
                                 Project Name
                             </th>
@@ -180,9 +183,16 @@ export default function Projects() {
                         {paginatedProjects &&
                             paginatedProjects.length > 0 ? (
                             paginatedProjects.map(
-                                (project: any) => (
+                                (project: any, index:number) => (
                                     <tr key={project._id} className="border-b border-gray-100 hover:bg-teal-50/40 transition">
 
+                                        <td className="px-3 py-2">
+                                            <div>
+                                                <h2 className="font-semibold text-center">
+                                                    {index+1}
+                                                </h2>
+                                            </div>
+                                        </td>
                                         {/* Project Name */}
                                         <td className="px-3 py-2 bg-teal-100 min-w-40">
                                             <div>
@@ -282,11 +292,6 @@ export default function Projects() {
 
             {/* pagination */}
             <div className="mt-5 flex items-center justify-between gap-2">
-                {/* <div className="flex bg-gray-200 border border-gray-300 rounded px-3 py-1 items-center justify-center gap-2">
-                    <span className="text-sm font-medium text-gray-600">
-                        Page {currentPage} of {totalPages}
-                    </span>
-                </div> */}
                 {totalPages >= 1 && (
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                         {/* Previous */}

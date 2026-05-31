@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getUserFromStorage } from "../helpers/GetUserInfo";
 import { GetPlan } from "../../components/GetPlan";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function Payment() {
     const [activeTab, setActiveTab] = useState<string>("userinfo");
@@ -99,8 +99,12 @@ export default function Payment() {
                                         </div>
                                     )}
                                     <button onClick={() => { setActiveTab("subscription") }} className="bg-teal-500 w-full p-3 rounded-md mt-5 mb-5 text-white font-semibold">Save & Next</button>
-                                    {user._id && (
+                                    {user._id ? (
                                         <p onClick={useCurrentInfo} className="cursor-pointer text-center font-semibold text-teal-600">Use Current Information</p>
+                                    ):(
+                                        <div className="flex items-center justify-center">
+                                            <Link to="/login" className="text-sm text-center font-semibold text-teal-600">If don't have any account, please Login or Register</Link>
+                                        </div>
                                     )}
                                 </form>
                             </div>

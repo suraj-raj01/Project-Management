@@ -260,7 +260,7 @@ export default function Sidebar({
                                 rounded-sm text-sm font-medium
                                 transition-all duration-200 relative overflow-hidden
                                 ${isActive
-                                    ? "bg-linear-to-tl from-teal-950 to-teal-800 text-white shadow-sm shadow-teal-900/30"
+                                    ? "bg-linear-to-tl from-teal-950 to-teal-700 text-white shadow-sm shadow-teal-900/30"
                                     : "text-gray-400 hover:bg-white/5 hover:text-white"
                                 }
                                 `

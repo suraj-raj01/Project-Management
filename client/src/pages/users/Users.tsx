@@ -209,10 +209,11 @@ export default function Users() {
                     <table className="w-full text-sm">
                         <thead className="bg-linear-to-l from-teal-600 to-teal-300 text-white text-xs uppercase tracking-wide">
                             <tr>
+                                <th className="px-5 py-4 text-center font-semibold">Index</th>
                                 <th className="px-5 py-4 text-left font-semibold">User</th>
                                 <th className="px-5 py-4 text-left font-semibold">Email</th>
                                 <th className="px-5 py-4 text-left font-semibold">Role</th>
-                                <th className="px-5 py-4 text-left font-semibold md:table-cell">Joined</th>
+                                <th className="px-5 py-4 text-left font-semibold">Joined</th>
                                 <th className="px-5 py-4 text-center font-semibold">Actions</th>
                             </tr>
                         </thead>
@@ -232,9 +233,12 @@ export default function Users() {
                                     </td>
                                 </tr>
                             ) : (
-                                paginatedUsers.map((user) => (
+                                paginatedUsers.map((user, index) => (
                                     <tr key={user._id} className="hover:bg-gray-50 transition-colors">
                                         {/* Avatar + Name */}
+                                        <td className="flex items-center justify-center font-bold">
+                                            <p> {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</p>
+                                        </td>
                                         <td className="px-5 py-1">
                                             <div className="flex items-center gap-3 min-w-40">
                                                 <div className="w-9 h-9 rounded-full bg-teal-600 text-white flex items-center justify-center text-sm font-bold uppercase shrink-0">
@@ -256,10 +260,12 @@ export default function Users() {
                                             </span>
                                         </td>
                                         {/* Joined */}
-                                        <td className="px-5 py-2 text-gray-500 whitespace-nowrap font-semibold hidden md:table-cell">
-                                            {new Date(user.createdAt).toLocaleDateString("en-IN", {
-                                                day: "2-digit", month: "short", year: "numeric",
-                                            }) || "-"}
+                                        <td className="px-5 py-2 text-gray-500 whitespace-nowrap font-semibold">
+                                            {new Date(user.createdAt).toLocaleDateString("en-Us", {
+                                                day: "2-digit",
+                                                month: "short",
+                                                year: "numeric",
+                                            })}
                                         </td>
                                         {/* Delete */}
                                         <td className="px-2 bg-teal-100 py-2 flex items-center justify-center gap-1 text-center">

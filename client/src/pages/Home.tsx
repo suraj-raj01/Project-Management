@@ -30,9 +30,8 @@ const Home = () => {
                     </h1>
 
                     <p className="mt-6 md:text-lg text-center text-gray-600 md:leading-8 max-w-4xl">
-                        Streamline project management, assign tasks,
-                        track progress, and improve collaboration with
-                        a powerful MERN Stack task management system.
+                        Optimize workflows, manage projects efficiently, and enhance team productivity with a robust and scalable Task management platform. Assign tasks, monitor progress in real time, and foster seamless collaboration across your organization.
+.
                     </p>
 
                     {/* Buttons */}
@@ -50,7 +49,7 @@ const Home = () => {
 
                         <Link
                             to="/pricing"
-                            className="group md:px-10 px-2 py-3 w-full md:w-auto flex justify-center items-center gap-3 rounded-full border border-teal-600 bg-transparent text-teal-800 font-semibold hover:bg-teal-600 hover:text-white transition-all duration-300">
+                            className="group md:px-10 px-2 py-3 w-full md:w-auto flex justify-center items-center gap-3 rounded-full border border-teal-600 bg-transparent text-teal-800 font-semibold hover:bg-linear-to-tl from-orange-300 to-teal-500 border-b-2 hover:text-white transition-all duration-300">
                             Get Started
                             <ArrowRight
                                 size={18}

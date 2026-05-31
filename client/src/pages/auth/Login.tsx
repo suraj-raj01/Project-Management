@@ -96,7 +96,7 @@ export default function Login() {
             <div className="relative z-10 w-full max-w-6xl grid lg:grid-cols-2 rounded-lg overflow-hidden shadow-2xl border border-white/30 bg-white/70 backdrop-blur-xl">
                 {/* Left Content */}
 
-                <div className="hidden lg:flex flex-col justify-center p-10 bg-linear-to-br from-teal-400 to-orange-300 text-white relative overflow-hidden">
+                <div className="hidden lg:flex flex-col justify-center p-10 bg-linear-to-br from-teal-400 to-orange-200 text-white relative overflow-hidden">
 
                     <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
 
