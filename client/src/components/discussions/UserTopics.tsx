@@ -160,7 +160,7 @@ export default function UserTopics() {
                                 >
                                     <section className="flex gap-4 max-w-full items-center justify-between">
                                         <div className="flex items-center justify-between flex-wrap w-fit gap-2">
-                                            <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                                            <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 flex items-center justify-center text-white font-bold text-lg shrink-0">
                                                 {discussion?.createdBy?.name
                                                     ?.charAt(0)
                                                     ?.toUpperCase()}
@@ -253,7 +253,7 @@ export default function UserTopics() {
                             <div className="md:sticky relative md:top-20 self-start z-20 w-full">
                                 <div className="w-full rounded-b-none rounded-md py-5 px-3 bg-linear-to-r from-teal-100 to-teal-50">
                                     <div className="flex flex-col items-center justify-center">
-                                                <div className="w-25 h-25 mb-3 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white flex items-center justify-center shadow-md border-2 font-bold text-6xl">
+                                                <div className="w-25 h-25 mb-3 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-white flex items-center justify-center shadow-md border-2 font-bold text-6xl">
                                             {user?.name?.charAt(0)?.toUpperCase()}
                                         </div>
 

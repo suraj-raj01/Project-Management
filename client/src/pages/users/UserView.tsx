@@ -180,7 +180,7 @@ export default function UserView() {
 
                             {/* Avatar */}
                             <div className="flex justify-center md:justify-start">
-                                <div className="h-20 w-20 md:h-24 md:w-24 rounded-full border-teal-500 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-4xl md:text-5xl font-bold text-white shrink-0">
+                                <div className="h-20 w-20 md:h-24 md:w-24 rounded-full border-teal-500 bg-linear-to-br from-teal-600 to-green-300 flex items-center justify-center text-4xl md:text-5xl font-bold text-white shrink-0">
                                     {user?.name?.charAt(0)?.toUpperCase()}
                                 </div>
                             </div>

@@ -65,7 +65,7 @@ export default function DashboardLayout() {
                     <div className="flex items-center gap-2 cursor-pointer">
                         <div className="hidden md:block">
                             {user && user.role === "Admin" ? (
-                                <div title="Upgrade" className="text-xs md:text-sm flex items-center gap-1 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 py-1.5 px-4 mr-2 text-gray-50 border-2 font-semibold" onClick={() => navigate(`/pricing`)}>
+                                <div title="Upgrade" className="text-xs md:text-sm flex items-center gap-1 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 py-1.5 px-4 mr-2 text-gray-50 border-2 font-semibold" onClick={() => navigate(`/pricing`)}>
                                     Upgrade
                                     <BadgeDollarSignIcon size={16} className="" />
                                 </div>
@@ -73,7 +73,7 @@ export default function DashboardLayout() {
                         </div>
                         <button 
                             onClick={() => navigate(`/dashboard/users/${user?._id}/view`)}
-                className="w-9 h-9 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300
+                className="w-9 h-9 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300
                             text-white text-xl cursor-pointer font-bold uppercase flex items-center justify-center 
                             shadow-sm hover:scale-105 transition-all"
                             title={userName}

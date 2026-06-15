@@ -180,7 +180,7 @@ export default function CreateDiscussion() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="border-teal-500 border border-b-2 bg-linear-to-br from-teal-600 to-orange-300 w-full md:w-auto cursor-pointer text-white px-6 py-2 rounded-sm transition-all disabled:opacity-50"
+                        className="border-teal-500 border border-b-2 bg-linear-to-br from-teal-600 to-green-300 w-full md:w-auto cursor-pointer text-white px-6 py-2 rounded-sm transition-all disabled:opacity-50"
                     >
                         {loading
                             ? "Submitting..."

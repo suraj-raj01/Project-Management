@@ -72,6 +72,7 @@ export default function App() {
             <Route path="payment/:plan" element={<Payment/>} />
             <Route path="success" element={<PaymentSuccess/>} />
             <Route path="failed" element={<PaymentFailed/>} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
 
           {/* Dashboard Layout */}

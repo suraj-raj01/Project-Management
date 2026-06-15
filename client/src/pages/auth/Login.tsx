@@ -96,7 +96,7 @@ export default function Login() {
             <div className="relative z-10 w-full max-w-6xl grid lg:grid-cols-2 rounded-lg overflow-hidden shadow-2xl border border-white/30 bg-white/70 backdrop-blur-xl">
                 {/* Left Content */}
 
-                <div className="hidden lg:flex flex-col justify-center p-10 bg-linear-to-br from-teal-400 to-orange-200 text-white relative overflow-hidden">
+                <div className="hidden lg:flex flex-col justify-center p-10 bg-linear-to-br from-teal-400 to-green-200 text-white relative overflow-hidden">
 
                     <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
 
@@ -267,7 +267,7 @@ export default function Login() {
                             {/* Button */}
 
                             <button disabled={loading}
-                                className="group w-full flex items-center justify-center gap-2 bg-linear-to-tl from-orange-300 to-teal-500 border-b-2 border-teal-400 text-white py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 disabled:opacity-50">
+                                className="group w-full flex items-center justify-center gap-2 bg-linear-to-tl from-green-300 to-teal-500 border-b-2 border-teal-400 text-white py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all duration-300 disabled:opacity-50">
                                 {loading ? "Logging in..." : "Login"}
 
                                 {!loading && (

@@ -25,7 +25,7 @@ export default function Navbar() {
                     <Link
                         to="/"
                         className="flex items-center gap-3" >
-                        <div className="w-11 h-11 rounded-full bg-linear-to-tl from-orange-300 to-teal-500 flex items-center justify-center shadow-md">
+                        <div className="w-11 h-11 rounded-full bg-linear-to-tl from-green-300 to-teal-500 flex items-center justify-center shadow-md">
                             <FileText
                                 className="text-white"
                                 size={22}
@@ -88,7 +88,7 @@ export default function Navbar() {
                         {user?._id ? (
                             <Link
                                 to="/dashboard"
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-tl from-orange-300 to-teal-500 text-white font-semibold border-b-2 border-teal-400 shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-tl from-green-300 to-teal-500 text-white font-semibold border-b-2 border-teal-400 shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
                             >
                                 <LayoutDashboard size={18} />
 
@@ -97,7 +97,7 @@ export default function Navbar() {
                         ) : (
                             <Link
                                 to="/login"
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-tl from-orange-300 to-teal-500 text-white font-semibold border-b-2 border-teal-400 hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-tl from-green-300 to-teal-500 text-white font-semibold border-b-2 border-teal-400 hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
                             >
                                 <LogIn size={18} />
 
@@ -127,7 +127,7 @@ export default function Navbar() {
                         <Link
                             to="/"
                             className="flex items-center gap-3 pb-10" >
-                            <div className="w-11 h-11 rounded-full bg-linear-to-tl from-orange-300 to-teal-500 flex items-center justify-center shadow-md">
+                            <div className="w-11 h-11 rounded-full bg-linear-to-tl from-green-300 to-teal-500 flex items-center justify-center shadow-md">
                                 <FileText
                                     className="text-white"
                                     size={22}
@@ -232,14 +232,14 @@ export default function Navbar() {
                             <Link
                                 to="/dashboard"
                                 onClick={() => setMobileMenu(false)}
-                                className="flex items-center mt-8 justify-center gap-2 w-full px-5 py-3 rounded-sm bg-linear-to-tl from-orange-300 to-teal-500  text-white font-semibold">
+                                className="flex items-center mt-8 justify-center gap-2 w-full px-5 py-3 rounded-sm bg-linear-to-tl from-green-300 to-teal-500  text-white font-semibold">
                                 <LayoutDashboard size={18} /> Dashboard
                             </Link>
                         ) : (
                             <Link
                                 to="/login"
                                 onClick={() => setMobileMenu(false)}
-                                className="flex items-center mt-8 justify-center gap-2 w-full px-5 py-3 rounded-sm bg-linear-to-tl from-orange-300 to-teal-500  text-white font-semibold">
+                                className="flex items-center mt-8 justify-center gap-2 w-full px-5 py-3 rounded-sm bg-linear-to-tl from-green-300 to-teal-500  text-white font-semibold">
                                 <LogIn size={18} /> Sign In
                             </Link>
                         )}

@@ -173,7 +173,7 @@ export default function Users() {
                 </div>
                 <Link
                     to="/dashboard/create-user"
-                    className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-center transition-colors text-white px-4 py-2 rounded-sm text-sm font-semibold"
+                    className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-center transition-colors text-white px-4 py-2 rounded-sm text-sm font-semibold"
                 >
                     + Create Member
                 </Link>

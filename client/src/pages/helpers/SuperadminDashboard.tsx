@@ -53,8 +53,8 @@ export default function SuperadminDashboard() {
         {
             label: "In Progress",
             value: stats.inProgressTasks || 0,
-            icon: <Activity size={20} className="text-blue-600" />,
-            iconBg: "bg-blue-100",
+            icon: <Activity size={20} className="text-green-600" />,
+            iconBg: "bg-green-100",
             trend: "Active tasks",
         },
         {

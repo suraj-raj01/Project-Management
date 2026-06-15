@@ -109,7 +109,7 @@ export default function Plans() {
                 return "bg-green-500 text-white";
 
             case "inactive":
-                return "bg-orange-400 text-white";
+                return "bg-green-400 text-white";
 
             default:
                 return "bg-gray-100 text-gray-700";
@@ -261,7 +261,7 @@ export default function Plans() {
                                     {/* Duration */}
                                     <td className="px-3 py-2">
 
-                                        <span className="px-3 py-1 rounded-sm bg-blue-50 text-blue-700 text-xs font-semibold">
+                                        <span className="px-3 py-1 rounded-sm bg-green-50 text-green-700 text-xs font-semibold">
                                             {plan.duration}
                                         </span>
                                     </td>

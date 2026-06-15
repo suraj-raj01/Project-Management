@@ -124,7 +124,7 @@ export default function AdminProfile({ id }: { id: any }) {
                                             </td>
 
                                             <td className="px-4 py-3">
-                                                <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-sm text-xs font-semibold">
+                                                <span className="bg-green-100 text-green-700 px-2 py-1 rounded-sm text-xs font-semibold">
                                                     {user.role}
                                                 </span>
                                             </td>
@@ -248,7 +248,7 @@ export default function AdminProfile({ id }: { id: any }) {
                                                     ${task.status ===
                                                             "Completed"
                                                             ? "bg-green-100 text-green-700"
-                                                            : "bg-orange-100 text-orange-700"
+                                                            : "bg-green-100 text-green-700"
                                                         }`}
                                                 >
                                                     {task.status}

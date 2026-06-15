@@ -67,7 +67,7 @@ export default function Comments() {
                 <div className="bg-white rounded-md overflow-hidden">
                     {/* Header */}
                     <div className="md:p-6">
-                        <div className="flex border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white w-fit px-3.5 py-1.5 text-xs md:text-sm rounded-sm items-center gap-2">
+                        <div className="flex border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-white w-fit px-3.5 py-1.5 text-xs md:text-sm rounded-sm items-center gap-2">
                             <MessageCircle size={22} />
                             <span className="text-xs uppercase tracking-wider font-semibold">
                                 Discussion Topic
@@ -85,7 +85,7 @@ export default function Comments() {
                         <div className="flex flex-col pt-2">
                             <div className="flex flex-wrap items-center gap-1 text-gray-500 text-xs">
                                 <div className="flex items-center gap-2 font-semibold uppercase">
-                                    <User2 size={20} className="border rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white p-1" />
+                                    <User2 size={20} className="border rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-white p-1" />
                                     <span className="text-xs -ml-1 font-medium">Author :</span>
                                     <span onClick={() => navigate(`/dashboard/discussion/profile/${discussion?.createdBy._id}`)} className="hover:text-teal-500 pr-2 cursor-pointer">
                                         {discussion?.createdBy?.name || "Unknown"}
@@ -144,7 +144,7 @@ export default function Comments() {
                                     <div className="flex items-start gap-4">
                                         {/* Avatar */}
                                         <div className="flex items-center justify-between flex-wrap gap-2">
-                                            <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                                            <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 flex items-center justify-center text-white font-bold text-lg shrink-0">
                                                 {reply?.user?.name
                                                     ?.charAt(0)
                                                     ?.toUpperCase()}

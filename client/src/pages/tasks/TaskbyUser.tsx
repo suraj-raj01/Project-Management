@@ -31,7 +31,7 @@ const PRIORITY_STYLES: Record<string, string> = {
 
 const STATUS_STYLES: Record<string, string> = {
     Pending: "bg-yellow-100 text-yellow-700",
-    "In Progress": "bg-orange-500 text-white",
+    "In Progress": "bg-green-500 text-white",
     Completed: "bg-teal-600 text-white",
 };
 

@@ -145,7 +145,7 @@ export default function ChangePassword() {
 
                 {/* Left Side */}
 
-                <div className="hidden lg:flex flex-col justify-center px-10 bg-linear-to-br from-teal-400 to-orange-200 text-white relative overflow-hidden">
+                <div className="hidden lg:flex flex-col justify-center px-10 bg-linear-to-br from-teal-400 to-green-200 text-white relative overflow-hidden">
 
                     <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
 

@@ -21,7 +21,7 @@ export default function Discussion() {
                             <h2 className="text-3xl font-bold">Team Discussion</h2>
                             <p className="text-sm text-gray-600">Share your thoughts and ideas with the team</p>
                         </div>
-                        <button className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white px-4 py-2 text-sm font-medium rounded-sm transition-colors flex items-center justify-center gap-2">
+                        <button className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-white px-4 py-2 text-sm font-medium rounded-sm transition-colors flex items-center justify-center gap-2">
                             <Plus size={16} /> <Link to="/dashboard/create-discussion">Create New Topic</Link>
                         </button>
                     </div>
@@ -31,7 +31,7 @@ export default function Discussion() {
                         <button
                             onClick={() => setActiveTab("all")}
                             className={`px-2 py-1 cursor-pointer text-sm font-medium border-b-2 transition-all duration-200
-                            ${activeTab === "all" ? "border-teal-500 rounded-sm border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white" : "border-transparent text-gray-600 hover:bg-teal-100 rounded-sm hover:text-gray-700"
+                            ${activeTab === "all" ? "border-teal-500 rounded-sm border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-white" : "border-transparent text-gray-600 hover:bg-teal-100 rounded-sm hover:text-gray-700"
                                 }`}
                         >
                             All Discussions
@@ -39,7 +39,7 @@ export default function Discussion() {
                         <button
                             onClick={() => setActiveTab("my")}
                             className={`px-2 py-1 cursor-pointer text-sm font-medium border-b-2 transition-all duration-200
-                            ${activeTab === "my" ? "border-teal-500 rounded-sm border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white" : "border-transparent text-gray-600 hover:bg-teal-100 rounded-sm hover:text-gray-700"
+                            ${activeTab === "my" ? "border-teal-500 rounded-sm border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-white" : "border-transparent text-gray-600 hover:bg-teal-100 rounded-sm hover:text-gray-700"
                                 }`}
                         >
                             Your Profile

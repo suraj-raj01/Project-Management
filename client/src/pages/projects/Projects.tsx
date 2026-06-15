@@ -145,7 +145,7 @@ export default function Projects() {
                     <p className="text-gray-500 text-sm">Manage and track your projects</p>
                 </div>
                 <div className="flex items-center w-full md:w-fit justify-end">
-                    <Link to="/dashboard/projects/create" className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white px-4 py-2 rounded-sm transition flex items-center justify-end">
+                    <Link to="/dashboard/projects/create" className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-white px-4 py-2 rounded-sm transition flex items-center justify-end">
                       <Plus size={18}/>  Add Project
                     </Link>
                 </div>

@@ -9,7 +9,7 @@ const Home = () => {
         <section className="relative overflow-hidden min-h-screen pt-45 pb-10 md:pb-1 md:pt-20 flex items-center justify-center bg-linear-to-br from-teal-50 -mt-15 via-white to-emerald-100 px-4 transition-all duration-1000">
             {/* Background Blur Effects */}
             <div className="absolute top-0 animate-pulse left-0 w-full md:w-202 md:h-100 h-80 bg-teal-300/30 blur-3xl rounded-full" />
-            <div className="absolute bottom-0 animate-pulse -right-10 w-full md:w-200 md:h-100 h-80 bg-orange-300/30 blur-3xl rounded-full" />
+            <div className="absolute bottom-0 animate-pulse -right-10 w-full md:w-200 md:h-100 h-80 bg-green-300/30 blur-3xl rounded-full" />
             <div className="absolute hidden md:block rotate-270 top-30 -left-72.5 w-full h-135"/>
             {/* Main Content */}
 
@@ -39,7 +39,7 @@ const Home = () => {
                     <div className="flex flex-col justify-center md:flex-row items-center gap-4 md:gap-4 mt-13">
                         <Link
                             to="/docs"
-                            className="group flex w-full md:w-auto justify-center items-center gap-2 bg-linear-to-tl from-orange-300 to-teal-500 border-b-2 border-teal-400 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                            className="group flex w-full md:w-auto justify-center items-center gap-2 bg-linear-to-tl from-green-300 to-teal-500 border-b-2 border-teal-400 text-white md:px-8 px-5 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >
                             Documentation
                             <ArrowRight size={18}
@@ -49,7 +49,7 @@ const Home = () => {
 
                         <Link
                             to="/pricing"
-                            className="group md:px-10 px-2 py-3 w-full md:w-auto flex justify-center items-center gap-3 rounded-full border border-teal-600 bg-transparent text-teal-800 font-semibold hover:bg-linear-to-tl from-orange-300 to-teal-500 border-b-2 hover:text-white transition-all duration-300">
+                            className="group md:px-10 px-2 py-3 w-full md:w-auto flex justify-center items-center gap-3 rounded-full border border-teal-600 bg-transparent text-teal-800 font-semibold hover:bg-linear-to-tl from-green-300 to-teal-500 border-b-2 hover:text-white transition-all duration-300">
                             Get Started
                             <ArrowRight
                                 size={18}

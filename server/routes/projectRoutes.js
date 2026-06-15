@@ -8,15 +8,16 @@ import {
     updateProject,
     deleteProject
 } from "../controllers/projectController.js";
+import { rateLimiter } from "../middlewares/rateLimiter.js";
 
 const router = express.Router();
 
-router.post("/", protect, createProject);
-router.get("/", protect, getProjects);
-router.get("/:id",  getProjectById);
-router.put("/:id", protect, updateProject);
-router.put("/:id/add-member", protect, addMember);
-router.delete("/:id",protect, deleteProject);
+router.post("/", protect, rateLimiter, createProject);
+router.get("/", protect, rateLimiter, getProjects);
+router.get("/:id", protect, rateLimiter, getProjectById);
+router.put("/:id", protect, rateLimiter, updateProject);
+router.put("/:id/add-member", protect, rateLimiter, addMember);
+router.delete("/:id", protect, rateLimiter, deleteProject);
 
 
 export default router;

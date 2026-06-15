@@ -129,7 +129,7 @@ export default function ProjectView() {
                         {/* Created Date */}
                         <div className="bg-white border border-gray-100 rounded-sm p-5 shadow-sm hover:shadow-md transition">
                             <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-sm bg-orange-100 text-orange-600 flex items-center justify-center">
+                                <div className="w-14 h-14 rounded-sm bg-green-100 text-green-600 flex items-center justify-center">
                                     <CalendarDays size={28} />
                                 </div>
 

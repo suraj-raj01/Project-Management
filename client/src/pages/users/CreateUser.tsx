@@ -122,7 +122,7 @@ export default function CreateUser() {
 
                 <button
                     type="submit"
-                    className="w-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 text-white py-3 rounded-sm"
+                    className="w-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 text-white py-3 rounded-sm"
                     disabled={loading}
                 >
                     {loading ? "Creating..." : (id ? "Update Member" : "Create Member")}

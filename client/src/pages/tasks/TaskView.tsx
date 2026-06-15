@@ -68,7 +68,7 @@ export default function TaskView() {
                 return "bg-teal-400 text-white";
 
             case "In Progress":
-                return "bg-orange-400 text-white";
+                return "bg-green-400 text-white";
 
             case "Pending":
                 return "bg-yellow-400 text-yellow-700";

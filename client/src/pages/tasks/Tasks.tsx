@@ -179,7 +179,7 @@ export default function Tasks() {
                 return "bg-yellow-400";
 
             case "In Progress":
-                return "bg-orange-400 text-white";
+                return "bg-green-400 text-white";
 
             case "Completed":
                 return "bg-teal-600 text-white";
@@ -214,7 +214,7 @@ export default function Tasks() {
                     </span>
                 </div>
                 <div className="flex items-center justify-end w-full md:w-fit">
-                    <button className='text-md w-fit md:w-fit rounded-sm border-teal-500 border border-b-2 bg-linear-to-br from-teal-600 to-orange-300 px-4 py-2 text-white'>
+                    <button className='text-md w-fit md:w-fit rounded-sm border-teal-500 border border-b-2 bg-linear-to-br from-teal-600 to-green-300 px-4 py-2 text-white'>
                         <Link to="/dashboard/create-task" className="flex gap-1 items-center justify-center"><Plus size={18}/> Assign Task</Link>
                     </button>
                 </div>

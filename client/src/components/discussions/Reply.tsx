@@ -56,7 +56,7 @@ export default function Reply() {
             <div className="flex flex-col gap-4 max-w-4xl md:p-3 rounded-md">
                 <h2 className="font-semibold text-md text-gray-500">Posted By-</h2>
                 <div className="flex items-center justify-between w-fit flex-wrap gap-2">
-                    <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 flex items-center justify-center text-white font-bold text-lg shrink-0">
+                    <div className="w-10 h-10 rounded-full border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 flex items-center justify-center text-white font-bold text-lg shrink-0">
                         {discussion?.createdBy?.name
                             ?.charAt(0)
                             ?.toUpperCase()}
@@ -83,7 +83,7 @@ export default function Reply() {
                 </div>
                 <form onSubmit={handleSubmit} className="flex gap-3 flex-col items-start justify-center w-full">
                     <textarea rows={5} required value={reply} onChange={(e) => setReply(e.target.value)} placeholder="Write a reply..." className="w-full bg-gray-50 border border-gray-300 rounded-sm px-4 py-3 outline-none focus:ring-2" />
-                    <button type="submit" disabled={loading} className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-orange-300 cursor-pointer text-white px-6 py-2 rounded-sm transition-all disabled:opacity-50">
+                    <button type="submit" disabled={loading} className="border-teal-500 border-b-2 bg-linear-to-br from-teal-600 to-green-300 cursor-pointer text-white px-6 py-2 rounded-sm transition-all disabled:opacity-50">
                         {loading ? ("Sending...") : (
                             <div className=" flex items-center justify-center gap-1">
                                 SEND REPLY <SendHorizonal className="h-5" />

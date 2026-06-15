@@ -203,7 +203,7 @@ export default function UserDashboard() {
                                                 className={`px-3 py-1 text-xs rounded-sm md:w-22 w-25 text-center font-medium ${task.status === "Completed"
                                                     ? "bg-teal-500 text-white"
                                                     : task.status === "In Progress"
-                                                        ? "bg-orange-500 text-white"
+                                                        ? "bg-green-500 text-white"
                                                         : "bg-yellow-500 text-white"
                                                     }`}
                                             >
