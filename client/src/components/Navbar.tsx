@@ -112,7 +112,7 @@ export default function Navbar() {
                         onClick={() => setMobileMenu(!mobileMenu)}
                         className="md:hidden p-2 rounded-sm bg-transparent hover:bg-gray-100 transition">
                         {mobileMenu ? (
-                            <X size={22} color="red" />
+                            <X size={22} color="red"/>
                         ) : (
                             <Menu size={22} color="teal" />
                         )}
@@ -122,7 +122,7 @@ export default function Navbar() {
                 {/* Mobile Menu */}
 
                 {mobileMenu && (
-                    <div className="md:hidden -top-2 fixed z-9999 bg-teal-50 backdrop-blur-md transition-all duration-1000 ease-in-out w-90 h-screen border-t pt-6 border-gray-100 px-6 space-y-1 shadow-2xl">
+                    <div className="md:hidden -top-2 fixed z-9999 bg-teal-50 backdrop-blur-md transition-all duration-1000 ease-in-out w-80 h-screen border-t pt-6 border-gray-100 px-6 space-y-1 shadow-2xl">
 
                         <Link
                             to="/"
